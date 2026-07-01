@@ -429,7 +429,10 @@ section.active{display:block}
 @media(max-width:768px){
   .nav-links{display:none}
   .btn-hamburger{display:flex}
+  .btn-notif,.btn-login{display:none}
   .nav-inner{padding:0 1rem}
+  .btn-reg{padding:8px 12px;font-size:8px}
+  .hero{padding-top:90px}
   .glitch{letter-spacing:1px;word-break:break-word;line-height:1.05}
   .glitch span{letter-spacing:2px;font-size:clamp(14px,4.2vw,26px)}
   .hero-sub{letter-spacing:2px;max-width:88vw;font-size:11px}
@@ -478,6 +481,16 @@ section.active{display:block}
   transition:all 0.2s;backdrop-filter:blur(4px);
 }
 #intro-skip:hover{background:rgba(0,245,255,0.1);box-shadow:0 0 12px rgba(0,245,255,0.3);}
+/* Tap for sound hint */
+#intro-tap-hint{
+  position:absolute;bottom:80px;left:50%;transform:translateX(-50%);z-index:10;
+  background:rgba(0,0,0,0.55);border:1px solid rgba(0,245,255,0.35);
+  color:#00f5ff;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:600;
+  letter-spacing:1px;padding:10px 22px;border-radius:30px;
+  pointer-events:none;backdrop-filter:blur(4px);
+  animation:tapHintFade 3s ease forwards;
+}
+@keyframes tapHintFade{0%{opacity:0;transform:translateX(-50%) translateY(6px)}12%{opacity:1;transform:translateX(-50%) translateY(0)}78%{opacity:1}100%{opacity:0}}
 /* Countdown bar */
 #intro-bar{
   position:absolute;bottom:0;left:0;height:3px;z-index:10;
@@ -645,6 +658,7 @@ section.active{display:block}
   <div class="intro-corner tr"></div>
   <div class="intro-corner bl"></div>
   <div class="intro-corner br"></div>
+  <div id="intro-tap-hint">🔇 Tap screen for sound</div>
 <canvas id="intro-canvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;"></canvas>
 <script>
 (function(){
@@ -800,12 +814,21 @@ section.active{display:block}
   var screen  = document.getElementById('intro-screen');
   var video   = document.getElementById('intro-video');
   var skipBtn = document.getElementById('intro-skip');
+  var tapHint = document.getElementById('intro-tap-hint');
 
   function dismissIntro(){
     screen.classList.add('hidden');
     // fully remove after transition
     setTimeout(function(){ screen.style.display='none'; }, 900);
   }
+
+  function hideTapHint(){
+    if (tapHint) tapHint.style.display = 'none';
+  }
+  // Hint auto-fades via CSS after 3s; also remove it immediately if the
+  // user taps the screen before that.
+  setTimeout(hideTapHint, 3000);
+  screen.addEventListener('click', hideTapHint, { once: true });
 
   // Unmute video and play with sound
   if(video){
@@ -875,6 +898,8 @@ section.active{display:block}
     <button class="mobile-nav-btn" onclick="goTo('sponsors');closeMobileMenu()">Sponsors</button>
     <button class="mobile-nav-btn" onclick="goTo('gallery');closeMobileMenu()">Gallery</button>
     <button class="mobile-nav-btn" onclick="goTo('team');closeMobileMenu()">Team</button>
+    <button class="mobile-nav-btn" onclick="goTo('notifications');closeMobileMenu()">🔔 Notifications</button>
+    <button class="mobile-nav-btn" onclick="window.location.href='welcome.html'">Login</button>
   </div>
 </nav>
 
