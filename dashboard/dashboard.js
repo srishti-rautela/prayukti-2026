@@ -506,7 +506,23 @@ function capitalize(word){
 // to download just the pass.
 // =========================================================
 
-function downloadPass(){
+// Loads a script from a CDN exactly once, even if downloadPass() is
+// called multiple times in the same session.
+function loadScriptOnce(src){
+    return new Promise((resolve, reject) => {
+        if(document.querySelector(`script[src="${src}"]`)){
+            resolve();
+            return;
+        }
+        const s = document.createElement("script");
+        s.src = src;
+        s.onload = () => resolve();
+        s.onerror = () => reject(new Error("Failed to load " + src));
+        document.head.appendChild(s);
+    });
+}
+
+async function downloadPass(){
 
     if(!participant){
         alert("Your pass isn't ready yet. Please wait for your details to finish loading.");
@@ -556,17 +572,91 @@ function downloadPass(){
         });
     }
 
-    // Switch the page into "print only the pass" mode and print
-    document.body.classList.add("printing-pass");
+    // ---------------------------------------------------------------
+    // Render #passCard off-screen at a FIXED desktop-like width and
+    // capture ONLY that element with html2canvas, then drop it into a
+    // single-page PDF with jsPDF. This bypasses window.print()/@media
+    // print entirely, which is what was causing mobile browsers to
+    // capture the whole dashboard instead of just the pass — mobile
+    // print engines don't reliably respect print-only CSS the way
+    // desktop browsers do. Forcing a fixed pixel width here also stops
+    // narrow phone viewports from squashing or reflowing the card.
+    // ---------------------------------------------------------------
+    const passCard = document.getElementById("passCard");
+    const passInner = passCard.querySelector(".pass-card-inner");
+    const downloadBtn = document.getElementById("downloadPassBtn");
 
-    window.print();
+    const prevCardStyle = passCard.getAttribute("style") || "";
+    const prevInnerStyle = passInner.getAttribute("style") || "";
+
+    if(downloadBtn){
+        downloadBtn.disabled = true;
+        downloadBtn.dataset.origText = downloadBtn.innerText;
+        downloadBtn.innerText = "Preparing pass...";
+    }
+
+    passCard.style.cssText =
+        "display:block !important;" +
+        "position:fixed !important;" +
+        "top:0 !important;" +
+        "left:-99999px !important;" +
+        "z-index:-1 !important;" +
+        "opacity:1 !important;" +
+        "visibility:visible !important;" +
+        "pointer-events:none !important;" +
+        "width:760px !important;";
+
+    passInner.style.cssText +=
+        ";width:760px !important;max-width:760px !important;";
+
+    // Give the QR/photo/logo images and layout a moment to settle
+    // before we snapshot the element.
+    await new Promise(resolve => setTimeout(resolve, 150));
+
+    try{
+        await loadScriptOnce("https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js");
+        await loadScriptOnce("https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js");
+
+        const canvas = await html2canvas(passInner, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#0b0b1a",
+            windowWidth: 1100,
+            windowHeight: passInner.offsetHeight + 300
+        });
+
+        const imgData = canvas.toDataURL("image/png");
+        const { jsPDF } = window.jspdf;
+
+        const pdf = new jsPDF({
+            orientation: canvas.width >= canvas.height ? "landscape" : "portrait",
+            unit: "px",
+            format: [canvas.width, canvas.height]
+        });
+
+        pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
+
+        const fileName = "Prayukti2026_Pass_" +
+            (participant.registration_id || "participant") + ".pdf";
+
+        pdf.save(fileName);
+
+    } catch(err){
+        console.error("Pass download failed:", err);
+        alert("Couldn't generate your pass right now. Please check your connection and try again.");
+    } finally {
+        // Restore the pass card to its original hidden state
+        if(prevCardStyle){ passCard.setAttribute("style", prevCardStyle); }
+        else { passCard.removeAttribute("style"); }
+        if(prevInnerStyle){ passInner.setAttribute("style", prevInnerStyle); }
+        else { passInner.removeAttribute("style"); }
+
+        if(downloadBtn){
+            downloadBtn.disabled = false;
+            downloadBtn.innerText = downloadBtn.dataset.origText || "Download Pass";
+        }
+    }
 }
-
-// Clean up the print-only mode once the print dialog closes
-// (covers both "Save as PDF" and "Cancel")
-window.addEventListener("afterprint", ()=>{
-    document.body.classList.remove("printing-pass");
-});
 
 // =========================================================
 // BUTTONS
