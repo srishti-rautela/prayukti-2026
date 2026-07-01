@@ -3,7 +3,7 @@
 // Part 1
 // =========================================================
 
-const API = "http://localhost:5000/api";
+const API = "https://prayukti-backend.onrender.com/api";
 
 let participant = null;
 

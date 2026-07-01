@@ -131,7 +131,7 @@ body::after{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;back
 </div>
 
 <script>
-const API = 'http://localhost:5000/api';
+const API = 'https://prayukti-backend.onrender.com/api';
 
 // ── Auto-fill Registration ID from URL param ──
 const params = new URLSearchParams(window.location.search);
@@ -195,7 +195,7 @@ document.getElementById('login-form').addEventListener('submit', async e => {
     }
 
   } catch (err) {
-    showToast('Server not responding. Make sure backend is running on port 5000.', 'error');
+    showToast('Server not responding...', 'error');
   } finally {
     btn.disabled = false;
     btn.textContent = 'LOGIN TO PORTAL →';
