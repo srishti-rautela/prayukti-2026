@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prayukti Participant Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <canvas id="bg-canvas"></canvas>
+
+  <div class="page-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">P</div>
+        <div>
+          <div class="brand-title">PRAYUKTI</div>
+          <div class="brand-sub">Participant Portal</div>
+        </div>
+      </div>
+
+      <nav class="side-nav">
+        <button class="nav-item active" data-tab="overview"> Welcome to Your Dashboard</button>
+   
+      </nav>
+
+      <div class="sidebar-card">
+        <div class="sidebar-label">Registration Status</div>
+        <div id="sidebarStatus" class="sidebar-status">Confirmed</div>
+        <div class="sidebar-note">Your registration is confirmed. No further action needed.</div>
+      </div>
+
+      <button id="logoutBtn" class="logout-btn">Logout</button>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <div class="topbar-kicker">Welcome back</div>
+          <h1 id="participantName" class="topbar-title">Loading...</h1>
+          <p class="topbar-sub">Your registration details, event access and updates in one place.</p>
+        </div>
+
+        <div class="topbar-actions">
+          <div class="clock-card">
+            <div class="clock-label">Current Time</div>
+            <div id="clock" class="clock-value">--:--</div>
+          </div>
+          <button id="downloadPassBtn" class="primary-btn">Download Pass</button>
+        </div>
+      </header>
+
+      <section class="hero-grid">
+        <div class="panel profile-panel">
+          <div class="panel-head">
+            <div>
+              <div class="panel-kicker">Profile Summary</div>
+              <h2 class="panel-title">Your Registration</h2>
+            </div>
+            <span id="statusBadge" class="badge approved">Confirmed</span>
+          </div>
+
+          <div class="profile-main">
+            <div class="avatar" id="avatar">SR</div>
+            <div class="profile-meta">
+              <div class="meta-row">
+                <span class="meta-label">Registration ID</span>
+                <span id="registrationId" class="meta-value">Loading...</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Email</span>
+                <span id="participantEmail" class="meta-value">Loading...</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Phone</span>
+                <span id="participantPhone" class="meta-value">Loading...</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-grid">
+            <div class="info-card">
+              <div class="info-label">College</div>
+              <div id="participantCollege" class="info-value">Loading...</div>
+            </div>
+            <div class="info-card">
+              <div class="info-label">Branch</div>
+              <div id="participantBranch" class="info-value">Loading...</div>
+            </div>
+            <div class="info-card">
+              <div class="info-label">Team Size</div>
+              <div id="participantYear" class="info-value">Loading...</div>
+            </div>
+            <div class="info-card">
+              <div class="info-label">City</div>
+              <div id="participantCity" class="info-value">Loading...</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel event-panel">
+          <div class="panel-head">
+            <div>
+              <div class="panel-kicker">Registered Event</div>
+              <h2 class="panel-title">Your Event</h2>
+            </div>
+          </div>
+
+          <div class="event-card">
+            <div class="event-icon">⚡</div>
+            <div>
+              <div id="participantEvent" class="event-name">Loading...</div>
+              <div class="event-desc">You are registered for this event. Check the timeline below for your progress.</div>
+            </div>
+          </div>
+
+          <div class="events-grid" id="eventsContainer"></div>
+
+          <div class="progress-wrap">
+            <div class="progress-head">
+              <span>Registration Progress</span>
+              <span id="progressText">Loading...</span>
+            </div>
+            <div class="progress-bar">
+              <div id="progressFill" class="progress-fill"></div>
+            </div>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-step done">
+              <div class="step-dot"></div>
+              <div>
+                <div class="step-title">Registered</div>
+                <div class="step-sub">Your form was submitted successfully.</div>
+              </div>
+            </div>
+            <div class="timeline-step done">
+              <div class="step-dot"></div>
+              <div>
+                <div class="step-title">Data Stored</div>
+                <div class="step-sub">Your details are saved in the database.</div>
+              </div>
+            </div>
+            <div class="timeline-step done">
+              <div class="step-dot"></div>
+              <div>
+                <div class="step-title">Registration Confirmed</div>
+                <div class="step-sub">You're all set — no further action required.</div>
+              </div>
+            </div>
+            <div class="timeline-step done">
+              <div class="step-dot"></div>
+              <div>
+                <div class="step-title">QR Pass</div>
+                <div class="step-sub">Ready below — scroll down or use the sidebar.</div>
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="step-dot"></div>
+              <div>
+                <div class="step-title">Certificate</div>
+                <div class="step-sub">Released after the event.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Event</div>
+          <div id="statEvent" class="stat-value">--</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Status</div>
+          <div id="statStatus" class="stat-value">Confirmed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Registration ID</div>
+          <div id="statRegId" class="stat-value">--</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Standing</div>
+          <div id="statApproval" class="stat-value">Confirmed</div>
+        </div>
+      </section>
+
+      <section class="panel team-panel" id="teamSection">
+        <div class="panel-head">
+          <div>
+            <div class="panel-kicker">Your Squad</div>
+            <h2 class="panel-title">Team Members</h2>
+          </div>
+        </div>
+        <div class="profile-grid" id="teamMembersContainer"></div>
+      </section>
+
+      <section class="panel travel-panel" id="staySection">
+        <div class="panel-head">
+          <div>
+            <div class="panel-kicker">Logistics</div>
+            <h2 class="panel-title">Stay &amp; Travel</h2>
+          </div>
+        </div>
+        <div class="travel-grid">
+          <div class="travel-card"><div class="travel-label">Accommodation</div><div class="travel-value" id="accommodationStatus">--</div></div>
+          <div class="travel-card"><div class="travel-label">Transport</div><div class="travel-value" id="transportStatus">--</div></div>
+          <div class="travel-card"><div class="travel-label">Arrival</div><div class="travel-value" id="arrivalDetails">--</div></div>
+          <div class="travel-card"><div class="travel-label">Departure</div><div class="travel-value" id="departureDetails">--</div></div>
+          <div class="travel-card"><div class="travel-label">Payment</div><div class="travel-value" id="paymentStatus">--</div></div>
+          <div class="travel-card"><div class="travel-label">WhatsApp Group</div><div class="travel-value" id="whatsappStatus">--</div></div>
+        </div>
+      </section>
+
+      <section class="bottom-grid">
+        <div class="panel qr-panel" id="qrSection">
+          <div class="panel-head">
+            <div>
+              <div class="panel-kicker">Participant Pass</div>
+              <h2 class="panel-title">QR Access</h2>
+            </div>
+          </div>
+
+          <div class="qr-box">
+            <div class="qr-placeholder">
+              <div class="qr-inner">
+                <img id="participantQR" alt="QR Pass" style="width:100%;height:100%;border-radius:14px;object-fit:cover;display:none" onload="this.style.display='block'" onerror="this.style.display='none'"/>
+              </div>
+            </div>
+            <div class="qr-text">
+              <p>Show this QR code at the registration desk on event day.</p>
+              <small>Use this for check-in and verification.</small>
+            </div>
+          </div>
+
+          <div class="action-row">
+            <button id="viewQrBtn" class="secondary-btn">View QR</button>
+            <button id="copyIdBtn" class="secondary-btn">Copy Registration ID</button>
+          </div>
+        </div>
+
+        <div class="panel notification-panel" id="notificationsSection">
+          <div class="panel-head">
+            <div>
+              <div class="panel-kicker">Latest Updates</div>
+              <h2 class="panel-title">Notifications</h2>
+            </div>
+          </div>
+
+          <div class="notif-list">
+            <div class="notif-item">
+              <div class="notif-dot neon"></div>
+              <div>
+                <div class="notif-title">Registration received</div>
+                <div class="notif-sub">Your submission was stored successfully.</div>
+              </div>
+            </div>
+            <div class="notif-item">
+              <div class="notif-dot neon"></div>
+              <div>
+                <div class="notif-title">Registration confirmed</div>
+                <div class="notif-sub">You're fully registered — your dashboard is live.</div>
+              </div>
+            </div>
+            <div class="notif-item">
+              <div class="notif-dot"></div>
+              <div>
+                <div class="notif-title">Certificate unlock</div>
+                <div class="notif-sub">Certificates will be released after the event ends.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ===================== DOWNLOADABLE PASS CARD ===================== -->
+  <!-- Hidden on screen. Populated by downloadPass() in dashboard.js, then -->
+  <!-- rendered off-screen and captured into a single-page PDF via         -->
+  <!-- html2canvas + jsPDF (loaded on demand from CDN). The old @media     -->
+  <!-- print rules in dashboard.css remain only as a manual Ctrl+P fallback -->
+  <div id="passCard" class="pass-card">
+    <div class="pass-card-inner">
+
+      <div class="pass-header">
+        <div class="pass-brand">
+          <div class="pass-brand-mark">P</div>
+          <div>
+            <div class="pass-brand-title">PRAYUKTI 2026</div>
+            <div class="pass-brand-sub">Participant Pass</div>
+          </div>
+        </div>
+        <div class="pass-status" id="passStatus">CONFIRMED</div>
+      </div>
+
+      <div class="pass-body">
+        <div class="pass-avatar" id="passAvatar">--</div>
+        <div class="pass-info">
+          <div class="pass-name" id="passName">--</div>
+          <div class="pass-regid">
+            Registration ID
+            <strong id="passRegId">--</strong>
+          </div>
+          <div class="pass-grid">
+            <div><span>College</span><strong id="passCollege">--</strong></div>
+            <div><span>Team Size</span><strong id="passTeamSize">--</strong></div>
+            <div><span>City</span><strong id="passCity">--</strong></div>
+            <div><span>Branch</span><strong id="passBranch">--</strong></div>
+          </div>
+        </div>
+        <div class="pass-qr">
+          <img id="passQR" alt="QR" />
+        </div>
+      </div>
+
+      <div class="pass-events">
+        <div class="pass-events-label">Registered Events</div>
+        <div class="pass-events-list" id="passEventsList"></div>
+      </div>
+
+      <div class="pass-photo">
+        <img src="../assets/pp.png" alt="GEHU Bhimtal Campus" class="pass-photo-img" />
+        <img src="../assets/stamp.png" alt="Prayukti Logo" class="pass-logo-img" />
+      </div>
+
+      <div class="pass-footer">
+        Oct 28–30, 2026 &nbsp;·&nbsp; GEHU Bhimtal, Uttarakhand &nbsp;·&nbsp; Show this pass at the registration desk
+      </div>
+    </div>
+  </div>
+
+  <script src="dashboard.js"></script>
+
+<!-- ===================== WHATSAPP GATE ===================== -->
+<div id="whatsappGate" style="display:none;position:fixed;inset:0;z-index:999999;background:rgba(5,7,20,0.97);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0;">
+
+  <div style="background:linear-gradient(135deg,#0d1117,#111827);border:1px solid rgba(0,245,255,0.25);border-radius:24px;padding:48px 40px;max-width:440px;width:90%;text-align:center;box-shadow:0 0 60px rgba(0,245,255,0.12);">
+
+    <!-- Icon -->
+    <div style="font-size:64px;margin-bottom:16px;">💬</div>
+
+    <!-- Title -->
+    <div style="font-family:'Orbitron',sans-serif;font-size:1.4rem;font-weight:700;color:#00F5FF;letter-spacing:1px;margin-bottom:10px;">
+      Join WhatsApp Group
+    </div>
+
+    <!-- Subtitle -->
+    <div style="color:#94a3b8;font-size:0.95rem;line-height:1.6;margin-bottom:8px;">
+      Joining the official Prayukti 2026 WhatsApp group is <strong style="color:#fff;">mandatory</strong> to complete your registration.
+    </div>
+    <div style="color:#64748b;font-size:0.82rem;margin-bottom:32px;">
+      You'll receive important updates, schedules & announcements here.
+    </div>
+
+    <!-- Join Button -->
+    <a id="whatsappJoinBtn" href="#" target="_blank"
+       style="display:block;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;text-decoration:none;font-weight:700;font-size:1rem;padding:16px 24px;border-radius:14px;margin-bottom:16px;letter-spacing:0.5px;transition:all .3s;">
+      📲 Open WhatsApp Group
+    </a>
+
+    <!-- Confirm Button -->
+    <button id="whatsappConfirmBtn"
+       style="width:100%;background:rgba(0,245,255,0.1);border:1px solid rgba(0,245,255,0.4);color:#00F5FF;font-weight:600;font-size:0.95rem;padding:14px 24px;border-radius:14px;cursor:pointer;letter-spacing:0.5px;transition:all .3s;">
+      ✅ I've Joined — Continue to Dashboard
+    </button>
+
+    <!-- Status msg -->
+    <div id="whatsappGateMsg" style="margin-top:14px;font-size:0.82rem;color:#64748b;min-height:18px;"></div>
+
+  </div>
+
+</div>
+
+<script>
+// =========================================================
+// WHATSAPP GATE LOGIC
+// =========================================================
+
+const WHATSAPP_API = "http://localhost:5000/api";
+const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/Dp4Os2aRwPUEsoK0RN0mSF";
+
+const gate = document.getElementById("whatsappGate");
+const joinBtn = document.getElementById("whatsappJoinBtn");
+const confirmBtn = document.getElementById("whatsappConfirmBtn");
+const gateMsg = document.getElementById("whatsappGateMsg");
+
+joinBtn.href = WHATSAPP_GROUP_LINK;
+
+// Called from dashboard.js after participant loads
+function checkWhatsAppGate() {
+    if (!participant) return;
+    if (!participant.whatsapp_joined) {
+        gate.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+}
+
+confirmBtn.addEventListener("click", async () => {
+    const regId = localStorage.getItem("registrationId");
+    if (!regId) return;
+
+    confirmBtn.disabled = true;
+    confirmBtn.innerText = "Verifying...";
+    gateMsg.style.color = "#94a3b8";
+    gateMsg.innerText = "Marking you as joined...";
+
+    try {
+        const res = await fetch(`${WHATSAPP_API}/dashboard/whatsapp/joined`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ registrationId: regId })
+        });
+        const data = await res.json();
+
+        if (data.success) {
+            gateMsg.style.color = "#14F195";
+            gateMsg.innerText = "✅ Verified! Unlocking dashboard...";
+            participant.whatsapp_joined = true;
+
+            // Update the status card
+            const ws = document.getElementById("whatsappStatus");
+            if (ws) {
+                ws.innerText = "Joined ✅";
+                const card = ws.closest(".travel-card");
+                if (card) { card.style.border = ""; card.style.boxShadow = ""; }
+            }
+
+            setTimeout(() => {
+                gate.style.display = "none";
+                document.body.style.overflow = "";
+            }, 1000);
+        } else {
+            throw new Error(data.message || "Server error");
+        }
+    } catch (err) {
+        gateMsg.style.color = "#ff5050";
+        gateMsg.innerText = "⚠️ Error: " + err.message;
+        confirmBtn.disabled = false;
+        confirmBtn.innerText = "✅ I've Joined — Continue to Dashboard";
+    }
+});
+</script>
+
+</body>
+</html>

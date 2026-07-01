@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Prayukti Admin Dashboard</title>
+
+<link
+rel="stylesheet"
+href="dashboard.css">
+
+<link
+href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<div class="container">
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<img
+src="../images/logo.png"
+alt="logo">
+
+<h2>
+
+PRAYUKTI
+
+</h2>
+
+<p>
+
+ADMIN PANEL
+
+</p>
+
+</div>
+
+<nav>
+
+<ul>
+
+<li class="active">
+
+<i class="fa-solid fa-house"></i>
+
+<span>
+
+Dashboard
+
+</span>
+
+</li>
+
+<li>
+
+<i class="fa-solid fa-users"></i>
+
+<span>
+
+Registrations
+
+</span>
+
+</li>
+
+<li>
+
+<i class="fa-solid fa-code"></i>
+
+<span>
+
+Events
+
+</span>
+
+</li>
+
+<li>
+
+<i class="fa-solid fa-trophy"></i>
+
+<span>
+
+Results
+
+</span>
+
+</li>
+
+<li>
+
+<i class="fa-solid fa-image"></i>
+
+<span>
+
+Gallery
+
+</span>
+
+</li>
+
+<li>
+
+<i class="fa-solid fa-handshake"></i>
+
+<span>
+
+Sponsors
+
+</span>
+
+</li>
+
+<li>
+
+<i class="fa-solid fa-bell"></i>
+
+<span>
+
+Notifications
+
+</span>
+
+</li>
+
+<li>
+
+<i class="fa-solid fa-chart-column"></i>
+
+<span>
+
+Analytics
+
+</span>
+
+</li>
+
+<li>
+
+<i class="fa-solid fa-gear"></i>
+
+<span>
+
+Settings
+
+</span>
+
+</li>
+
+<li id="logoutBtn">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+<span>
+
+Logout
+
+</span>
+
+</li>
+
+</ul>
+
+</nav>
+
+</aside>
+
+<!-- ================= MAIN ================= -->
+
+<main class="main">
+
+<header class="topbar">
+
+<div>
+
+<h1>
+
+Welcome Admin 👋
+
+</h1>
+
+<p>
+
+Prayukti Tech Fest Management Portal
+
+</p>
+
+</div>
+
+<div class="top-right">
+
+<div
+class="clock"
+id="clock">
+
+00:00:00
+
+</div>
+
+<div class="admin-profile">
+
+<img
+src="../images/admin.png">
+
+<div>
+
+<h3>
+
+Prayukti Admin
+
+</h3>
+
+<p>
+
+Organizer
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- ================= STATISTICS ================= -->
+
+<section class="cards">
+
+<div class="card">
+
+<div>
+
+<h3>
+
+Total Registrations
+
+</h3>
+
+<h1
+id="totalRegistration">
+
+0
+
+</h1>
+
+</div>
+
+<i class="fa-solid fa-users"></i>
+
+</div>
+
+<div class="card">
+
+<div>
+
+<h3>
+
+Today's Registrations
+
+</h3>
+
+<h1
+id="todayRegistration">
+
+0
+
+</h1>
+
+</div>
+
+<i class="fa-solid fa-user-plus"></i>
+
+</div>
+
+<div class="card">
+
+<div>
+
+<h3>
+
+Events
+
+</h3>
+
+<h1
+id="totalEvents">
+
+0
+
+</h1>
+
+</div>
+
+<i class="fa-solid fa-code"></i>
+
+</div>
+
+<div class="card">
+
+<div>
+
+<h3>
+
+Sponsors
+
+</h3>
+
+<h1
+id="totalSponsors">
+
+0
+
+</h1>
+
+</div>
+
+<i class="fa-solid fa-handshake"></i>
+
+</div>
+
+<div class="card">
+
+<div>
+
+<h3>
+
+Gallery Images
+
+</h3>
+
+<h1
+id="galleryCount">
+
+0
+
+</h1>
+
+</div>
+
+<i class="fa-solid fa-image"></i>
+
+</div>
+
+<div class="card">
+
+<div>
+
+<h3>
+
+Notifications
+
+</h3>
+
+<h1
+id="notificationCount">
+
+0
+
+</h1>
+
+</div>
+
+<i class="fa-solid fa-bell"></i>
+
+</div>
+
+</section>
+
+<!-- ================= QUICK ACTION ================= -->
+
+<section class="quick-actions">
+
+<button id="addEvent">
+
+Add Event
+
+</button>
+
+<button id="publishResult">
+
+Publish Result
+
+</button>
+
+<button id="sendNotification">
+
+Send Notification
+
+</button>
+
+<button id="uploadGallery">
+
+Upload Gallery
+
+</button>
+
+<button id="addSponsor">
+
+Add Sponsor
+
+</button>
+
+<button id="downloadExcel">
+
+Export Excel
+
+</button>
+
+</section>
+
+<!-- ================= CHART ROW ================= -->
+
+<section class="charts">
+
+<div class="chart-box">
+
+<h2>
+
+Registration Statistics
+
+</h2>
+
+<canvas id="registrationChart"></canvas>
+
+</div>
+
+<div class="chart-box">
+
+<h2>
+
+Recent Activity
+
+</h2>
+
+<div id="recentActivity">
+
+Loading...
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= RECENT TABLE ================= -->
+
+<section class="recent">
+
+<h2>
+
+Latest Registrations
+
+</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Name</th>
+
+<th>College</th>
+
+<th>Event</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="registrationTable">
+
+</tbody>
+
+</table>
+<!-- ================= PARTICIPANT MODAL ================= -->
+
+<div id="participantModal" class="modal">
+
+    <div class="modal-card">
+
+        <div class="modal-header">
+
+            <h2>Participant Details</h2>
+
+            <button id="closeModal">&times;</button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <div class="modal-row">
+
+                <span>Name</span>
+
+                <strong id="mName"></strong>
+
+            </div>
+
+            <div class="modal-row">
+
+                <span>Registration ID</span>
+
+                <strong id="mReg"></strong>
+
+            </div>
+
+            <div class="modal-row">
+
+                <span>Email</span>
+
+                <strong id="mEmail"></strong>
+
+            </div>
+
+            <div class="modal-row">
+
+                <span>Phone</span>
+
+                <strong id="mPhone"></strong>
+
+            </div>
+
+            <div class="modal-row">
+
+                <span>College</span>
+
+                <strong id="mCollege"></strong>
+
+            </div>
+
+            <div class="modal-row">
+
+                <span>Branch</span>
+
+                <strong id="mBranch"></strong>
+
+            </div>
+
+            <div class="modal-row">
+
+                <span>Year</span>
+
+                <strong id="mYear"></strong>
+
+            </div>
+
+            <div class="modal-row">
+
+                <span>City</span>
+
+                <strong id="mCity"></strong>
+
+            </div>
+
+            <div class="modal-row">
+
+                <span>Event</span>
+
+                <strong id="mEvent"></strong>
+
+            </div>
+
+            <div class="modal-row">
+
+                <span>Status</span>
+
+                <strong id="mStatus"></strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="dashboard.js"></script>
+
+</body>
+
+</html>

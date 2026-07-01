@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Registrations | Prayukti Admin</title>
+
+<link rel="stylesheet"
+href="dashboard.css">
+
+<link rel="stylesheet"
+href="registrations.css">
+
+<link
+href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;500;600&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<div class="container">
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<img src="../images/logo.png">
+
+<h2>PRAYUKTI</h2>
+
+<p>ADMIN PANEL</p>
+
+</div>
+
+<nav>
+
+<ul>
+
+<li onclick="location.href='dashboard.html'">
+
+<i class="fa-solid fa-house"></i>
+
+<span>Dashboard</span>
+
+</li>
+
+<li class="active">
+
+<i class="fa-solid fa-users"></i>
+
+<span>Registrations</span>
+
+</li>
+
+<li onclick="location.href='events.html'">
+
+<i class="fa-solid fa-code"></i>
+
+<span>Events</span>
+
+</li>
+
+<li onclick="location.href='gallery.html'">
+
+<i class="fa-solid fa-image"></i>
+
+<span>Gallery</span>
+
+</li>
+
+<li onclick="location.href='results.html'">
+
+<i class="fa-solid fa-trophy"></i>
+
+<span>Results</span>
+
+</li>
+
+<li onclick="location.href='notifications.html'">
+
+<i class="fa-solid fa-bell"></i>
+
+<span>Notifications</span>
+
+</li>
+
+<li id="logoutBtn">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+<span>Logout</span>
+
+</li>
+
+</ul>
+
+</nav>
+
+</aside>
+
+<!-- ================= MAIN ================= -->
+
+<main class="main">
+
+<header class="page-header">
+
+<div>
+
+<h1>
+
+Registration Management
+
+</h1>
+
+<p>
+
+Manage all participants from one place
+
+</p>
+
+</div>
+
+<div id="clock">
+
+00:00:00
+
+</div>
+
+</header>
+
+<!-- ================= FILTER BAR ================= -->
+
+<section class="filter-bar">
+
+<input
+
+id="searchBox"
+
+type="text"
+
+placeholder="Search Name / Email / Registration ID">
+
+<select id="statusFilter">
+
+<option value="">All Status</option>
+
+<option>Pending</option>
+
+<option>Approved</option>
+
+<option>Rejected</option>
+
+</select>
+
+<select id="eventFilter">
+
+<option value="">All Events</option>
+
+</select>
+
+<button id="searchBtn">
+
+Search
+
+</button>
+
+<button id="exportBtn">
+
+Export Excel
+
+</button>
+
+</section>
+
+<!-- ================= TABLE ================= -->
+
+<section class="table-card">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Name</th>
+
+<th>Email</th>
+
+<th>College</th>
+
+<th>Event</th>
+
+<th>Status</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody id="registrationBody">
+
+</tbody>
+
+</table>
+
+</section>
+
+<!-- ================= PAGINATION ================= -->
+
+<div class="pagination">
+
+<button id="prevBtn">
+
+Previous
+
+</button>
+
+<span id="pageNumber">
+
+1
+
+</span>
+
+<button id="nextBtn">
+
+Next
+
+</button>
+
+</div>
+
+</main>
+
+</div>
+
+<script src="registrations.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,2178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Prayukti 2026 — Tech Fest | Graphic Era Hill University, Bhimtal</title>
+<meta name="description" content="Prayukti 2026 — Annual Technical Festival of Graphic Era Hill University Bhimtal. Oct 28–30, 2026. 40+ events, ₹10L+ prize pool."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --c1:#00f5ff;--c2:#7b2fff;--c3:#ff006e;--c4:#00ff9d;--c5:#ffb800;
+  --bg:#030310;--bg2:#07071a;--bg3:#0d0d28;
+  --card:rgba(255,255,255,0.025);--card-b:rgba(0,245,255,0.1);
+  --text:#e0e0ff;--muted:rgba(180,180,255,0.5);
+  --orb:'Orbitron',sans-serif;--raj:'Rajdhani',sans-serif;--int:'Inter',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--int);overflow-x:hidden;min-height:100vh}
+#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+body::after{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.025) 2px,rgba(0,0,0,0.025) 4px)}
+.corner{position:fixed;width:50px;height:50px;z-index:2;pointer-events:none;opacity:.35}
+.corner.tl{top:10px;left:10px;border-top:1px solid var(--c1);border-left:1px solid var(--c1)}
+.corner.tr{top:10px;right:10px;border-top:1px solid var(--c1);border-right:1px solid var(--c1)}
+.corner.bl{bottom:10px;left:10px;border-bottom:1px solid var(--c1);border-left:1px solid var(--c1)}
+.corner.br{bottom:10px;right:10px;border-bottom:1px solid var(--c1);border-right:1px solid var(--c1)}
+#scroll-prog{position:fixed;top:60px;left:0;height:2px;background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3));z-index:99;width:0%;box-shadow:0 0 8px rgba(0,245,255,0.5);transition:width 0.1s}
+#app{position:relative;z-index:10}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(3,3,16,0.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,245,255,0.08);transition:all 0.3s}
+nav.scrolled{background:rgba(3,3,16,0.98);box-shadow:0 4px 30px rgba(0,245,255,0.04)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:62px;gap:12px}
+.logo{font-family:var(--orb);font-size:15px;font-weight:900;color:var(--c1);letter-spacing:2px;cursor:pointer;text-shadow:0 0 20px rgba(0,245,255,0.4);flex-shrink:0;transition:all 0.2s}
+.logo span{color:var(--c2)}
+.logo:hover{text-shadow:0 0 30px rgba(0,245,255,0.7)}
+.nav-links{display:flex;gap:2px;flex:1;justify-content:center}
+.nav-btn{background:none;border:none;color:rgba(200,200,255,0.6);font-family:var(--raj);font-size:13px;font-weight:600;cursor:pointer;padding:6px 12px;border-radius:6px;transition:all 0.2s;letter-spacing:0.5px;position:relative}
+.nav-btn::after{content:'';position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:0;height:1px;background:var(--c1);transition:width 0.3s}
+.nav-btn:hover,.nav-btn.active{color:var(--c1)}
+.nav-btn:hover::after,.nav-btn.active::after{width:60%}
+.nav-actions{display:flex;gap:8px;align-items:center;flex-shrink:0}
+.btn-notif{background:none;border:1px solid rgba(255,0,110,0.25);color:var(--c3);width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:15px;transition:all 0.2s;position:relative;display:flex;align-items:center;justify-content:center}
+.btn-notif:hover{background:rgba(255,0,110,0.1);box-shadow:0 0 12px rgba(255,0,110,0.2)}
+.notif-dot{position:absolute;top:6px;right:6px;width:6px;height:6px;background:var(--c3);border-radius:50%;animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+.btn-login{background:none;border:1px solid rgba(0,245,255,0.3);color:var(--c1);font-family:var(--orb);font-size:9px;font-weight:700;padding:7px 14px;border-radius:6px;cursor:pointer;letter-spacing:1px;transition:all 0.25s}
+.btn-login:hover{background:rgba(0,245,255,0.08);box-shadow:0 0 15px rgba(0,245,255,0.15)}
+.btn-reg{background:linear-gradient(135deg,var(--c2),var(--c3));border:none;color:#fff;font-family:var(--orb);font-size:9px;font-weight:700;padding:8px 16px;border-radius:6px;cursor:pointer;letter-spacing:1px;transition:all 0.25s;position:relative;overflow:hidden}
+.btn-reg:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(123,47,255,0.4)}
+section{display:none;max-width:1280px;margin:0 auto;padding:90px 1.5rem 4rem;animation:fadeUp 0.5s ease}
+section.active{display:block}
+#sec-home{display:none;max-width:1280px;margin:0 auto;padding:0 1.5rem}
+#sec-home.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem 1rem;position:relative;gap:0}
+.glitch-wrap{position:relative;margin-bottom:6px}
+.glitch{font-family:var(--orb);font-size:clamp(30px,7vw,90px);font-weight:900;color:#fff;letter-spacing:4px;position:relative;display:inline-block;text-shadow:0 0 40px rgba(0,245,255,0.2)}
+.glitch span{color:var(--c1);display:block;font-size:clamp(18px,3.5vw,42px);letter-spacing:6px;text-shadow:0 0 30px rgba(0,245,255,0.5)}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%;font-family:var(--orb);font-size:inherit;font-weight:900;letter-spacing:inherit}
+.glitch::before{color:var(--c3);animation:g1 3.5s infinite;clip-path:polygon(0 8%,100% 8%,100% 30%,0 30%)}
+.glitch::after{color:var(--c1);animation:g2 3.5s infinite;clip-path:polygon(0 62%,100% 62%,100% 84%,0 84%)}
+@keyframes g1{0%,88%,100%{transform:translate(0)}90%{transform:translate(-4px,1px)}92%{transform:translate(4px,-1px)}94%{transform:translate(0)}}
+@keyframes g2{0%,88%,100%{transform:translate(0)}89%{transform:translate(4px,2px)}91%{transform:translate(-4px,-2px)}93%{transform:translate(0)}}
+.hero-sub{font-family:var(--raj);font-size:clamp(12px,2vw,17px);color:rgba(180,180,255,0.55);letter-spacing:4px;margin:10px 0 4px;overflow:hidden;white-space:nowrap;border-right:2px solid var(--c1);animation:typewr 3s steps(50) 0.5s both,blinkcaret 0.75s step-end infinite;max-width:500px}
+@keyframes typewr{from{width:0}to{width:100%}}
+@keyframes blinkcaret{0%,100%{border-color:var(--c1)}50%{border-color:transparent}}
+.hero-loc{font-size:11px;color:rgba(140,140,200,0.4);letter-spacing:2px;margin-bottom:22px;animation:fadeUp 1s 1.5s both}
+.ticker-wrap{width:100%;overflow:hidden;border-top:1px solid rgba(0,245,255,0.08);border-bottom:1px solid rgba(0,245,255,0.08);background:rgba(0,245,255,0.02);padding:9px 0;margin-bottom:24px}
+.ticker{display:flex;gap:60px;animation:tick 28s linear infinite;white-space:nowrap}
+.ticker:hover{animation-play-state:paused}
+.tick-item{font-family:var(--raj);font-size:13px;font-weight:600;color:rgba(0,245,255,0.65);letter-spacing:1px;flex-shrink:0}
+.tick-item::before{content:'◆  ';color:var(--c2)}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.cd-label{font-family:var(--orb);font-size:9px;letter-spacing:3px;color:rgba(0,245,255,0.45);margin-bottom:12px;text-transform:uppercase}
+.countdown{display:flex;gap:14px;justify-content:center;margin-bottom:26px;flex-wrap:wrap}
+.cd-box{background:rgba(123,47,255,0.07);border:1px solid rgba(123,47,255,0.22);border-radius:12px;padding:14px 20px;text-align:center;min-width:82px;position:relative;overflow:hidden;transition:all 0.3s}
+.cd-box:hover{border-color:var(--c1);background:rgba(0,245,255,0.05);transform:translateY(-3px)}
+.cd-box::before{content:'';position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--c2),transparent);animation:scanline 2.5s linear infinite}
+@keyframes scanline{0%{top:0}100%{top:100%}}
+.cd-n{font-family:var(--orb);font-size:34px;font-weight:900;color:#fff;line-height:1}
+.cd-n.flash{animation:numflash 0.3s}
+@keyframes numflash{0%{color:var(--c1)}100%{color:#fff}}
+.cd-l{font-size:9px;color:rgba(180,180,255,0.4);letter-spacing:1.5px;margin-top:5px}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.cta-primary{background:linear-gradient(135deg,var(--c1),var(--c2));border:none;color:#000;font-family:var(--orb);font-size:11px;font-weight:900;padding:14px 32px;border-radius:8px;cursor:pointer;letter-spacing:1.5px;transition:all 0.3s;position:relative;overflow:hidden}
+.cta-primary:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(0,245,255,0.28)}
+.cta-sec{background:none;border:2px solid var(--c2);color:var(--c2);font-family:var(--orb);font-size:11px;font-weight:700;padding:12px 32px;border-radius:8px;cursor:pointer;letter-spacing:1.5px;transition:all 0.3s}
+.cta-sec:hover{background:rgba(123,47,255,0.12);box-shadow:0 0 20px rgba(123,47,255,0.25);transform:translateY(-3px)}
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;width:100%;max-width:700px;margin-top:10px}
+.stat-card{background:rgba(255,255,255,0.025);border:1px solid rgba(0,245,255,0.08);border-radius:10px;padding:16px 10px;text-align:center;transition:all 0.3s;cursor:default}
+.stat-card:hover{border-color:var(--c1);background:rgba(0,245,255,0.04);transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,245,255,0.08)}
+.stat-n{font-family:var(--orb);font-size:24px;font-weight:900;color:var(--c1)}
+.stat-l{font-size:10px;color:var(--muted);margin-top:3px;font-family:var(--raj);letter-spacing:0.5px}
+.sec-hd{margin-bottom:2rem}
+.sec-tag{font-family:var(--orb);font-size:9px;letter-spacing:3px;color:var(--c1);background:rgba(0,245,255,0.07);border:1px solid rgba(0,245,255,0.18);padding:4px 12px;border-radius:4px;display:inline-block;margin-bottom:12px}
+.sec-title{font-family:var(--orb);font-size:clamp(22px,4vw,42px);font-weight:900;color:#fff;margin-bottom:6px}
+.sec-title span{color:var(--c1)}
+.sec-sub{font-size:13px;color:var(--muted)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem}
+.filter-btn{background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);color:rgba(180,180,255,0.5);font-size:12px;padding:6px 16px;border-radius:20px;cursor:pointer;transition:all 0.2s;font-family:var(--raj);font-weight:600;letter-spacing:0.5px}
+.filter-btn.active,.filter-btn:hover{background:rgba(0,245,255,0.07);border-color:var(--c1);color:var(--c1)}
+.events-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.event-card{background:var(--card);border:1px solid var(--card-b);border-radius:14px;padding:22px;cursor:pointer;transition:all 0.3s;position:relative;overflow:hidden}
+.event-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3));transform:scaleX(0);transform-origin:left;transition:transform 0.3s}
+.event-card:hover{border-color:var(--c1);transform:translateY(-6px);box-shadow:0 18px 45px rgba(0,0,0,0.4),0 0 30px rgba(0,245,255,0.07)}
+.event-card:hover::before{transform:scaleX(1)}
+.ev-cat{font-size:9px;font-family:var(--orb);color:var(--c1);letter-spacing:2px;margin-bottom:10px}
+.ev-icon{font-size:32px;margin-bottom:10px;display:block}
+.ev-title{font-family:var(--raj);font-size:20px;font-weight:700;color:#fff;margin-bottom:8px}
+.ev-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:12px}
+.ev-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.ev-tag{background:rgba(123,47,255,0.12);border:1px solid rgba(123,47,255,0.22);color:#b89dff;font-size:10px;padding:3px 8px;border-radius:4px;font-family:var(--raj)}
+.ev-prize{color:var(--c4);font-family:var(--orb);font-size:12px;font-weight:700}
+.ev-arrow{position:absolute;bottom:18px;right:18px;color:rgba(0,245,255,0.3);font-size:16px;transition:all 0.3s}
+.event-card:hover .ev-arrow{color:var(--c1);transform:translateX(4px)}
+.event-card-disabled{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    min-height:280px;
+    cursor:not-allowed;
+}
+
+.release-icon{
+    font-size:3rem;
+    margin-bottom:18px;
+}
+
+.release-title{
+    font-size:1.4rem;
+    font-weight:700;
+    color:#fff;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.release-subtitle{
+    margin-top:10px;
+    color:rgba(255,255,255,.6);
+    font-size:.95rem;
+}
+.ev-soon{
+  font-family:var(--orb);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1.5px;
+  color:var(--c5);
+  background:rgba(255,184,0,0.08);
+  border:1px solid rgba(255,184,0,0.25);
+  border-radius:6px;
+  padding:8px 12px;
+  display:inline-block;
+}
+.results-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.result-card{background:var(--card);border:1px solid rgba(123,47,255,0.15);border-radius:14px;padding:22px;cursor:pointer;transition:all 0.3s;position:relative;overflow:hidden}
+.result-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--c2),var(--c1));transform:scaleX(0);transition:transform 0.3s}
+.result-card:hover{border-color:var(--c2);transform:translateY(-5px);box-shadow:0 14px 40px rgba(123,47,255,0.14)}
+.result-card:hover::before{transform:scaleX(1)}
+.results-typing-wrap{
+  min-height:70vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:2rem;
+}
+.results-typing{
+  font-family:var(--orb);
+  font-size:clamp(16px,2.6vw,28px);
+  font-weight:700;
+  color:var(--c1);
+  letter-spacing:1px;
+  white-space:normal;
+  word-break:break-word;
+  max-width:90%;
+}
+@keyframes resBlink{50%{background:transparent}}
+.rc-ev{font-family:var(--orb);font-size:9px;color:var(--c2);letter-spacing:1.5px;margin-bottom:8px}
+.rc-title{font-family:var(--raj);font-size:17px;font-weight:700;color:#fff;margin-bottom:10px}
+.rc-place{font-size:12px;margin-bottom:4px}
+.tier-title{font-family:var(--orb);font-size:9px;letter-spacing:2px;color:rgba(180,180,255,0.3);margin-bottom:14px;text-transform:uppercase}
+.sponsor-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:2.5rem}
+.sponsor-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:24px 16px;text-align:center;transition:all 0.3s;cursor:default}
+.sponsor-card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,0.3)}
+.sp-tier{font-size:8px;font-family:var(--orb);letter-spacing:1px;margin-bottom:10px;font-weight:700}
+.sp-tier.gold{color:#ffd700}.sp-tier.silver{color:#b0b0d0}.sp-tier.bronze{color:#cd7f32}.sp-tier.partner{color:var(--c1)}
+.sp-logo{font-size:32px;margin-bottom:10px}
+.sp-name{font-family:var(--raj);font-size:15px;font-weight:700;color:#fff;margin-bottom:4px}
+.sp-desc{font-size:11px;color:rgba(160,160,200,0.35)}
+.sponsor-card.gold-card{border-color:rgba(255,215,0,0.2)}.sponsor-card.gold-card:hover{border-color:rgba(255,215,0,0.5)}
+.sponsor-card.silver-card{border-color:rgba(160,160,200,0.15)}.sponsor-card.silver-card:hover{border-color:rgba(160,160,200,0.4)}
+.sponsor-card.bronze-card{border-color:rgba(205,127,50,0.15)}.sponsor-card.bronze-card:hover{border-color:rgba(205,127,50,0.4)}
+.sponsor-card.partner-card{border-color:rgba(0,245,255,0.1)}.sponsor-card.partner-card:hover{border-color:rgba(0,245,255,0.35)}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.gal-item{border-radius:12px;overflow:hidden;cursor:pointer;transition:all 0.3s;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);position:relative;min-height:160px;display:flex;align-items:center;justify-content:center}
+.gal-item:hover{border-color:var(--c1);transform:scale(1.04);box-shadow:0 12px 35px rgba(0,245,255,0.12)}
+.gal-overlay{position:absolute;inset:0;background:rgba(0,245,255,0.1);display:flex;align-items:center;justify-content:center;font-family:var(--orb);font-size:10px;color:var(--c1);letter-spacing:2px;opacity:0;transition:opacity 0.3s}
+.gal-item:hover .gal-overlay{opacity:1}
+.gal-inner{text-align:center;padding:20px;z-index:1}
+.gal-icon{font-size:36px;margin-bottom:10px;filter:drop-shadow(0 0 8px rgba(0,245,255,0.35))}
+.gal-label{font-family:var(--raj);font-size:13px;color:rgba(200,200,255,0.7);font-weight:600}
+.gal-year{font-size:10px;color:rgba(160,160,255,0.3);margin-top:3px}
+.gal-badge{position:absolute;top:8px;right:8px;padding:3px 8px;border-radius:4px;font-family:var(--orb);font-size:8px;letter-spacing:0.5px;z-index:2;font-weight:700}
+.gal-badge.video{background:rgba(255,0,110,0.85);color:#fff}
+.gal-badge.photo{background:rgba(0,245,255,0.2);color:var(--c1);border:1px solid rgba(0,245,255,0.3)}
+.gal-item{position:relative;overflow:hidden;padding:0;}
+.gal-media{
+  width:100%;
+  height:100%;
+  min-height:160px;
+  object-fit:cover;
+  display:block;
+  position:absolute;
+  inset:0;
+  transition:transform 0.4s ease, filter 0.4s ease;
+  filter:saturate(0.9) brightness(0.95);
+}
+.gal-item:hover .gal-media{
+  transform:scale(1.08);
+  filter:saturate(1.1) brightness(1.05);
+}
+.gal-item{
+  animation:galPop 0.5s ease backwards;
+}
+.gal-item:nth-child(odd){animation-delay:0.05s}
+.gal-item:nth-child(even){animation-delay:0.1s}
+@keyframes galPop{
+  from{opacity:0;transform:translateY(20px) scale(0.96);}
+  to{opacity:1;transform:translateY(0) scale(1);}
+}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:24px}
+
+.team-card{
+  position:relative;
+  border-radius:4px;
+  cursor:pointer;
+  overflow:hidden;
+  aspect-ratio:3/4;
+  background:#000;
+  clip-path:polygon(0 0,90% 0,100% 10%,100% 100%,0 100%);
+  transition:transform .35s ease, box-shadow .35s ease;
+}
+.team-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,245,255,0.25)}
+
+.tc-photo{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  filter:grayscale(1) contrast(1.05) brightness(.85);
+  transition:filter .5s ease, transform .5s ease;
+}
+.team-card:hover .tc-photo{filter:grayscale(0) contrast(1.05) brightness(1);transform:scale(1.06)}
+
+/* circuit frame border, animated on hover */
+.tc-frame{
+  position:absolute;inset:0;pointer-events:none;
+  border:1px solid rgba(0,245,255,0.35);
+  clip-path:polygon(0 0,90% 0,100% 10%,100% 100%,0 100%);
+  box-shadow:inset 0 0 0 1px rgba(0,245,255,0.08);
+  transition:border-color .35s ease, box-shadow .35s ease;
+}
+.team-card:hover .tc-frame{
+  border-color:var(--c1);
+  box-shadow:inset 0 0 25px rgba(0,245,255,0.25), 0 0 25px rgba(0,245,255,0.15);
+}
+
+/* corner ticks like a HUD */
+.tc-corner{position:absolute;width:18px;height:18px;border-color:var(--c1);opacity:.5;transition:opacity .35s ease}
+.tc-corner.tl{top:8px;left:8px;border-top:2px solid;border-left:2px solid}
+.tc-corner.br{bottom:8px;right:8px;border-bottom:2px solid;border-right:2px solid}
+.team-card:hover .tc-corner{opacity:1}
+
+/* animated scanning line on hover */
+.tc-scan{
+  position:absolute;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--c1),transparent);
+  top:-10%;opacity:0;
+  transition:opacity .3s ease;
+}
+.team-card:hover .tc-scan{opacity:1;animation:tcScanMove 1.8s linear infinite}
+@keyframes tcScanMove{0%{top:0%}100%{top:100%}}
+
+/* circuit-pattern texture overlay (purely decorative, css-only) */
+.tc-circuit{
+  position:absolute;inset:0;pointer-events:none;opacity:0;
+  background-image:
+    linear-gradient(rgba(0,245,255,.5) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,245,255,.5) 1px,transparent 1px);
+  background-size:14px 14px;
+  mask-image:radial-gradient(circle at bottom,black 0%,transparent 65%);
+  transition:opacity .35s ease;
+}
+.team-card:hover .tc-circuit{opacity:.12}
+
+.tc-info{
+  position:absolute;left:0;right:0;bottom:0;padding:16px 14px 14px;
+  background:linear-gradient(180deg,transparent,rgba(0,0,0,0.92) 55%);
+  z-index:2;
+}
+.tc-name{font-family:var(--orb);font-size:14px;font-weight:900;color:#fff;letter-spacing:1px;
+  text-shadow:0 0 10px rgba(0,245,255,0);transition:text-shadow .35s ease}
+.team-card:hover .tc-name{text-shadow:0 0 12px rgba(0,245,255,0.6)}
+.tc-role{font-family:var(--raj);font-size:11px;letter-spacing:2px;color:var(--c1);margin-top:4px;text-transform:uppercase}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:500;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(10px)}
+.modal-overlay.open{display:flex;animation:fadeIn 0.2s}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal{background:linear-gradient(145deg,#070720,#0c0c30);border:1px solid rgba(0,245,255,0.18);border-radius:18px;padding:32px;max-width:600px;width:100%;position:relative;max-height:88vh;overflow-y:auto;animation:modalIn 0.35s cubic-bezier(0.34,1.4,0.64,1);scrollbar-width:thin;scrollbar-color:rgba(0,245,255,0.2) transparent}
+.modal::-webkit-scrollbar{width:4px}
+.modal::-webkit-scrollbar-thumb{background:rgba(0,245,255,0.2);border-radius:2px}
+@keyframes modalIn{from{transform:scale(0.82) translateY(24px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+.modal::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3));border-radius:18px 18px 0 0}
+.modal-close{position:absolute;top:14px;right:14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:#fff;width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+.modal-close:hover{background:rgba(255,0,110,0.18);border-color:var(--c3);color:var(--c3)}
+.m-tag{font-size:9px;font-family:var(--orb);color:var(--c1);letter-spacing:2px;margin-bottom:10px}
+.m-title{font-family:var(--orb);font-size:22px;font-weight:900;color:#fff;margin-bottom:14px;line-height:1.2}
+.m-body{font-size:13px;color:rgba(200,200,255,0.68);line-height:1.7}
+.m-body h4{font-family:var(--raj);font-size:12px;color:var(--c2);font-weight:700;margin:16px 0 7px;letter-spacing:1.5px;text-transform:uppercase}
+.m-body ul{padding-left:18px}
+.m-body li{margin-bottom:5px}
+.prize-row{display:flex;gap:10px;margin:14px 0;flex-wrap:wrap}
+.prize-box{flex:1;min-width:90px;background:rgba(0,255,157,0.04);border:1px solid rgba(0,255,157,0.15);border-radius:10px;padding:14px;text-align:center}
+.prize-place{font-size:10px;color:rgba(180,180,255,0.4);margin-bottom:6px}
+.prize-amt{font-family:var(--orb);font-size:17px;font-weight:900;color:var(--c4)}
+.modal-reg-btn{width:100%;margin-top:20px;background:linear-gradient(135deg,var(--c2),var(--c3));border:none;color:#fff;font-family:var(--orb);font-size:12px;font-weight:700;padding:14px;border-radius:10px;cursor:pointer;letter-spacing:1px;transition:all 0.3s}
+.modal-reg-btn:hover{opacity:.85;transform:translateY(-2px);box-shadow:0 10px 30px rgba(123,47,255,0.4)}
+.podium{display:flex;align-items:flex-end;justify-content:center;gap:12px;margin:24px 0 16px}
+.p-slot{text-align:center;flex:1;max-width:140px}
+.p-bar{border-radius:10px 10px 0 0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:10px;font-size:26px}
+.p-bar.first{height:120px;background:linear-gradient(180deg,rgba(255,215,0,0.7),rgba(184,134,11,0.4));border:1px solid rgba(255,215,0,0.3)}
+.p-bar.second{height:90px;background:linear-gradient(180deg,rgba(160,160,160,0.6),rgba(90,90,90,0.3));border:1px solid rgba(160,160,160,0.25)}
+.p-bar.third{height:68px;background:linear-gradient(180deg,rgba(205,127,50,0.6),rgba(100,60,20,0.3));border:1px solid rgba(205,127,50,0.25)}
+.p-name{font-family:var(--raj);font-size:13px;color:#e0e0ff;margin-top:10px;font-weight:600;line-height:1.3}
+.p-college{font-size:10px;color:rgba(160,160,200,0.4);margin-top:3px}
+.p-prize{font-family:var(--orb);font-size:11px;color:var(--c4);margin-top:4px;font-weight:700}
+/* REGISTRATION WIZARD */
+.reg-wrap{max-width:760px;margin:0 auto}
+.reg-card{background:rgba(255,255,255,0.02);border:1px solid var(--card-b);border-radius:18px;padding:36px;position:relative;overflow:hidden}
+.reg-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3))}
+.wizard-progress{margin-bottom:30px}
+.progress-bar{height:10px;background:rgba(255,255,255,0.08);border-radius:30px;overflow:hidden;border:1px solid rgba(0,255,255,0.15)}
+#progressFill{width:12.5%;height:100%;background:linear-gradient(90deg,#00ffff,#7b2fff);transition:.4s;box-shadow:0 0 15px cyan}
+.step-text{margin-top:10px;text-align:right;font-family:var(--orb);font-size:11px;letter-spacing:2px;color:var(--c1)}
+.form-step{display:none;animation:fadeUp .4s ease}
+.form-step.active-step{display:block}
+.step-heading{font-family:var(--orb);font-size:18px;margin-bottom:6px;color:var(--c1);letter-spacing:2px}
+.step-sub{margin-bottom:22px;color:rgba(255,255,255,.6);font-size:12px;line-height:1.6}
+.member-block{background:rgba(0,245,255,0.02);border:1px solid rgba(0,245,255,0.08);border-radius:12px;padding:20px;margin-bottom:20px}
+.member-block-title{font-family:var(--orb);font-size:11px;color:var(--c1);letter-spacing:2px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(0,245,255,0.08)}
+.wizard-buttons{display:flex;justify-content:space-between;margin-top:28px;gap:12px}
+.wizard-buttons button{min-width:160px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-row.single{grid-template-columns:1fr}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group label{font-size:9px;font-family:var(--orb);color:rgba(0,245,255,0.6);letter-spacing:1.5px}
+.form-group input,.form-group select,.form-group textarea{background:rgba(255,255,255,0.035);border:1px solid rgba(0,245,255,0.1);border-radius:8px;color:#e0e0ff;padding:11px 14px;font-size:13px;font-family:var(--int);transition:all .25s;outline:none;-webkit-appearance:none;appearance:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--c1);background:rgba(0,245,255,0.04);box-shadow:0 0 14px rgba(0,245,255,0.08)}
+.form-group select option{background:#0a0a20;color:#e0e0ff}
+.form-group textarea{resize:vertical;min-height:80px}
+.form-group input[type="file"]{padding:8px;cursor:pointer;font-size:12px}
+.form-group input[type="file"]::-webkit-file-upload-button{background:rgba(0,245,255,0.08);border:1px solid rgba(0,245,255,0.25);color:var(--c1);font-family:var(--orb);font-size:9px;padding:6px 12px;border-radius:4px;cursor:pointer;letter-spacing:1px}
+.file-hint{font-size:10px;color:rgba(0,245,255,0.4);margin-top:4px}
+.event-checkbox-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+.event-check-item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(123,47,255,0.05);border:1px solid rgba(123,47,255,0.15);border-radius:8px;cursor:pointer;transition:all .2s}
+.event-check-item:hover,.event-check-item.selected{background:rgba(0,245,255,0.06);border-color:var(--c1)}
+.event-check-item input[type="checkbox"]{accent-color:var(--c1);width:15px;height:15px;cursor:pointer;flex-shrink:0}
+.event-check-item label{font-family:var(--raj);font-size:13px;color:rgba(200,200,255,0.7);cursor:pointer;line-height:1.3}
+.event-check-item.selected label{color:var(--c1)}
+.agree-row{display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:12px;color:rgba(180,180,255,0.5);line-height:1.6}
+.agree-row input{width:16px;height:16px;accent-color:var(--c1);margin-top:2px;flex-shrink:0;cursor:pointer}
+.form-submit{width:100%;margin-top:8px;background:linear-gradient(135deg,var(--c1),var(--c2));border:none;color:#000;font-family:var(--orb);font-size:13px;font-weight:900;padding:16px;border-radius:10px;cursor:pointer;letter-spacing:1.5px;transition:all 0.3s}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(0,245,255,0.28)}
+.form-submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn-next{background:linear-gradient(135deg,var(--c1),var(--c2));border:none;color:#000;font-family:var(--orb);font-size:11px;font-weight:900;padding:13px 28px;border-radius:8px;cursor:pointer;letter-spacing:1px;transition:all .3s}
+.btn-next:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,245,255,0.3)}
+.btn-prev{background:none;border:1px solid rgba(0,245,255,0.25);color:var(--c1);font-family:var(--orb);font-size:11px;font-weight:700;padding:13px 28px;border-radius:8px;cursor:pointer;letter-spacing:1px;transition:all .3s}
+.btn-prev:hover{background:rgba(0,245,255,0.07)}
+.radio-group{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+.radio-item{display:flex;align-items:center;gap:8px;padding:10px 18px;background:rgba(123,47,255,0.05);border:1px solid rgba(123,47,255,0.15);border-radius:8px;cursor:pointer;transition:all .2s;flex:1;min-width:120px}
+.radio-item:hover,.radio-item.selected{background:rgba(0,245,255,0.06);border-color:var(--c1)}
+.radio-item input{accent-color:var(--c1);cursor:pointer}
+.radio-item label{font-family:var(--raj);font-size:13px;color:rgba(200,200,255,0.7);cursor:pointer}
+.radio-item.selected label{color:var(--c1)}
+.summary-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:16px}
+.summary-table td{padding:9px 12px;border-bottom:1px solid rgba(255,255,255,0.04);color:rgba(200,200,255,0.7)}
+.summary-table td:first-child{color:rgba(0,245,255,0.6);font-family:var(--orb);font-size:10px;letter-spacing:1px;width:42%}
+.summary-table tr:last-child td{border-bottom:none}
+.form-note{font-size:11px;color:rgba(160,160,200,0.35);text-align:center;margin-top:12px;line-height:1.6}
+.field-error{border-color:var(--c3)!important;box-shadow:0 0 8px rgba(255,0,110,0.2)!important}
+/* LOGIN */
+.login-wrap{max-width:440px;margin:0 auto}
+.login-card{background:rgba(255,255,255,0.02);border:1px solid var(--card-b);border-radius:18px;padding:40px 36px;text-align:center;position:relative;overflow:hidden}
+.login-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3))}
+.login-logo{font-family:var(--orb);font-size:22px;font-weight:900;color:var(--c1);margin-bottom:4px;text-shadow:0 0 20px rgba(0,245,255,0.35)}
+.login-logo span{color:var(--c2)}
+.login-tag{font-size:11px;color:var(--muted);margin-bottom:28px}
+.tab-row{display:flex;border:1px solid rgba(0,245,255,0.1);border-radius:8px;overflow:hidden;margin-bottom:24px}
+.tab-btn{flex:1;background:none;border:none;color:var(--muted);font-family:var(--raj);font-size:13px;font-weight:600;padding:10px;cursor:pointer;transition:all .2s}
+.tab-btn.active{background:rgba(0,245,255,0.08);color:var(--c1)}
+.input-row{margin-bottom:14px}
+/* NOTIFICATIONS */
+.notif-panel{background:rgba(255,255,255,0.02);border:1px solid rgba(255,0,110,0.12);border-radius:14px;max-width:580px;overflow:hidden}
+.notif-item{padding:18px 20px;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;gap:14px;align-items:flex-start;transition:background .2s;cursor:default}
+.notif-item:last-child{border-bottom:none}
+.notif-item:hover{background:rgba(255,255,255,0.015)}
+.notif-ic{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.notif-ic.info{background:rgba(0,245,255,0.08);color:var(--c1)}.notif-ic.alert{background:rgba(255,0,110,0.08);color:var(--c3)}.notif-ic.success{background:rgba(0,255,157,0.08);color:var(--c4)}.notif-ic.warn{background:rgba(255,184,0,0.08);color:var(--c5)}
+.notif-title{font-family:var(--raj);font-size:14px;font-weight:700;color:#fff;margin-bottom:3px}
+.notif-msg{font-size:12px;color:var(--muted);line-height:1.5}
+.notif-time{font-size:10px;color:rgba(160,160,255,0.28);margin-top:5px}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.rd1{transition-delay:.08s}.rd2{transition-delay:.16s}.rd3{transition-delay:.24s}
+/* BURST */
+.burst{position:fixed;pointer-events:none;z-index:9999;width:6px;height:6px;border-radius:50%;transform:translate(-50%,-50%);animation:burst .55s ease-out forwards}
+@keyframes burst{0%{transform:translate(-50%,-50%) scale(1);opacity:1}100%{transform:translate(calc(-50% + var(--tx)),calc(-50% + var(--ty))) scale(0);opacity:0}}
+
+/* SPONSOR CTA */
+.sponsor-cta{margin-top:3rem;background:rgba(0,245,255,0.03);border:1px solid rgba(0,245,255,0.12);border-radius:16px;padding:36px;text-align:center}
+.section-note{text-align:center;margin-top:2rem;padding:18px;background:rgba(255,255,255,0.015);border:1px dashed rgba(255,255,255,0.06);border-radius:10px;font-size:11px;color:rgba(160,160,200,0.35);font-family:var(--orb);letter-spacing:1px}
+/* TOAST */
+.prayukti-toast{position:fixed;bottom:24px;right:24px;z-index:999999;background:rgba(10,10,30,0.97);border-radius:10px;padding:14px 20px;font-family:var(--raj);font-size:14px;color:#fff;box-shadow:0 8px 30px rgba(0,0,0,0.5);animation:fadeUp .3s ease;max-width:340px;line-height:1.5;transition:opacity .4s}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .form-row{grid-template-columns:1fr}
+  .event-checkbox-grid{grid-template-columns:1fr}
+  .cd-n{font-size:26px}.cd-box{min-width:66px;padding:10px 14px}
+  .glitch{font-size:clamp(28px,9vw,60px)}
+  .wizard-buttons{flex-direction:column-reverse}
+  .wizard-buttons button{min-width:100%;width:100%}
+  .reg-card{padding:20px}
+}
+</style>
+<style>
+/* ===== INTRO VIDEO SCREEN ===== */
+#intro-screen{
+  position:fixed;inset:0;z-index:99999;background:#030310;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+  transition:opacity 0.8s ease, visibility 0.8s ease;
+}
+#intro-screen.hidden{opacity:0;visibility:hidden;pointer-events:none;}
+#intro-video{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  z-index:0;
+}
+/* Overlay scanlines on video */
+#intro-screen::after{
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.08) 2px,rgba(0,0,0,0.08) 4px);
+}
+/* Corner decorations on intro */
+.intro-corner{position:absolute;width:60px;height:60px;z-index:2;pointer-events:none;}
+.intro-corner.tl{top:20px;left:20px;border-top:2px solid #00f5ff;border-left:2px solid #00f5ff;animation:cornerPulse 1.5s ease-in-out infinite;}
+.intro-corner.tr{top:20px;right:20px;border-top:2px solid #00f5ff;border-right:2px solid #00f5ff;animation:cornerPulse 1.5s ease-in-out infinite 0.3s;}
+.intro-corner.bl{bottom:20px;left:20px;border-bottom:2px solid #00f5ff;border-left:2px solid #00f5ff;animation:cornerPulse 1.5s ease-in-out infinite 0.6s;}
+.intro-corner.br{bottom:20px;right:20px;border-bottom:2px solid #00f5ff;border-right:2px solid #00f5ff;animation:cornerPulse 1.5s ease-in-out infinite 0.9s;}
+@keyframes cornerPulse{0%,100%{opacity:.4}50%{opacity:1;box-shadow:0 0 15px rgba(0,245,255,0.5)}}
+/* Skip button */
+#intro-skip{
+  position:absolute;bottom:32px;right:32px;z-index:10;
+  background:rgba(0,0,0,0.5);border:1px solid rgba(0,245,255,0.4);
+  color:#00f5ff;font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;
+  padding:8px 18px;border-radius:6px;cursor:pointer;letter-spacing:1px;
+  transition:all 0.2s;backdrop-filter:blur(4px);
+}
+#intro-skip:hover{background:rgba(0,245,255,0.1);box-shadow:0 0 12px rgba(0,245,255,0.3);}
+/* Countdown bar */
+#intro-bar{
+  position:absolute;bottom:0;left:0;height:3px;z-index:10;
+  background:linear-gradient(90deg,#00f5ff,#7b2fff,#ff006e);
+  width:100%;transform-origin:left;animation:introBar 9s linear forwards;
+  box-shadow:0 0 8px rgba(0,245,255,0.6);
+}
+@keyframes introBar{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+/* No video fallback logo */
+#intro-fallback{
+  position:relative;z-index:2;text-align:center;
+  animation:introFade 1s ease;
+}
+@keyframes introFade{from{opacity:0;transform:scale(0.9)}to{opacity:1;transform:scale(1)}}
+#intro-fallback .logo-big{
+  font-family:'Orbitron',sans-serif;font-size:clamp(40px,10vw,100px);
+  font-weight:900;color:#fff;letter-spacing:6px;
+  text-shadow:0 0 60px rgba(0,245,255,0.5),0 0 120px rgba(0,245,255,0.2);
+  animation:glowPulse 2s ease-in-out infinite;
+}
+#intro-fallback .logo-big span{color:#00f5ff;}
+#intro-fallback .logo-year{
+  font-family:'Orbitron',sans-serif;font-size:clamp(14px,3vw,22px);
+  color:#7b2fff;letter-spacing:10px;margin-top:8px;
+  text-shadow:0 0 30px rgba(123,47,255,0.6);
+}
+
+#intro-fallback .logo-sub{
+  font-size:13px;color:rgba(180,180,255,0.5);margin-top:16px;letter-spacing:2px;
+}
+@keyframes glowPulse{0%,100%{text-shadow:0 0 40px rgba(0,245,255,0.5),0 0 80px rgba(0,245,255,0.2)}50%{text-shadow:0 0 80px rgba(0,245,255,0.9),0 0 160px rgba(0,245,255,0.4)}}
+.sponsor-welcome{
+    max-width:900px;
+    margin:0 auto;
+    text-align:center;
+    padding:70px 40px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:24px;
+    background:rgba(255,255,255,.03);
+    backdrop-filter:blur(10px);
+}
+
+.welcome-icon{
+    font-size:4rem;
+    margin-bottom:20px;
+}
+
+.welcome-title{
+    font-size:2.4rem;
+    margin-bottom:18px;
+    color:#fff;
+}
+
+.welcome-text{
+    color:rgba(255,255,255,.75);
+    line-height:1.8;
+    font-size:1.05rem;
+    max-width:700px;
+    margin:0 auto 18px;
+}
+
+.coming-box{
+    margin:40px auto;
+    padding:30px;
+    max-width:700px;
+    border:1px dashed rgba(255,255,255,.2);
+    border-radius:18px;
+    background:rgba(255,255,255,.04);
+}
+
+.coming-title{
+    font-size:1.4rem;
+    font-weight:700;
+    color:#fff;
+    margin-bottom:10px;
+}
+
+.coming-subtitle{
+    color:rgba(255,255,255,.65);
+}
+
+.sponsor-btn{
+    display:inline-block;
+    margin-top:10px;
+    padding:15px 35px;
+    border-radius:50px;
+    background:#7c3aed;
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.sponsor-btn:hover{
+    transform:translateY(-3px);
+    background:#8b5cf6;
+}
+</style>
+<style>
+/* ===== ABOUT US SECTION (Home page, below hero stats) ===== */
+.about-section{position:relative;padding:70px 0 30px;border-top:1px solid rgba(0,245,255,0.08);margin-top:40px}
+.about-heading-wrap{text-align:center;margin-bottom:40px}
+.about-tag{font-family:var(--orb);font-size:10px;letter-spacing:3px;color:var(--c1);background:rgba(0,245,255,0.07);border:1px solid rgba(0,245,255,0.2);padding:5px 14px;border-radius:5px;display:inline-block;margin-bottom:14px}
+.about-heading{font-family:var(--orb);font-size:clamp(32px,6vw,64px);font-weight:900;letter-spacing:3px;background:linear-gradient(90deg,#fff,var(--c1),var(--c2),#fff);background-size:300% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:aboutShine 5s linear infinite;text-shadow:0 0 40px rgba(0,245,255,0.15)}
+@keyframes aboutShine{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+.about-grid{display:grid;grid-template-columns:1.3fr 0.9fr;gap:40px;align-items:start}
+.about-text p{font-size:14.5px;line-height:1.9;color:rgba(200,200,255,0.75);margin-bottom:18px}
+.about-text p:first-child{font-size:16px;color:#e8e8ff;font-weight:500}
+.about-highlight{background:rgba(123,47,255,0.05);border:1px solid rgba(0,245,255,0.15);border-radius:18px;padding:28px 26px;position:relative;overflow:hidden}
+.about-highlight::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3))}
+.about-hl-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:20px}
+.about-hl-item:last-child{margin-bottom:0}
+.about-hl-ic{font-size:22px;flex-shrink:0}
+.about-hl-title{font-family:var(--raj);font-size:14px;font-weight:700;color:#fff;margin-bottom:3px}
+.about-hl-sub{font-size:12px;color:var(--muted);line-height:1.5}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr}.about-heading{letter-spacing:1px}}
+
+/* ===== SITE FOOTER ===== */
+.site-footer{position:relative;z-index:10;border-top:1px solid rgba(0,245,255,0.1);background:rgba(3,3,16,0.85);padding:50px 1.5rem 24px}
+.footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px}
+.footer-logo{font-family:var(--orb);font-size:18px;font-weight:900;color:var(--c1);letter-spacing:2px;margin-bottom:12px}
+.footer-logo span{color:var(--c2)}
+.footer-about-text{font-size:12.5px;line-height:1.8;color:var(--muted);max-width:380px}
+.footer-col-title{font-family:var(--orb);font-size:10px;letter-spacing:2px;color:var(--c1);margin-bottom:16px;text-transform:uppercase}
+.footer-contact-row{display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(200,200,255,0.7);margin-bottom:12px}
+.footer-contact-row a{color:inherit;text-decoration:none}
+.footer-contact-row a:hover{color:var(--c1)}
+.footer-media{display:flex;gap:12px;align-items:center;margin-top:10px}
+.footer-media img{height:42px;border-radius:8px;object-fit:cover;border:1px solid rgba(0,245,255,0.15)}
+.footer-media .footer-campus-img{height:60px;width:90px;object-fit:cover}
+.footer-bottom{max-width:1280px;margin:30px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:11px;color:rgba(160,160,200,0.4)}
+.footer-bottom a{color:rgba(160,160,200,0.5);text-decoration:none;margin-left:14px}
+.footer-bottom a:hover{color:var(--c1)}
+@media(max-width:768px){.footer-inner{grid-template-columns:1fr;gap:28px}}
+</style>
+<style>
+/* ===== CAMPUS SHOWCASE (before footer) ===== */
+.campus-showcase{max-width:980px;margin:60px auto 50px;padding:0 1.5rem;text-align:center;position:relative;z-index:10}
+.campus-tag{font-family:var(--orb);font-size:10px;letter-spacing:3px;color:var(--c1);background:rgba(0,245,255,0.07);border:1px solid rgba(0,245,255,0.2);padding:5px 14px;border-radius:5px;display:inline-block;margin-bottom:18px}
+.campus-frame{position:relative;border-radius:22px;overflow:hidden;border:1px solid rgba(0,245,255,0.25);box-shadow:0 0 40px rgba(0,245,255,0.08),0 25px 60px rgba(0,0,0,0.45);transition:transform .5s ease,box-shadow .5s ease}
+.campus-frame:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 0 60px rgba(0,245,255,0.2),0 30px 70px rgba(0,0,0,0.5)}
+.campus-frame img{width:100%;display:block;height:600px;object-fit:contain;filter:saturate(1.05) contrast(1.05) brightness(.92);transition:transform .6s ease,filter .6s ease}
+.campus-frame:hover img{transform:scale(1.06);filter:saturate(1.15) contrast(1.08) brightness(1)}
+.campus-frame::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(3,3,16,0.92) 100%);z-index:2;pointer-events:none}
+.campus-frame::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3));z-index:3}
+.campus-scan{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--c1),transparent);opacity:0;z-index:3;pointer-events:none}
+.campus-frame:hover .campus-scan{opacity:1;animation:campusScanMove 2.2s linear infinite}
+@keyframes campusScanMove{0%{top:0%}100%{top:100%}}
+.campus-corner{position:absolute;width:26px;height:26px;border-color:var(--c1);opacity:.6;z-index:3;transition:opacity .35s ease}
+.campus-corner.tl{top:14px;left:14px;border-top:2px solid;border-left:2px solid}
+.campus-corner.br{bottom:14px;right:14px;border-bottom:2px solid;border-right:2px solid}
+.campus-frame:hover .campus-corner{opacity:1}
+.campus-caption{position:absolute;left:24px;bottom:18px;z-index:4;text-align:left}
+.campus-caption-title{font-family:var(--orb);font-size:16px;font-weight:900;color:#fff;letter-spacing:1px;text-shadow:0 2px 10px rgba(0,0,0,0.6)}
+.campus-caption-sub{font-family:var(--raj);font-size:12px;color:var(--c1);letter-spacing:1.5px;margin-top:3px}
+@media(max-width:768px){.campus-frame img{height:260px}}
+</style>
+<meta http-equiv="Feature-Policy" content="autoplay *">
+</head>
+<body>
+
+<!-- ===== INTRO VIDEO SCREEN ===== -->
+<div id="intro-screen">
+  <div class="intro-corner tl"></div>
+  <div class="intro-corner tr"></div>
+  <div class="intro-corner bl"></div>
+  <div class="intro-corner br"></div>
+<canvas id="intro-canvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;"></canvas>
+<script>
+(function(){
+  const c = document.getElementById('intro-canvas');
+  const ctx = c.getContext('2d');
+  let W, H;
+  function resize(){ W = c.width = window.innerWidth; H = c.height = window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+
+  // Nodes
+  const nodes = Array.from({length: 60}, () => ({
+    x: Math.random()*window.innerWidth, y: Math.random()*window.innerHeight,
+    vx: (Math.random()-0.5)*0.4, vy: (Math.random()-0.5)*0.4,
+    r: Math.random()*2+1,
+    color: ['#00f5ff','#7b2fff','#ff006e','#00ff9d'][Math.floor(Math.random()*4)],
+    pulse: Math.random()*Math.PI*2
+  }));
+
+  // Floating AI robot parts
+  const bots = Array.from({length: 7}, (_, i) => ({
+    x: Math.random()*window.innerWidth, y: Math.random()*window.innerHeight,
+    vx: (Math.random()-0.5)*0.3, vy: (Math.random()-0.5)*0.3,
+    size: 40+Math.random()*30, angle: 0, spin: (Math.random()-0.5)*0.01,
+    opacity: 0.08+Math.random()*0.12,
+    color: ['#00f5ff','#7b2fff'][i%2]
+  }));
+
+  function drawBot(b){
+    ctx.save();
+    ctx.translate(b.x, b.y);
+    ctx.rotate(b.angle);
+    ctx.globalAlpha = b.opacity;
+    ctx.strokeStyle = b.color;
+    ctx.lineWidth = 1.5;
+    ctx.shadowColor = b.color;
+    ctx.shadowBlur = 10;
+    const s = b.size;
+    // Head
+    ctx.strokeRect(-s*0.3, -s*0.55, s*0.6, s*0.45);
+    // Eyes
+    ctx.fillStyle = b.color;
+    ctx.fillRect(-s*0.15, -s*0.42, s*0.08, s*0.08);
+    ctx.fillRect(s*0.07, -s*0.42, s*0.08, s*0.08);
+    // Body
+    ctx.strokeRect(-s*0.35, -s*0.05, s*0.7, s*0.55);
+    // Arms
+    ctx.beginPath(); ctx.moveTo(-s*0.35,-s*0.02); ctx.lineTo(-s*0.6,s*0.15); ctx.lineTo(-s*0.6,s*0.4); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(s*0.35,-s*0.02); ctx.lineTo(s*0.6,s*0.15); ctx.lineTo(s*0.6,s*0.4); ctx.stroke();
+    // Legs
+    ctx.beginPath(); ctx.moveTo(-s*0.15,s*0.5); ctx.lineTo(-s*0.15,s*0.8); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(s*0.15,s*0.5); ctx.lineTo(s*0.15,s*0.8); ctx.stroke();
+    // Antenna
+    ctx.beginPath(); ctx.moveTo(0,-s*0.55); ctx.lineTo(0,-s*0.75); ctx.stroke();
+    ctx.beginPath(); ctx.arc(0,-s*0.8, s*0.07, 0, Math.PI*2); ctx.fill();
+    // Circuit lines on body
+    ctx.globalAlpha = b.opacity*0.5;
+    ctx.beginPath(); ctx.moveTo(-s*0.25,s*0.1); ctx.lineTo(s*0.25,s*0.1); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(-s*0.25,s*0.25); ctx.lineTo(s*0.1,s*0.25); ctx.lineTo(s*0.1,s*0.35); ctx.stroke();
+    ctx.restore();
+  }
+
+  // Circuit board lines
+  const circuits = Array.from({length: 20}, () => ({
+    x: Math.random()*window.innerWidth, y: Math.random()*window.innerHeight,
+    len: 40+Math.random()*80, dir: Math.floor(Math.random()*4),
+    opacity: 0.03+Math.random()*0.07,
+    color: Math.random()>0.5?'#00f5ff':'#7b2fff'
+  }));
+
+  function drawCircuit(c2){
+    ctx.save();
+    ctx.globalAlpha = c2.opacity;
+    ctx.strokeStyle = c2.color;
+    ctx.lineWidth = 1;
+    ctx.shadowColor = c2.color; ctx.shadowBlur = 4;
+    ctx.beginPath();
+    ctx.moveTo(c2.x, c2.y);
+    if(c2.dir===0) ctx.lineTo(c2.x+c2.len, c2.y);
+    else if(c2.dir===1) ctx.lineTo(c2.x, c2.y+c2.len);
+    else if(c2.dir===2){ ctx.lineTo(c2.x+c2.len*0.5,c2.y); ctx.lineTo(c2.x+c2.len*0.5,c2.y+c2.len*0.5); }
+    else { ctx.lineTo(c2.x,c2.y+c2.len*0.5); ctx.lineTo(c2.x+c2.len*0.5,c2.y+c2.len*0.5); }
+    ctx.stroke();
+    ctx.beginPath(); ctx.arc(c2.x,c2.y,2,0,Math.PI*2); ctx.fillStyle=c2.color; ctx.fill();
+    ctx.restore();
+  }
+
+  let frame=0;
+  function loop(){
+    ctx.clearRect(0,0,W,H);
+    frame++;
+
+    // Draw circuits
+    circuits.forEach(drawCircuit);
+
+    // Draw connections between close nodes
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<120){
+          ctx.save();
+          ctx.globalAlpha=(1-dist/120)*0.15;
+          ctx.strokeStyle='#00f5ff'; ctx.lineWidth=0.5;
+          ctx.beginPath(); ctx.moveTo(nodes[i].x,nodes[i].y); ctx.lineTo(nodes[j].x,nodes[j].y); ctx.stroke();
+          ctx.restore();
+        }
+      }
+    }
+
+    // Draw nodes
+    nodes.forEach(n=>{
+      n.pulse+=0.03; n.x+=n.vx; n.y+=n.vy;
+      if(n.x<0||n.x>W) n.vx*=-1;
+      if(n.y<0||n.y>H) n.vy*=-1;
+      ctx.save();
+      ctx.globalAlpha=0.4+Math.sin(n.pulse)*0.3;
+      ctx.fillStyle=n.color; ctx.shadowColor=n.color; ctx.shadowBlur=6;
+      ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2); ctx.fill();
+      ctx.restore();
+    });
+
+    // Draw bots
+    bots.forEach(b=>{
+      b.x+=b.vx; b.y+=b.vy; b.angle+=b.spin;
+      if(b.x<-100||b.x>W+100) b.vx*=-1;
+      if(b.y<-100||b.y>H+100) b.vy*=-1;
+      drawBot(b);
+    });
+
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+</script>
+
+  <!-- Place your video file named "intro.mp4" in the same folder as index.html -->
+ <video id="intro-video" autoplay playsinline preload="auto" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:0;"
+         onerror="document.getElementById('intro-fallback').style.display='block';this.style.display='none'">
+    <source src="assets/Prayukti techfest.mp4" type="video/mp4">
+  </video>
+
+  <!-- Shown if no video file found -->
+  <div id="intro-fallback" style="display:none">
+    <div class="logo-big">PRAYUKTI<span>.</span></div>
+    <div class="logo-year">2 0 2 6</div>
+    <div class="logo-sub">Graphic Era Hill University · Bhimtal</div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var screen  = document.getElementById('intro-screen');
+  var video   = document.getElementById('intro-video');
+  var skipBtn = document.getElementById('intro-skip');
+
+  function dismissIntro(){
+    screen.classList.add('hidden');
+    // fully remove after transition
+    setTimeout(function(){ screen.style.display='none'; }, 900);
+  }
+
+  // Unmute video and play with sound
+  if(video){
+    video.muted = false;
+    video.volume = 0.85;
+    var playPromise = video.play();
+    if(playPromise !== undefined){
+      playPromise.catch(function(){
+        // Autoplay with sound blocked — play muted then try sound on first interaction
+        video.muted = true;
+        video.play();
+        document.addEventListener('click', function unmute(){
+          video.muted = false;
+          document.removeEventListener('click', unmute);
+        }, {once:true});
+      });
+    }
+  }
+
+  // Auto-dismiss after 9 seconds
+  var timer = setTimeout(dismissIntro, 9000);
+
+  // Video ended early? dismiss immediately
+  if(video){
+    video.addEventListener('ended', dismissIntro);
+  }
+
+  // Skip button
+  if (skipBtn) {
+    skipBtn.addEventListener('click', function(){
+      clearTimeout(timer);
+      dismissIntro();
+    });
+  }
+})();
+</script>
+
+<canvas id="bg-canvas"></canvas>
+<div class="corner tl"></div><div class="corner tr"></div>
+<div class="corner bl"></div><div class="corner br"></div>
+<div id="scroll-prog"></div>
+<div id="app">
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <div class="logo" onclick="goTo('home')">PRAYUKTI<span>2026</span></div>
+    <div class="nav-links">
+      <button class="nav-btn active" onclick="goTo('home',this)">Home</button>
+      <button class="nav-btn" onclick="goTo('events',this)">Events</button>
+      <button class="nav-btn" onclick="goTo('results',this)">Results</button>
+      <button class="nav-btn" onclick="goTo('sponsors',this)">Sponsors</button>
+      <button class="nav-btn" onclick="goTo('gallery',this)">Gallery</button>
+      <button class="nav-btn" onclick="goTo('team',this)">Team</button>
+    </div>
+    <div class="nav-actions">
+      <button class="btn-notif" onclick="goTo('notifications')" title="Notifications">🔔<span class="notif-dot"></span></button>
+      <button class="btn-login" onclick="window.location.href='welcome.html'">LOGIN</button>
+      <button class="btn-reg" onclick="goTo('register')">REGISTER NOW</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div id="sec-home" class="active">
+  <div class="hero">
+    <div class="glitch-wrap">
+      <h1 class="glitch" data-text="PRAYUKTI">PRAYUKTI<span>TECH FEST 2026</span></h1>
+    </div>
+    <p class="hero-sub">GRAPHIC ERA HILL UNIVERSITY PRESENTS</p>
+    <p class="hero-loc">Bhimtal, Uttarakhand &nbsp;·&nbsp; October 28–30, 2026 &nbsp;·&nbsp; GEHU Campus</p>
+    <div class="ticker-wrap"><div class="ticker" id="ticker-inner"></div></div>
+    <div class="cd-label">FEST BEGINS IN</div>
+    <div class="countdown" id="cd">
+      <div class="cd-box"><div class="cd-n" id="cd-d">--</div><div class="cd-l">DAYS</div></div>
+      <div class="cd-box"><div class="cd-n" id="cd-h">--</div><div class="cd-l">HOURS</div></div>
+      <div class="cd-box"><div class="cd-n" id="cd-m">--</div><div class="cd-l">MINS</div></div>
+      <div class="cd-box"><div class="cd-n" id="cd-s">--</div><div class="cd-l">SECS</div></div>
+    </div>
+    <div class="hero-btns">
+      <button class="cta-primary" onclick="goTo('register')">REGISTER NOW →</button>
+      <button class="cta-sec" onclick="goTo('events')">EXPLORE EVENTS</button>
+    </div>
+    <div class="stats-row">
+      <div class="stat-card"><div class="stat-n">40+</div><div class="stat-l">Events</div></div>
+      <div class="stat-card"><div class="stat-n">5000+</div><div class="stat-l">Participants</div></div>
+      <div class="stat-card"><div class="stat-n">₹10L+</div><div class="stat-l">Prize Pool</div></div>
+      <div class="stat-card"><div class="stat-n">50+</div><div class="stat-l">Colleges</div></div>
+      <div class="stat-card"><div class="stat-n">3</div><div class="stat-l">Days</div></div>
+    </div>
+  </div>
+
+  <!-- ABOUT PRAYUKTI -->
+  <div class="about-section">
+    <div class="about-heading-wrap reveal">
+      <div class="about-tag">GRAPHIC ERA HILL UNIVERSITY · BHIMTAL CAMPUS</div>
+      <h2 class="about-heading">ABOUT PRAYUKTI</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal rd1">
+        <p>Prayukti is the annual technical fest of Graphic Era Hill University, Bhimtal — a celebration of curiosity, code, and innovation set against the hills of Uttarakhand.</p>
+        <p>The aim of this tech fest is to provide a platform for students to showcase their technical soundness, invention and innovation across their respective subjects and fields of interest.</p>
+        <p>Organizing a Student Technical Fest is a strategic initiative aimed at fostering innovation, creativity, and technical excellence among students. Such events provide a dynamic platform for knowledge sharing, skill development, and networking — essential components in today's competitive academic and professional landscapes.</p>
+        <p>Prayukti 2026 promises to be a grand and dynamic event, bringing together renowned professors, industry experts, and talented students from reputed colleges. The fest will feature a diverse range of competitions, workshops, and interactive sessions — an exceptional platform for learning, innovation, and collaboration. It will also give the students of our university valuable exposure and the opportunity to enhance their skills and broaden their perspective.</p>
+      </div>
+      <div class="about-highlight reveal rd2">
+        <div class="about-hl-item"><div class="about-hl-ic">🏛️</div><div><div class="about-hl-title">Host Campus</div><div class="about-hl-sub">GEHU Bhimtal, Uttarakhand</div></div></div>
+        <div class="about-hl-item"><div class="about-hl-ic">📅</div><div><div class="about-hl-title">Fest Dates</div><div class="about-hl-sub">October 28–30, 2026</div></div></div>
+        <div class="about-hl-item"><div class="about-hl-ic">🎯</div><div><div class="about-hl-title">Our Mission</div><div class="about-hl-sub">A platform to showcase technical skill, innovation & creativity</div></div></div>
+        <div class="about-hl-item"><div class="about-hl-ic">🤝</div><div><div class="about-hl-title">Who's Invited</div><div class="about-hl-sub">Students, professors & industry experts nationwide</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- EVENTS -->
+<section id="sec-events">
+  <div class="sec-hd reveal"><div class="sec-tag">PRAYUKTI 2026</div><h2 class="sec-title">TECH <span>EVENTS</span></h2><p class="sec-sub">Click any event card to view full rules, prizes and details</p></div>
+  <div class="filters reveal">
+    <button class="filter-btn active" onclick="filterEvs('all',this)">All Events</button>
+    <button class="filter-btn" onclick="filterEvs('technical',this)">Technical</button>
+    <button class="filter-btn" onclick="filterEvs('coding',this)">Coding</button>
+    <button class="filter-btn" onclick="filterEvs('gaming',this)">Gaming</button>
+    <button class="filter-btn" onclick="filterEvs('workshop',this)">Workshops</button>
+    <button class="filter-btn" onclick="filterEvs('cultural',this)">Cultural</button>
+  </div>
+  <div class="events-grid" id="events-grid"></div>
+</section>
+
+<!-- RESULTS -->
+<section id="sec-results">
+  <div class="results-typing-wrap">
+    <p class="results-typing" id="results-typing-text"></p>
+  </div>
+</section>
+
+<!-- SPONSORS -->
+<section id="sec-sponsors">
+  <div class="sec-hd reveal"><div class="sec-tag">PARTNERS</div><h2 class="sec-title">OUR <span>SPONSORS</span></h2><p class="sec-sub">Be a part of our grand event.</p></div>
+  <div id="sponsors-content"></div>
+  <div class="sponsor-cta reveal">
+    <div style="font-family:var(--orb);font-size:10px;color:var(--c1);letter-spacing:2px;margin-bottom:10px">SPONSORSHIP OPPORTUNITIES</div>
+    <h3 style="font-family:var(--orb);font-size:24px;color:#fff;margin-bottom:10px">Sponsor <span style="color:var(--c1)">Prayukti 2026</span></h3>
+    <p style="color:var(--muted);font-size:13px;margin-bottom:22px">Reach 5000+ tech-savvy students from 50+ colleges and schools across India</p>
+    <a href="mailto:prayuktitechfest@gmail.com" style="display:inline-block;background:linear-gradient(135deg,var(--c1),var(--c2));color:#000;font-family:var(--orb);font-size:10px;font-weight:900;padding:13px 28px;border-radius:8px;text-decoration:none;letter-spacing:1px">GET SPONSORSHIP BROCHURE →</a>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="sec-gallery">
+  <div class="sec-hd reveal"><div class="sec-tag">MEMORIES</div><h2 class="sec-title">GALLERY <span>2025</span></h2><p class="sec-sub">Relive the best moments from Prayukti 2025</p></div>
+  <div class="gallery-grid" id="gallery-grid"></div>
+</section>
+
+<!-- TEAM -->
+<section id="sec-team">
+  <div class="sec-hd reveal"><div class="sec-tag">THE PEOPLE</div><h2 class="sec-title">MEET THE <span>TEAM</span></h2><p class="sec-sub">The dedicated student organizers and faculty who bring Prayukti to life</p></div>
+  <div class="team-grid" id="team-grid"></div>
+</section>
+
+<!-- REGISTER -->
+<section id="sec-register">
+  <div class="sec-hd reveal" style="text-align:center">
+    <div class="sec-tag">JOIN US</div>
+    <h2 class="sec-title">REGISTER FOR <span>PRAYUKTI 2026</span></h2>
+    <p class="sec-sub">Minimum 2 members per team · All fields mandatory · October 28–30, 2026 · GEHU Bhimtal</p>
+  </div>
+  <div class="reg-wrap">
+    <div class="reg-card reveal">
+      <div class="wizard-progress">
+        <div class="progress-bar"><div id="progressFill"></div></div>
+        <div class="step-text">Step <span id="currentStep">1</span> of <span id="totalSteps">8</span></div>
+      </div>
+      <div id="reg-form">
+
+        <!-- STEP 1: TEAM INFO -->
+        <div class="form-step active-step" id="step1">
+          <h3 class="step-heading">👥 TEAM INFORMATION</h3>
+          <p class="step-sub">Start by entering your team details. Minimum 2 members required.</p>
+          <div class="form-row">
+            <div class="form-group"><label>Team Name *</label><input type="text" id="teamName" placeholder="e.g. Phoenix Coders" required></div>
+            <div class="form-group"><label>Team Size *</label>
+              <select id="teamSize" required onchange="updateTeamSize()">
+                <option value="">Select Size</option>
+                <option value="2">2 Members</option>
+                <option value="3">3 Members</option>
+                <option value="4">4 Members</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row single"><div class="form-group"><label>College / School Name *</label><input type="text" id="collegeName" placeholder="e.g. Graphic Era Hill University, Bhimtal" required></div></div>
+          <div class="form-row">
+            <div class="form-group"><label>City *</label><input type="text" id="teamCity" placeholder="e.g. Bhimtal" required></div>
+            <div class="form-group"><label>State *</label><input type="text" id="teamState" placeholder="e.g. Uttarakhand" required></div>
+          </div>
+          <div class="wizard-buttons">
+            <div></div>
+            <button type="button" class="btn-next" onclick="nextStep(1)">NEXT: TEAM LEADER →</button>
+          </div>
+        </div>
+
+        <!-- STEP 2: LEADER -->
+        <div class="form-step" id="step2">
+          <h3 class="step-heading">👑 TEAM LEADER DETAILS</h3>
+          <p class="step-sub">All fields below are mandatory for the Team Leader.</p>
+          <div class="member-block">
+            <div class="member-block-title">◆ LEADER / MEMBER 1</div>
+            <div class="form-row">
+              <div class="form-group"><label>Full Name *</label><input type="text" id="m1_name" placeholder="As on ID card" required></div>
+              <div class="form-group"><label>Email Address *</label><input type="email" id="m1_email" placeholder="name@college.edu" required></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Mobile Number *</label><input type="tel" id="m1_phone" placeholder="10-digit number" maxlength="10" required></div>
+              <div class="form-group"><label>Aadhaar Number *</label><input type="text" id="m1_aadhaar" placeholder="12-digit Aadhaar" maxlength="12" required></div>
+            </div>
+            <div class="form-row single">
+              <div class="form-group"><label>Course / Class *</label><input type="text" id="m1_course" placeholder="e.g. B.Tech CSE 3rd Year" required></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Upload Student ID Card *</label><input type="file" id="m1_studentid" accept="image/*,.pdf" required><span class="file-hint">JPG, PNG or PDF · Max 2MB</span></div>
+              <div class="form-group"><label>Upload Aadhaar Image *</label><input type="file" id="m1_aadhaarimg" accept="image/*,.pdf" required><span class="file-hint">Front side · JPG, PNG or PDF</span></div>
+            </div>
+            <div class="form-row" style="margin-top:10px;">
+              <div class="form-group"><label>🔑 Set Password *</label><input type="password" id="reg_password" placeholder="Min 6 characters" minlength="6" required></div>
+              <div class="form-group"><label>🔑 Confirm Password *</label><input type="password" id="reg_password_confirm" placeholder="Re-enter password" minlength="6" required></div>
+            </div>
+            <div id="password_match_msg" style="font-size:12px;margin-top:-8px;margin-bottom:8px;padding-left:2px;"></div>
+          </div>
+          <div class="wizard-buttons">
+            <button type="button" class="btn-prev" onclick="prevStep(2)">← BACK</button>
+            <button type="button" class="btn-next" onclick="validatePasswordAndNext()">NEXT: MEMBER 2 →</button>
+          </div>
+        </div>
+
+        <!-- STEP 3: MEMBER 2 -->
+        <div class="form-step" id="step3">
+          <h3 class="step-heading">👤 MEMBER 2 DETAILS</h3>
+          <p class="step-sub">All fields below are mandatory for Member 2.</p>
+          <div class="member-block">
+            <div class="member-block-title">◆ MEMBER 2</div>
+            <div class="form-row">
+              <div class="form-group"><label>Full Name *</label><input type="text" id="m2_name" placeholder="As on ID card" required></div>
+              <div class="form-group"><label>Email Address *</label><input type="email" id="m2_email" placeholder="name@college.edu" required></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Mobile Number *</label><input type="tel" id="m2_phone" placeholder="10-digit number" maxlength="10" required></div>
+              <div class="form-group"><label>Aadhaar Number *</label><input type="text" id="m2_aadhaar" placeholder="12-digit Aadhaar" maxlength="12" required></div>
+            </div>
+            <div class="form-row single">
+              <div class="form-group"><label>Course / Class *</label><input type="text" id="m2_course" placeholder="e.g. B.Tech ECE 2nd Year" required></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Upload Student ID Card *</label><input type="file" id="m2_studentid" accept="image/*,.pdf" required><span class="file-hint">JPG, PNG or PDF · Max 2MB</span></div>
+              <div class="form-group"><label>Upload Aadhaar Image *</label><input type="file" id="m2_aadhaarimg" accept="image/*,.pdf" required><span class="file-hint">Front side · JPG, PNG or PDF</span></div>
+            </div>
+          </div>
+          <div class="wizard-buttons">
+            <button type="button" class="btn-prev" onclick="prevStep(3)">← BACK</button>
+            <button type="button" class="btn-next" id="m2next" onclick="nextStep(3)">NEXT →</button>
+          </div>
+        </div>
+
+        <!-- STEP 4: MEMBER 3 -->
+        <div class="form-step" id="step4">
+          <h3 class="step-heading">👤 MEMBER 3 DETAILS</h3>
+          <p class="step-sub">All fields below are mandatory for Member 3.</p>
+          <div class="member-block">
+            <div class="member-block-title">◆ MEMBER 3</div>
+            <div class="form-row">
+              <div class="form-group"><label>Full Name *</label><input type="text" id="m3_name" placeholder="As on ID card"></div>
+              <div class="form-group"><label>Email Address *</label><input type="email" id="m3_email" placeholder="name@college.edu"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Mobile Number *</label><input type="tel" id="m3_phone" placeholder="10-digit number" maxlength="10"></div>
+              <div class="form-group"><label>Aadhaar Number *</label><input type="text" id="m3_aadhaar" placeholder="12-digit Aadhaar" maxlength="12"></div>
+            </div>
+            <div class="form-row single">
+              <div class="form-group"><label>Course / Class *</label><input type="text" id="m3_course" placeholder="e.g. BCA 1st Year"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Upload Student ID Card *</label><input type="file" id="m3_studentid" accept="image/*,.pdf"><span class="file-hint">JPG, PNG or PDF · Max 2MB</span></div>
+              <div class="form-group"><label>Upload Aadhaar Image *</label><input type="file" id="m3_aadhaarimg" accept="image/*,.pdf"><span class="file-hint">Front side · JPG, PNG or PDF</span></div>
+            </div>
+          </div>
+          <div class="wizard-buttons">
+            <button type="button" class="btn-prev" onclick="prevStep(4)">← BACK</button>
+            <button type="button" class="btn-next" id="m3next" onclick="nextStep(4)">NEXT →</button>
+          </div>
+        </div>
+
+        <!-- STEP 5: MEMBER 4 -->
+        <div class="form-step" id="step5">
+          <h3 class="step-heading">👤 MEMBER 4 DETAILS</h3>
+          <p class="step-sub">All fields below are mandatory for Member 4.</p>
+          <div class="member-block">
+            <div class="member-block-title">◆ MEMBER 4</div>
+            <div class="form-row">
+              <div class="form-group"><label>Full Name *</label><input type="text" id="m4_name" placeholder="As on ID card"></div>
+              <div class="form-group"><label>Email Address *</label><input type="email" id="m4_email" placeholder="name@college.edu"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Mobile Number *</label><input type="tel" id="m4_phone" placeholder="10-digit number" maxlength="10"></div>
+              <div class="form-group"><label>Aadhaar Number *</label><input type="text" id="m4_aadhaar" placeholder="12-digit Aadhaar" maxlength="12"></div>
+            </div>
+            <div class="form-row single">
+              <div class="form-group"><label>Course / Class *</label><input type="text" id="m4_course" placeholder="e.g. MCA 1st Year"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Upload Student ID Card *</label><input type="file" id="m4_studentid" accept="image/*,.pdf"><span class="file-hint">JPG, PNG or PDF · Max 2MB</span></div>
+              <div class="form-group"><label>Upload Aadhaar Image *</label><input type="file" id="m4_aadhaarimg" accept="image/*,.pdf"><span class="file-hint">Front side · JPG, PNG or PDF</span></div>
+            </div>
+          </div>
+          <div class="wizard-buttons">
+            <button type="button" class="btn-prev" onclick="prevStep(5)">← BACK</button>
+            <button type="button" class="btn-next" onclick="nextStep(5)">NEXT: EVENTS →</button>
+          </div>
+        </div>
+
+        <!-- STEP 6: EVENTS -->
+        <div class="form-step" id="step6">
+          <h3 class="step-heading">🏆 SELECT EVENTS</h3>
+          <p class="step-sub">Select one or more events your team wants to participate in. At least one is required.</p>
+          <div class="event-checkbox-grid" id="event-checkbox-grid"></div>
+          <div class="wizard-buttons">
+            <button type="button" class="btn-prev" onclick="prevStep(6)">← BACK</button>
+            <button type="button" class="btn-next" onclick="nextStep(6)">NEXT: LOGISTICS →</button>
+          </div>
+        </div>
+
+        <!-- STEP 7: LOGISTICS -->
+        <div class="form-step" id="step7">
+          <h3 class="step-heading">🏨 LOGISTICS &amp; TRAVEL</h3>
+          <p class="step-sub">Help us plan your team's stay and arrival.</p>
+          <div class="form-row single" style="margin-bottom:6px">
+            <div class="form-group"><label>Accommodation Required? *</label>
+              <div class="radio-group">
+                <div class="radio-item" onclick="selectRadio(this,'accommodation','yes')"><input type="radio" name="accommodation" value="yes"><label>✅ Yes, needed</label></div>
+                <div class="radio-item" onclick="selectRadio(this,'accommodation','no')"><input type="radio" name="accommodation" value="no"><label>❌ No, self-arranged</label></div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row" id="accom-dates" style="display:none">
+            <div class="form-group"><label>Check-In Date </label><input type="date" id="checkin_date"></div>
+            <div class="form-group"><label>Check-Out Date </label><input type="date" id="checkout_date"></div>
+          </div>
+          <div class="form-row single" style="margin-bottom:6px">
+            <div class="form-group"><label>Transportation Required? *</label>
+              <div class="radio-group">
+                <div class="radio-item" onclick="selectRadio(this,'transportation','yes')"><input type="radio" name="transportation" value="yes"><label>✅ Yes, needed</label></div>
+                <div class="radio-item" onclick="selectRadio(this,'transportation','no')"><input type="radio" name="transportation" value="no"><label>❌ No, self-arranged</label></div>
+              </div>
+            </div>
+          </div>
+          <div id="transport-dates" style="display:none">
+            <div class="form-row">
+              <div class="form-group"><label>Arrival Date</label><input type="date" id="arrival_date"></div>
+              <div class="form-group"><label>Arrival Time</label><input type="time" id="arrival_time"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Departure Date</label><input type="date" id="departure_date"></div>
+              <div class="form-group"><label>Departure Time</label><input type="time" id="departure_time"></div>
+            </div>
+          </div>
+          <div class="form-row single">
+            <div class="form-group"><label>Emergency Contact Name *</label><input type="text" id="emergency_name" placeholder="Parent / Guardian name" required></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Emergency Contact Phone *</label><input type="tel" id="emergency_phone" placeholder="10-digit number" maxlength="10" required></div>
+            <div class="form-group"><label>Relation *</label>
+              <select id="emergency_relation" required><option value="">Select</option><option>Father</option><option>Mother</option><option>Guardian</option><option>Sibling</option><option>Spouse</option><option>Other</option></select>
+            </div>
+          </div>
+          <div class="wizard-buttons">
+            <button type="button" class="btn-prev" onclick="prevStep(7)">← BACK</button>
+            <button type="button" class="btn-next" onclick="nextStep(7)">NEXT: PAYMENT →</button>
+          </div>
+        </div>
+
+        <!-- STEP 8: PAYMENT + REVIEW -->
+        <div class="form-step" id="step8">
+          <h3 class="step-heading">💳 PAYMENT &amp; SUBMIT</h3>
+          <p class="step-sub">Pay to UPI ID: <strong style="color:var(--c1)">8126344234@ibl</strong> — then upload screenshot below.</p>
+          <div style="text-align:center;margin-bottom:20px">
+  <img src="assets/paymentqr.jpeg" alt="Payment QR Code" style="max-width:220px;border-radius:12px;border:1px solid rgba(0,245,255,0.2)">
+  <p style="font-size:12px;color:var(--c1);margin-top:8px">Scan to pay </p>
+</div>
+          <div class="form-row">
+            <div class="form-group"><label>UPI Transaction ID *</label><input type="text" id="txn_id" placeholder="e.g. TXN123456789" required></div>
+            <div class="form-group"><label>Payment Screenshot *</label><input type="file" id="payment_ss" accept="image/*" required><span class="file-hint">PNG or JPG screenshot</span></div>
+          </div>
+          <div style="background:rgba(0,245,255,0.03);border:1px solid rgba(0,245,255,0.1);border-radius:10px;padding:18px;margin-bottom:20px">
+            <div style="font-family:var(--orb);font-size:10px;color:var(--c1);letter-spacing:1.5px;margin-bottom:12px">📋 REGISTRATION SUMMARY</div>
+            <table class="summary-table" id="summary-table"></table>
+          </div>
+          <div style="margin-bottom:14px">
+            <label class="agree-row"><input type="checkbox" id="agree_terms" required> I have read and agree to the Prayukti 2026 Terms &amp; Conditions, Code of Conduct, and Privacy Policy. I confirm all details are correct.</label>
+          </div>
+
+          <div class="wizard-buttons">
+            <button type="button" class="btn-prev" onclick="prevStep(8)">← BACK</button>
+            <button
+type="button"
+class="form-submit"
+id="submit-btn"
+onclick="handleRegSubmit(event)">
+SUBMIT REGISTRATION →
+</button>
+          </div>
+          <p class="form-note">After submission, your Registration ID and password will be shown. Save them to login.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGIN -->
+<section id="sec-login">
+  <div class="sec-hd reveal" style="text-align:center"><div class="sec-tag">PORTAL</div><h2 class="sec-title">PARTICIPANT <span>LOGIN</span></h2><p class="sec-sub">Access your dashboard, schedule and results</p></div>
+  <div class="login-wrap">
+    <div class="login-card reveal">
+      <div class="login-logo">PRAYUKTI<span>2026</span></div>
+      <div class="login-tag">Graphic Era Hill University · Bhimtal, Uttarakhand</div>
+      <div class="tab-row">
+        <button class="tab-btn active" onclick="switchTab(this)">Participant</button>
+        <button class="tab-btn" onclick="switchTab(this)">Organizer</button>
+      </div>
+      <form id="login-form">
+        <div class="form-group input-row"><label>Registration ID</label><input type="text" name="uid" placeholder="PRAY2026-XXXXXX" required/></div>
+        <div class="form-group input-row"><label>Password</label><input type="password" name="pass" placeholder="Enter your password" required/></div>
+        <button type="submit" class="form-submit" style="margin-top:8px">LOGIN TO PORTAL →</button>
+        <p style="text-align:center;margin-top:16px;font-size:12px;color:rgba(160,160,200,0.4)">Don't have an account? <span style="color:var(--c1);cursor:pointer" onclick="goTo('register')">Register here</span></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- NOTIFICATIONS -->
+<section id="sec-notifications">
+  <div class="sec-hd reveal"><div class="sec-tag">LIVE UPDATES</div><h2 class="sec-title">NOTIFICATIONS <span>&amp; UPDATES</span></h2><p class="sec-sub">Latest announcements from the Prayukti 2026 organizing team</p></div>
+  <div class="notif-panel reveal">
+    <div class="notif-item"><div class="notif-ic info">📢</div><div><div class="notif-title">Registrations will  Open Soon!</div><div class="notif-msg">Prayukti 2026 registrations will be live soon. Early bird pricing available until September 30, 2026.</div><div class="notif-time">1 July 2026</div></div></div>
+    <div class="notif-item"><div class="notif-ic alert">🔥</div><div><div class="notif-title">Welcome to Prayukti TechFest </div>
+    <div class="notif-item"><div class="notif-ic info">📍</div><div><div class="notif-title">Venue Confirmed: GEHU Bhimtal Campus</div><div class="notif-msg">Prayukti 2026 will be hosted at GEHU Bhimtal campus. Accommodation available for outstation participants.</div><div class="notif-time">1 July 2026</div></div></div>
+
+  </div>
+</section>
+<!-- CAMPUS SHOWCASE -->
+<div class="campus-showcase reveal">
+  <div class="campus-tag">OUR CAMPUS</div>
+  <div class="campus-frame">
+    <img src="assets/pp.png" alt="GEHU Bhimtal Campus" onerror="this.style.display='none'">
+    <div class="campus-corner tl"></div>
+    <div class="campus-corner br"></div>
+    <div class="campus-scan"></div>
+    <div class="campus-caption">
+      <div class="campus-caption-title">GEHU Bhimtal Campus</div>
+      <div class="campus-caption-sub">WHERE PRAYUKTI 2026 COMES TO LIFE</div>
+    </div>
+  </div>
+</div>
+<!-- MODAL (events / results / gallery / team) -->
+<div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal-inner"></div>
+</div>
+
+<!-- SITE FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">PRAYUKTI<span>2026</span></div>
+      <p class="footer-about-text">Prayukti is the annual technical fest of Graphic Era Hill University, Bhimtal — bringing together students, professors and industry experts for three days of competitions, workshops and innovation, October 28–30, 2026.</p>
+      <div class="footer-media">
+        <img src="assets/logo.png" alt="Prayukti 2026 Official Logo" onerror="this.style.display='none'">
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <div class="footer-contact-row" style="cursor:pointer" onclick="goTo('events')">Events</div>
+      <div class="footer-contact-row" style="cursor:pointer" onclick="goTo('register')">Register</div>
+      <div class="footer-contact-row" style="cursor:pointer" onclick="goTo('gallery')">Gallery</div>
+      <div class="footer-contact-row" style="cursor:pointer" onclick="goTo('team')">Team</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact Us</div>
+      <div class="footer-contact-row">📧 <a href="mailto:prayuktitechfest@gmail.com">prayuktitechfest@gmail.com</a></div>
+      <div class="footer-contact-row">📍 GEHU Bhimtal, Uttarakhand</div>
+      <div class="footer-contact-row">📅 Oct 28–30, 2026</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Prayukti Tech Fest · Graphic Era Hill University, Bhimtal</div>
+    <div><a href="mailto:prayuktitechfest@gmail.com">Contact</a><a href="#" onclick="goTo('home')">Home</a></div>
+  </div>
+</footer>
+
+</div><!-- /app -->
+
+<script>
+// ==================== DATA ====================
+const EVENTS=[
+  {id:1,icon:'💻',cat:'CODING',title:'Code Clash',desc:'Competitive programming — solve algorithmic challenges under time pressure across 3 intense rounds.',tags:['Solo','3 Hours','2 Rounds'],prize:'₹50,000',type:'coding',detail:{rules:['Individual participation only','3 rounds: warm-up, main, finale','Languages: C, C++, Java, Python','No internet access allowed','Plagiarism leads to immediate disqualification'],prizes:[{p:'🥇 1st Place',a:'₹25,000'},{p:'🥈 2nd Place',a:'₹15,000'},{p:'🥉 3rd Place',a:'₹10,000'}],contact:'codeclash@prayukti.in',date:'Oct 28, 2026',venue:'CS Lab Block A'}},
+  {id:2,icon:'🚀',cat:'HACKATHON',title:'Hackathon 2026',desc:'24-hour build sprint — create impactful AI-powered solutions for real-world sustainability problems.',tags:['Team 2–4','24 Hours','AI Theme'],prize:'₹1,50,000',type:'technical',detail:{rules:['Teams of 2–4 members','Theme: AI for Sustainability','Hardware hacking allowed','Submissions via GitHub','Final demo to jury panel','Mentors available throughout'],prizes:[{p:'🥇 Winner',a:'₹75,000'},{p:'🥈 Runner-up',a:'₹45,000'},{p:'🥉 2nd Runner',a:'₹30,000'}],contact:'hack@prayukti.in',date:'Oct 28–29, 2026',venue:'Innovation Hub'}},
+  {id:3,icon:'🤖',cat:'ROBOTICS',title:'Robotics Challenge',desc:'Build and battle — autonomous robots compete in obstacle courses, line-following mazes and arena battles.',tags:['Team 2–3','Hardware','Arena'],prize:'₹80,000',type:'technical',detail:{rules:['Teams of 2–3','Robot must be self-built','Max dimensions: 30×30×30 cm','Weight limit: 5 kg','3 rounds: line follow, maze, battle'],prizes:[{p:'🥇 1st',a:'₹40,000'},{p:'🥈 2nd',a:'₹25,000'},{p:'🥉 3rd',a:'₹15,000'}],contact:'robotics@prayukti.in',date:'Oct 29, 2026',venue:'Robotics Arena'}},
+  {id:4,icon:'🔐',cat:'CYBERSECURITY',title:'Capture The Flag',desc:'Classic CTF format with web exploitation, crypto, forensics, pwn and reverse engineering categories.',tags:['Solo/Team 2','24 Hours','Jeopardy'],prize:'₹40,000',type:'technical',detail:{rules:['Solo or teams of 2','24-hour CTF window','Categories: Web, Crypto, Forensics, Pwn, Rev','Dynamic scoring system'],prizes:[{p:'🥇 1st',a:'₹20,000'},{p:'🥈 2nd',a:'₹12,000'},{p:'🥉 3rd',a:'₹8,000'}],contact:'ctf@prayukti.in',date:'Oct 28–29, 2026',venue:'Cyber Lab B'}},
+  {id:5,icon:'🎮',cat:'E-SPORTS',title:'Gaming Arena',desc:'Compete in BGMI, Valorant and Chess — separate prize pools for each title with full tournament brackets.',tags:['Solo/Team','Console+PC','3 Titles'],prize:'₹60,000',type:'gaming',detail:{rules:['Separate brackets per title','Own device for mobile titles','Swiss + single elimination format','Valid college ID mandatory'],prizes:[{p:'BGMI',a:'₹20,000'},{p:'Valorant',a:'₹20,000'},{p:'Chess',a:'₹20,000'}],contact:'esports@prayukti.in',date:'Oct 28–30, 2026',venue:'E-Sports Zone'}},
+  {id:6,icon:'🎨',cat:'DESIGN',title:'UI/UX Challenge',desc:'Design a complete user experience for a real product brief in 4 hours using Figma.',tags:['Solo','4 Hours','Figma'],prize:'₹30,000',type:'technical',detail:{rules:['Solo participation only','Tool: Figma (any plan)','Brief revealed at challenge start','Must include desktop + mobile screens'],prizes:[{p:'🥇 1st',a:'₹15,000'},{p:'🥈 2nd',a:'₹10,000'},{p:'🥉 3rd',a:'₹5,000'}],contact:'design@prayukti.in',date:'Oct 29, 2026',venue:'Design Studio'}},
+  {id:7,icon:'🧠',cat:'WORKSHOP',title:'ML Bootcamp',desc:'Hands-on machine learning workshop covering supervised learning, neural networks and live project deployment.',tags:['60 Seats','1 Day','Certificate'],prize:'Free + ₹5,000',type:'workshop',detail:{rules:['Bring your own laptop','Python basics required','Certificate provided to all','Max 60 participants — register early'],prizes:[{p:'Certificate',a:'All Attendees'},{p:'Best Project',a:'₹5,000'},{p:'2nd Best',a:'₹3,000'}],contact:'workshop@prayukti.in',date:'Oct 28, 2026',venue:'Smart Classroom C2'}},
+  {id:8,icon:'⚡',cat:'QUIZ',title:'Tech Quiz',desc:'Fast-paced buzzer quiz on CS, electronics and current tech affairs — solo thinkers & team tacticians welcome.',tags:['Team of 2','Buzzer Round','Elimination'],prize:'₹20,000',type:'technical',detail:{rules:['Teams of exactly 2','4 rounds: written, rapid fire, visual, buzzer','No mobile phones on stage'],prizes:[{p:'🥇 1st',a:'₹10,000'},{p:'🥈 2nd',a:'₹6,000'},{p:'🥉 3rd',a:'₹4,000'}],contact:'quiz@prayukti.in',date:'Oct 30, 2026',venue:'Seminar Hall'}},
+  {id:9,icon:'🛸',cat:'ROBOTICS',title:'Robo-Sumo',desc:'Two autonomous robots battle to push each other out of a circular ring — pure engineering dominance.',tags:['Team of 2','Autonomous','Ring Battle'],prize:'₹25,000',type:'technical',detail:{rules:['Teams of 2','Robot max weight: 3 kg','Fully autonomous','Round-robin + knockout format'],prizes:[{p:'🥇 1st',a:'₹12,500'},{p:'🥈 2nd',a:'₹8,000'},{p:'🥉 3rd',a:'₹4,500'}],contact:'sumo@prayukti.in',date:'Oct 29, 2026',venue:'Robotics Arena'}},
+  {id:10,icon:'☁️',cat:'WORKSHOP',title:'Cloud & DevOps',desc:'AWS and DevOps essentials — CI/CD pipelines, Docker, Kubernetes and real-world deployment labs.',tags:['Limited Seats','1 Day','AWS Labs'],prize:'Free + ₹4,000',type:'workshop',detail:{rules:['Laptop required','AWS free tier account needed','Basic Linux knowledge helpful','Certificate provided'],prizes:[{p:'Certificate',a:'All Attendees'},{p:'Best Lab',a:'₹4,000'},{p:'2nd Best',a:'₹2,000'}],contact:'devops@prayukti.in',date:'Oct 30, 2026',venue:'IT Lab Block B'}},
+  {id:11,icon:'💡',cat:'STARTUP',title:'Startup Pitch',desc:'Present your startup idea to a panel of investors and industry experts. Win seed funding and mentorship.',tags:['Team 2–4','5 Min Pitch','Q&A'],prize:'₹1,00,000',type:'cultural',detail:{rules:['Teams of 2–4','5-minute pitch + 3 min Q&A','Idea must be original','No existing funded startups'],prizes:[{p:'🥇 Best Startup',a:'₹50,000'},{p:'🥈 Runner-up',a:'₹30,000'},{p:'🥉 3rd',a:'₹20,000'}],contact:'startup@prayukti.in',date:'Oct 30, 2026',venue:'Main Auditorium'}},
+  {id:12,icon:'🚁',cat:'GAMING',title:'Drone Racing',desc:'Build or bring your FPV drone and navigate our custom outdoor racing course through timed elimination rounds.',tags:['Solo','Outdoor','FPV'],prize:'₹35,000',type:'gaming',detail:{rules:['Own FPV drone required','Weight limit: 500 g','Mandatory safety pre-check','3 qualifying rounds + finals'],prizes:[{p:'🥇 1st',a:'₹18,000'},{p:'🥈 2nd',a:'₹11,000'},{p:'🥉 3rd',a:'₹6,000'}],contact:'drone@prayukti.in',date:'Oct 29, 2026',venue:'GEHU Open Grounds'}},
+];
+
+const RESULTS=[
+  {ev:'Hackathon 2025',title:'SmartCity Traffic AI',winners:[{place:'1st',name:'Team ByteBuilders',college:'GEHU Bhimtal',prize:'₹75,000'},{place:'2nd',name:'NeuralNomads',college:'IIT Roorkee',prize:'₹45,000'},{place:'3rd',name:'CodeCraft',college:'NIT Uttarakhand',prize:'₹30,000'}]},
+  {ev:'Code Clash 2025',title:'Individual Programming',winners:[{place:'1st',name:'Rohit Verma',college:'IIT Roorkee',prize:'₹25,000'},{place:'2nd',name:'Priya Singh',college:'GEHU Bhimtal',prize:'₹15,000'},{place:'3rd',name:'Aryan Gupta',college:'NIT UK',prize:'₹10,000'}]},
+  {ev:'Robotics 2025',title:'Arena Battle & Maze',winners:[{place:'1st',name:'Team MechMinds',college:'GEHU Dehradun',prize:'₹40,000'},{place:'2nd',name:'RoboRage',college:'UPES Dehradun',prize:'₹25,000'},{place:'3rd',name:'WireWizards',college:'Graphic Era Deemed',prize:'₹15,000'}]},
+  {ev:'CTF 2025',title:'Cybersecurity Battle',winners:[{place:'1st',name:'0x4141',college:'IIIT Delhi',prize:'₹20,000'},{place:'2nd',name:'BitFlippers',college:'GEHU Bhimtal',prize:'₹12,000'},{place:'3rd',name:'ShellStorm',college:'TIET Patiala',prize:'₹8,000'}]},
+  {ev:'UI/UX 2025',title:'Product Design Sprint',winners:[{place:'1st',name:'Sneha Kapoor',college:'GEHU Bhimtal',prize:'₹15,000'},{place:'2nd',name:'Karan Mehta',college:'SRHU',prize:'₹10,000'},{place:'3rd',name:'Riya Joshi',college:'DIT University',prize:'₹5,000'}]},
+  {ev:'Tech Quiz 2025',title:'CS & Electronics',winners:[{place:'1st',name:'Team Querencia',college:'GEHU Bhimtal',prize:'₹10,000'},{place:'2nd',name:'TechTitans',college:'UPES',prize:'₹6,000'},{place:'3rd',name:'ByteMinds',college:'COER',prize:'₹4,000'}]},
+  {ev:'Startup Pitch 2025',title:'Best Innovation',winners:[{place:'1st',name:'AgroSense AI',college:'GEHU Bhimtal',prize:'₹50,000'},{place:'2nd',name:'MediTrack',college:'HNB Garhwal',prize:'₹30,000'},{place:'3rd',name:'EduBridge',college:'Kumaun University',prize:'₹20,000'}]},
+  {ev:'Drone Racing 2025',title:'FPV Speed Cup',winners:[{place:'1st',name:'Aditya Rawat',college:'GEHU Bhimtal',prize:'₹18,000'},{place:'2nd',name:'Vikram Negi',college:'IIT Roorkee',prize:'₹11,000'},{place:'3rd',name:'Raj Bisht',college:'GEHU Dehradun',prize:'₹6,000'}]},
+];
+
+const SPONSORS=[
+  {tier:'TITLE SPONSOR',name:'TechCorp India',desc:"India's leading IT solutions company",logo:'🏢',t:'gold'},
+  {tier:'GOLD SPONSOR',name:'CloudNex Systems',desc:'Enterprise cloud infrastructure',logo:'☁️',t:'gold'},
+  {tier:'GOLD SPONSOR',name:'Innovatek Labs',desc:'AI & ML product startup',logo:'🔬',t:'gold'},
+  {tier:'SILVER SPONSOR',name:'DevStack Labs',desc:'Developer tools & services',logo:'⚙️',t:'silver'},
+  {tier:'SILVER SPONSOR',name:'CyberShield Pro',desc:'Cybersecurity solutions',logo:'🛡️',t:'silver'},
+  {tier:'SILVER SPONSOR',name:'RoboTech IND',desc:'Robotics & automation',logo:'🤖',t:'silver'},
+  {tier:'BRONZE SPONSOR',name:'PrintFast',desc:'Official printing partner',logo:'🖨️',t:'bronze'},
+  {tier:'BRONZE SPONSOR',name:'HostingHub',desc:'Web hosting & domains',logo:'🌐',t:'bronze'},
+  {tier:'MEDIA PARTNER',name:'TechWire India',desc:'Tech news & media',logo:'📡',t:'partner'},
+  {tier:'KNOWLEDGE PARTNER',name:'Coursera',desc:'Online learning platform',logo:'📚',t:'partner'},
+  {tier:'FOOD PARTNER',name:'Zomato',desc:'Official food partner',logo:'🍕',t:'partner'},
+  {tier:'TRAVEL PARTNER',name:'RedBus',desc:'Official travel partner',logo:'🚌',t:'partner'},
+];
+
+
+const GALLERY=[
+  {type:'video',src:'assets/gallery/v2.mp4'},
+  {type:'video',src:'assets/gallery/v3.mp4'},
+  {type:'photo',src:'assets/gallery/1.jpeg'},
+  {type:'video',src:'assets/gallery/v1.mp4'},
+  {type:'photo',src:'assets/gallery/23.jpeg'},
+  {type:'photo',src:'assets/gallery/3.jpeg'},
+  {type:'photo',src:'assets/gallery/16.jpeg'},
+  {type:'photo',src:'assets/gallery/4.jpeg'},
+  {type:'photo',src:'assets/gallery/8.jpeg'},
+  {type:'photo',src:'assets/gallery/6.jpeg'},
+  {type:'photo',src:'assets/gallery/10.jpeg'},
+  {type:'photo',src:'assets/gallery/11.jpeg'},
+  {type:'photo',src:'assets/gallery/9.jpeg'},
+  {type:'photo',src:'assets/gallery/13.jpeg'},
+  {type:'photo',src:'assets/gallery/17.jpeg'},
+  {type:'photo',src:'assets/gallery/14.jpeg'},
+  {type:'photo',src:'assets/gallery/15.jpeg'},
+  {type:'photo',src:'assets/gallery/5.jpeg'},
+  {type:'photo',src:'assets/gallery/19.jpeg'},
+  {type:'photo',src:'assets/gallery/20.jpeg'},
+  {type:'photo',src:'assets/gallery/21.jpeg'},
+  {type:'photo',src:'assets/gallery/22.jpeg'},
+  {type:'photo',src:'assets/gallery/2.jpeg'},
+  {type:'photo',src:'assets/gallery/24.jpeg'},
+  {type:'photo',src:'assets/gallery/25.jpeg'},
+];
+
+const TEAM=[
+  {name:'Srishti Rautela',role:'Convenor',dept:'CSE Department',color:'#00f5ff',init:'SR',photo:'assets/team/my.jpeg',bio:'Convenor of Prayukti TechFest 2026, driven by a passion for technology, innovation, and collaborative leadership. Committed to building opportunities that inspire creativity, learning, and excellence.'},
+
+
+];
+
+// ==================== STATE ====================
+let currentFilter='all', cdPrev={}, currentStep=1, teamSize=2;
+
+// ==================== NAV ====================
+function validatePasswordAndNext() {
+  const p1 = document.getElementById('reg_password').value;
+  const p2 = document.getElementById('reg_password_confirm').value;
+  const msg = document.getElementById('password_match_msg');
+  if (p1.length < 6) {
+    msg.style.color = '#ff5050';
+    msg.textContent = '⚠️ Password must be at least 6 characters.';
+    return;
+  }
+  if (p1 !== p2) {
+    msg.style.color = '#ff5050';
+    msg.textContent = '⚠️ Passwords do not match.';
+    return;
+  }
+  msg.style.color = '#14F195';
+  msg.textContent = '✅ Passwords match!';
+  nextStep(2);
+}
+
+function goTo(id, btn) {
+  document.querySelectorAll('section,#sec-home').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const el = document.getElementById('sec-' + id);
+  if (el) el.classList.add('active');
+  if (btn) btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  setTimeout(triggerReveal, 100);
+}
+
+// ==================== COUNTDOWN ====================
+function startCountdown() {
+  const target = new Date('2026-10-28T09:00:00');
+  function tick() {
+    const diff = target - new Date();
+    if (diff <= 0) {
+      document.getElementById('cd').innerHTML = '<div style="font-family:var(--orb);color:var(--c1);font-size:20px;letter-spacing:2px;padding:20px">🎉 FEST IS LIVE!</div>';
+      return;
+    }
+    const vals = {
+      d: Math.floor(diff / 86400000),
+      h: Math.floor((diff % 86400000) / 3600000),
+      m: Math.floor((diff % 3600000) / 60000),
+      s: Math.floor((diff % 60000) / 1000)
+    };
+    Object.entries(vals).forEach(([k, v]) => {
+      const el = document.getElementById('cd-' + k);
+      if (!el) return;
+      const str = String(v).padStart(2, '0');
+      if (cdPrev[k] !== str) {
+        el.classList.remove('flash');
+        void el.offsetWidth;
+        el.classList.add('flash');
+        el.textContent = str;
+        cdPrev[k] = str;
+      }
+    });
+  }
+  tick();
+  setInterval(tick, 1000);
+}
+
+// ==================== EVENTS RENDER ====================
+function renderEvents() {
+  const grid = document.getElementById('events-grid');
+  const list = currentFilter === 'all'
+    ? EVENTS
+    : EVENTS.filter(e => e.type === currentFilter);
+
+  grid.innerHTML = list.map((e, i) => `
+    <div class="event-card event-card-disabled reveal rd${(i % 3) + 1}"
+         style="transition-delay:${i * 0.05}s">
+
+      <div class="release-icon">🔒</div>
+      <div class="release-title">RELEASING SOON</div>
+      <div class="release-subtitle">
+        Event details will be revealed soon.
+      </div>
+
+    </div>
+  `).join('');
+
+  triggerReveal();
+}
+
+function filterEvs(type, btn) {
+  currentFilter = type;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const grid = document.getElementById('events-grid');
+  grid.style.opacity = '0';
+  grid.style.transform = 'translateY(12px)';
+  setTimeout(() => {
+    renderEvents();
+    grid.style.transition = 'all 0.3s';
+    grid.style.opacity = '1';
+    grid.style.transform = 'translateY(0)';
+  }, 180);
+}
+
+function openEvent(id) {
+  const e = EVENTS.find(x => x.id === id);
+  document.getElementById('modal-inner').innerHTML = `
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="m-tag">${e.cat} · ${e.detail.date}</div>
+    <div class="m-title">${e.icon} ${e.title}</div>
+    <div class="m-body">
+      <p style="margin-bottom:8px">${e.desc}</p>
+      <p style="font-size:11px;color:rgba(160,160,200,0.4);margin-bottom:16px">📍 ${e.detail.venue} &nbsp;·&nbsp; 📧 ${e.detail.contact}</p>
+      <div class="prize-row">${e.detail.prizes.map(p => `<div class="prize-box"><div class="prize-place">${p.p}</div><div class="prize-amt">${p.a}</div></div>`).join('')}</div>
+      <h4>Rules &amp; Format</h4><ul>${e.detail.rules.map(r => `<li>${r}</li>`).join('')}</ul>
+    </div>
+    <button class="modal-reg-btn" onclick="closeModal();goTo('register')">REGISTER FOR THIS EVENT →</button>`;
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+// ==================== RESULTS ====================
+function renderResults() {
+  const el = document.getElementById('results-typing-text');
+  if (!el) return;
+  const msg = 'The results will be displayed here for each event on 1st November 2026';
+  let i = 0;
+  el.textContent = '';
+  function type() {
+    if (i <= msg.length) {
+      el.textContent = msg.slice(0, i);
+      i++;
+      setTimeout(type, 60);
+    }
+  }
+  type();
+}
+
+function openResult(i) {
+  const r = RESULTS[i];
+  const [g, s, b] = [r.winners[0], r.winners[1], r.winners[2]];
+  document.getElementById('modal-inner').innerHTML = `
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="m-tag">PRAYUKTI 2025 · RESULTS</div><div class="m-title">🏆 ${r.ev}</div>
+    <div class="m-body"><p style="margin-bottom:18px;color:rgba(180,180,255,0.5)">${r.title}</p>
+      <div class="podium">
+        <div class="p-slot" style="order:1"><div class="p-bar second">🥈</div><div class="p-name">${s?.name || '—'}</div><div class="p-college">${s?.college || ''}</div><div class="p-prize">${s?.prize || ''}</div></div>
+        <div class="p-slot" style="order:0"><div class="p-bar first">🥇</div><div class="p-name">${g?.name || '—'}</div><div class="p-college">${g?.college || ''}</div><div class="p-prize">${g?.prize || ''}</div></div>
+        <div class="p-slot" style="order:2"><div class="p-bar third">🥉</div><div class="p-name">${b?.name || '—'}</div><div class="p-college">${b?.college || ''}</div><div class="p-prize">${b?.prize || ''}</div></div>
+      </div></div>`;
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+// ==================== SPONSORS ====================
+function renderSponsors() {
+  const c = document.getElementById('sponsors-content');
+
+  c.innerHTML = `
+    <div class="sponsor-welcome reveal">
+      <div class="welcome-icon">🤝</div>
+
+      <h2 class="welcome-title">Become a Sponsor</h2>
+
+      <p class="welcome-text">
+        Prayukti 2026 is inviting organizations, startups, and industry leaders
+        to partner with us in creating an unforgettable technical festival.
+      </p>
+
+      <p class="welcome-text">
+        Sponsor us to connect with talented students, showcase your brand,
+        recruit future innovators, and gain visibility throughout the event.
+      </p>
+
+      <div class="coming-box">
+        <div class="coming-title">🚀 Sponsorship Opportunities Open Soon</div>
+        <div class="coming-subtitle">
+          Sponsorship brochure, partnership tiers, and benefits will be released shortly.
+        </div>
+      </div>
+
+      <a href="mailto:prayuktitechfest@gmail.com" class="sponsor-btn">
+        Contact Us for Sponsorship
+      </a>
+    </div>
+  `;
+}
+
+// ==================== GALLERY ====================
+function renderGallery() {
+  document.getElementById('gallery-grid').innerHTML = GALLERY.map((g, i) => {
+    const isVideo = g.type === 'video';
+    return `
+    <div class="gal-item reveal rd${(i % 3) + 1}" onclick="openGallery(${i})" style="transition-delay:${i * 0.05}s;padding:0;">
+      ${isVideo
+        ? `<div class="gal-badge video">▶ VIDEO</div>
+           <video class="gal-media" src="${g.src}" muted preload="metadata" playsinline
+                  onerror="console.error('VIDEO 404:', '${g.src}');"></video>`
+        : `<div class="gal-badge photo">PHOTO</div>
+           <img class="gal-media" src="${g.src}" alt="" loading="lazy"
+                onerror="console.error('IMAGE 404:', '${g.src}'); this.onerror=null; this.src='https://placehold.co/400x300/0a0a1f/00f5ff?text=Missing';">`
+      }
+      <div class="gal-overlay">⊕ ${isVideo ? 'PLAY' : 'VIEW'}</div>
+    </div>`;
+  }).join('');
+
+  document.querySelectorAll('.gal-item video.gal-media').forEach(v => {
+    v.addEventListener('loadedmetadata', () => { v.currentTime = 0.5; });
+  });
+}
+
+function openGallery(i) {
+  const g = GALLERY[i];
+  const isVideo = g.type === 'video';
+  document.getElementById('modal-inner').innerHTML = `
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="gal-modal-media">
+      ${isVideo
+        ? `<video src="${g.src}" controls autoplay playsinline style="width:100%;border-radius:12px;display:block;max-height:75vh;background:#000;"></video>`
+        : `<img src="${g.src}" alt="" style="width:100%;border-radius:12px;display:block;max-height:75vh;object-fit:contain;">`
+      }
+    </div>`;
+  document.getElementById('modal-overlay').classList.add('open');
+}
+// ==================== TEAM ====================
+function renderTeam() {
+  document.getElementById('team-grid').innerHTML = TEAM.map((t, i) => `
+    <div class="team-card reveal rd${(i % 3) + 1}" onclick="openTeam(${i})">
+      <img class="tc-photo" src="${t.photo}" alt="${t.name}"
+           onerror="this.src='https://placehold.co/400x520/0a0a1f/00f5ff?text=${encodeURIComponent(t.init)}'">
+      <div class="tc-circuit"></div>
+      <div class="tc-frame"></div>
+      <div class="tc-scan"></div>
+      <div class="tc-corner tl"></div>
+      <div class="tc-corner br"></div>
+      <div class="tc-info">
+        <div class="tc-name">${t.name}</div>
+        <div class="tc-role">${t.role}</div>
+      </div>
+    </div>`).join('');
+}
+
+function openTeam(i) {
+  const t = TEAM[i];
+  document.getElementById('modal-inner').innerHTML = `
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="m-tag">TEAM MEMBER · PRAYUKTI 2026</div>
+    <div style="display:flex;align-items:center;gap:18px;margin-bottom:22px">
+      <div style="width:80px;height:80px;border-radius:50%;background:rgba(0,0,0,0.5);border:2px solid ${t.color};color:${t.color};display:flex;align-items:center;justify-content:center;font-family:var(--orb);font-size:20px;font-weight:900;flex-shrink:0;box-shadow:0 0 20px ${t.color}44">${t.init}</div>
+      <div><div style="font-family:var(--orb);font-size:20px;font-weight:900;color:#fff;margin-bottom:5px">${t.name}</div>
+      <div style="font-family:var(--orb);font-size:9px;color:${t.color};letter-spacing:1.5px;margin-bottom:5px">${t.role}</div>
+      <div style="font-size:12px;color:var(--muted)">${t.dept}</div></div>
+    </div>
+    <div class="m-body"><p style="background:rgba(255,255,255,0.02);border-left:2px solid ${t.color};padding:12px 16px;border-radius:0 8px 8px 0;font-style:italic">${t.bio}</p></div>`;
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+// ==================== MODAL ====================
+function closeModal() { document.getElementById('modal-overlay').classList.remove('open'); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// ==================== WIZARD ====================
+function getStepOrder() {
+  const size = parseInt(document.getElementById('teamSize').value) || 2;
+  const steps = [1, 2, 3];
+  if (size >= 3) steps.push(4);
+  if (size >= 4) steps.push(5);
+  steps.push(6, 7, 8);
+  return steps;
+}
+
+function updateTeamSize() {
+  teamSize = parseInt(document.getElementById('teamSize').value) || 2;
+  const order = getStepOrder();
+  document.getElementById('totalSteps').textContent = order.length;
+  const m2btn = document.getElementById('m2next');
+  if (m2btn) m2btn.textContent = teamSize >= 3 ? 'NEXT: MEMBER 3 →' : 'NEXT: EVENTS →';
+}
+
+function showStep(n) {
+  document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active-step'));
+  const el = document.getElementById('step' + n);
+  if (el) el.classList.add('active-step');
+  currentStep = n;
+  const order = getStepOrder();
+  const pos = order.indexOf(n) + 1;
+  document.getElementById('currentStep').textContent = pos;
+  document.getElementById('totalSteps').textContent = order.length;
+  document.getElementById('progressFill').style.width = (pos / order.length * 100) + '%';
+  window.scrollTo({ top: document.getElementById('sec-register').offsetTop - 80, behavior: 'smooth' });
+}
+
+function validateCurrentStep(n) {
+  const step = document.getElementById('step' + n);
+  if (!step) return true;
+  if (n === 6) {
+    const checked = document.querySelectorAll('#event-checkbox-grid input:checked');
+    if (checked.length === 0) { showToast('⚠️ Select at least one event to participate in.', 'warn'); return false; }
+    return true;
+  }
+  const size = parseInt(document.getElementById('teamSize').value) || 2;
+  if (n === 4 && size < 3) return true;
+  if (n === 5 && size < 4) return true;
+  // Step 7 logistics: require accommodation/transportation selection
+  if (n === 7) {
+    const accom = document.querySelector('input[name="accommodation"]:checked');
+    const trans = document.querySelector('input[name="transportation"]:checked');
+    if (!accom) { showToast('⚠️ Please select Accommodation option.', 'warn'); return false; }
+    if (!trans) { showToast('⚠️ Please select Transportation option.', 'warn'); return false; }
+  }
+  let ok = true;
+  step.querySelectorAll('input[id],select[id]').forEach(inp => {
+    inp.classList.remove('field-error');
+    // Skip any input that is inside a hidden parent container
+    if (inp.closest('[style*="display:none"]') || inp.closest('[style*="display: none"]')) return;
+    const label = step.querySelector(`label[for="${inp.id}"]`) || inp.closest('.form-group')?.querySelector('label');
+    const isReq = label && label.textContent.includes('*');
+    if (isReq && !inp.value.trim()) { inp.classList.add('field-error'); ok = false; }
+    if (inp.type === 'file' && isReq && inp.files.length === 0) { inp.classList.add('field-error'); ok = false; }
+  });
+  if (!ok) showToast('⚠️ Please fill in all required fields before continuing.', 'warn');
+  return ok;
+}
+
+function nextStep(from) {
+  if (!validateCurrentStep(from)) return;
+  const order = getStepOrder();
+  const pos = order.indexOf(from);
+  if (pos === -1) return;
+  const next = order[pos + 1];
+  if (next) {
+    if (next === 8) buildSummary();
+    showStep(next);
+  }
+}
+
+function prevStep(from) {
+  const order = getStepOrder();
+  const pos = order.indexOf(from);
+  if (pos > 0) showStep(order[pos - 1]);
+}
+
+// ==================== EVENT CHECKBOXES ====================
+function renderEventCheckboxes() {
+  const grid = document.getElementById('event-checkbox-grid');
+  if (!grid) return;
+  grid.innerHTML = EVENTS.map(e => `
+    <div class="event-check-item" id="eci_${e.id}" onclick="toggleEv(${e.id})">
+      <input type="checkbox" id="evcb_${e.id}" value="${e.id}" data-title="${e.title}">
+      <label for="evcb_${e.id}">${e.icon} ${e.title}</label>
+    </div>`).join('');
+}
+
+function toggleEv(id) {
+  const item = document.getElementById('eci_' + id);
+  const cb = document.getElementById('evcb_' + id);
+  cb.checked = !cb.checked;
+  item.classList.toggle('selected', cb.checked);
+}
+
+// ==================== RADIO HELPER ====================
+function selectRadio(el, name, val) {
+  document.querySelectorAll('.radio-item').forEach(r => {
+    if (r.querySelector(`input[name="${name}"]`)) r.classList.remove('selected');
+  });
+  el.classList.add('selected');
+  el.querySelector('input').checked = true;
+  if (name === 'accommodation') {
+    document.getElementById('accom-dates').style.display = val === 'yes' ? 'grid' : 'none';
+  }
+  if (name === 'transportation') {
+    document.getElementById('transport-dates').style.display = val === 'yes' ? 'block' : 'none';
+  }
+}
+
+// ==================== SUMMARY ====================
+function buildSummary() {
+  const size = parseInt(document.getElementById('teamSize').value) || 2;
+  const evs = [...document.querySelectorAll('#event-checkbox-grid input:checked')]
+    .map(c => { const ev = EVENTS.find(x => x.id === Number(c.value)); return ev ? ev.title : (c.dataset.title || c.value); })
+    .join(', ') || '—';
+  const acc = document.querySelector('input[name="accommodation"]:checked')?.value || '—';
+  const trans = document.querySelector('input[name="transportation"]:checked')?.value || '—';
+  const rows = [
+    ['Team Name', document.getElementById('teamName')?.value || '—'],
+    ['Team Size', size + ' Members'],
+    ['College', document.getElementById('collegeName')?.value || '—'],
+    ['Leader', document.getElementById('m1_name')?.value || '—'],
+    ['Leader Email', document.getElementById('m1_email')?.value || '—'],
+    ['City / State', (document.getElementById('teamCity')?.value || '—') + ' / ' + (document.getElementById('teamState')?.value || '—')],
+    ['Selected Events', evs],
+    ['Accommodation', acc],
+    ['Transportation', trans],
+    ['Registration Fee', '₹800 per team'],
+  ];
+  document.getElementById('summary-table').innerHTML = rows.map(([k, v]) =>
+    `<tr><td>${k}</td><td style="color:#e0e0ff">${v}</td></tr>`).join('');
+}
+
+// ==================== TOAST ====================
+function showToast(msg, type = 'info') {
+  const ex = document.querySelector('.prayukti-toast');
+  if (ex) ex.remove();
+  const colors = { info: '#00f5ff', warn: '#ffb800', error: '#ff006e', success: '#00ff9d' };
+  const col = colors[type] || colors.info;
+  const t = document.createElement('div');
+  t.className = 'prayukti-toast';
+  t.style.border = `1px solid ${col}`;
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => { t.style.opacity = '0'; }, 2800);
+  setTimeout(() => t.remove(), 3300);
+}
+
+// ==================== FORM SUBMIT ====================
+document.addEventListener('DOMContentLoaded', () => {
+  renderEventCheckboxes();
+  updateTeamSize();
+
+  // Registration form submit
+  // reg-form submit is handled by handleRegSubmit() called from button onclick
+  window.handleRegSubmit = async function(e) {
+    // Hard-stop any native form submission / page navigation that could
+    // cause the page to "reload" index.html instead of redirecting.
+    if (e) {
+      e.preventDefault();
+      if (typeof e.stopPropagation === 'function') e.stopPropagation();
+    }
+
+    try {
+      if (!document.getElementById('agree_terms').checked) {
+        showToast('⚠️ Please accept the Terms & Conditions.', 'warn');
+        return;
+      }
+      const payFile = document.getElementById('payment_ss');
+      if (!payFile || payFile.files.length === 0) {
+        showToast('⚠️ Please upload your payment screenshot.', 'warn');
+        return;
+      }
+      const txn = document.getElementById('txn_id').value.trim();
+      if (!txn) {
+        showToast('⚠️ Please enter the UPI Transaction ID.', 'warn');
+        return;
+      }
+
+      const btn = document.getElementById('submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'Submitting...';
+
+      const teamSz = parseInt(document.getElementById('teamSize').value) || 2;
+      const _sharedCollege = document.getElementById('collegeName').value;
+      const _sharedCity = document.getElementById('teamCity').value;
+
+      const members = [];
+      members.push({
+        name: document.getElementById('m2_name').value,
+        email: document.getElementById('m2_email').value,
+        phone: document.getElementById('m2_phone').value,
+        aadhaar: document.getElementById('m2_aadhaar').value,
+        course: document.getElementById('m2_course').value,
+        college: _sharedCollege,
+        city: _sharedCity
+      });
+      if (teamSz >= 3) members.push({
+        name: document.getElementById('m3_name').value,
+        email: document.getElementById('m3_email').value,
+        phone: document.getElementById('m3_phone').value,
+        aadhaar: document.getElementById('m3_aadhaar').value,
+        course: document.getElementById('m3_course').value,
+        college: _sharedCollege,
+        city: _sharedCity
+      });
+      if (teamSz >= 4) members.push({
+        name: document.getElementById('m4_name').value,
+        email: document.getElementById('m4_email').value,
+        phone: document.getElementById('m4_phone').value,
+        aadhaar: document.getElementById('m4_aadhaar').value,
+        course: document.getElementById('m4_course').value,
+        college: _sharedCollege,
+        city: _sharedCity
+      });
+
+      const selectedEventIds = [...document.querySelectorAll('#event-checkbox-grid input:checked')].map(c => Number(c.value));
+
+      const formData = {
+        teamName: document.getElementById('teamName').value,
+        teamSize: teamSz,
+        leaderName: document.getElementById('m1_name').value,
+        leaderEmail: document.getElementById('m1_email').value,
+        leaderPhone: document.getElementById('m1_phone').value,
+        leaderAadhaar: document.getElementById('m1_aadhaar').value,
+        college: _sharedCollege,
+        course: document.getElementById('m1_course').value,
+        city: _sharedCity,
+        state: document.getElementById('teamState').value,
+        accommodation: document.querySelector('input[name="accommodation"]:checked')?.value === 'yes',
+        transport: document.querySelector('input[name="transportation"]:checked')?.value === 'yes',
+        arrivalDate:   document.querySelector('input[name="transportation"]:checked')?.value === 'yes' ? document.getElementById('arrival_date').value   || null : null,
+        arrivalTime:   document.querySelector('input[name="transportation"]:checked')?.value === 'yes' ? document.getElementById('arrival_time').value   || null : null,
+        departureDate: document.querySelector('input[name="transportation"]:checked')?.value === 'yes' ? document.getElementById('departure_date').value || null : null,
+        departureTime: document.querySelector('input[name="transportation"]:checked')?.value === 'yes' ? document.getElementById('departure_time').value || null : null,
+        emergencyName: document.getElementById('emergency_name').value,
+        emergencyPhone: document.getElementById('emergency_phone').value,
+        txnId: txn,
+        password: document.getElementById('reg_password').value,
+        members,
+        events: selectedEventIds
+      };
+
+      let result;
+      try {
+        const response = await fetch('http://localhost:5000/api/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+        result = await response.json();
+      } catch (networkErr) {
+        // Fetch itself failed (server down / CORS / wrong port etc).
+        console.error('Registration network error:', networkErr);
+        showToast('Server not responding. Make sure your backend is running on port 5000.', 'error');
+        btn.disabled = false;
+        btn.textContent = 'SUBMIT REGISTRATION →';
+        return; // stop here — do NOT fall through to redirect logic
+      }
+
+      // DEBUG: log full API response to browser console
+      console.log('API result:', JSON.stringify(result));
+
+      if (!result || result.success !== true) {
+        showToast((result && result.message) || 'Registration failed. Please try again.', 'error');
+        btn.disabled = false;
+        btn.textContent = 'SUBMIT REGISTRATION →';
+        return; // stop here — do NOT redirect on failure
+      }
+
+      // Accept any common key name the backend might use
+      const regId = result.registrationId
+                 || result.registration_id
+                 || result.regId
+                 || result.id
+                 || 'PRAY2026-UNKNOWN';
+
+      const savedPw = result.password
+                   || result.pass
+                   || formData.password
+                   || '';
+
+      // Save to localStorage — welcome.html reads these
+      try {
+        localStorage.setItem('registrationId', regId);
+        localStorage.setItem('regPassword', savedPw);
+      } catch (storageErr) {
+        console.error('localStorage write failed:', storageErr);
+      }
+
+      btn.textContent = 'Redirecting...';
+      showToast('✅ Registration successful! Redirecting...', 'success');
+
+      // Redirect to welcome.html — build an absolute URL anchored to this
+      // page's own directory so it can never resolve to the wrong path,
+      // and navigate immediately (no setTimeout) with location.assign so
+      // a normal history entry is created and nothing else can race it.
+      const redirectUrl = new URL('welcome.html', window.location.href).href;
+      console.log('Redirecting to:', redirectUrl);
+      try {
+        window.location.assign(redirectUrl);
+      } catch (redirectErr) {
+        console.error('location.assign failed, falling back to href:', redirectErr);
+        window.location.href = redirectUrl;
+      }
+      return;
+
+    } catch (err) {
+      // Catch-all so an unexpected JS error never silently aborts and
+      // looks like the page "just reloaded".
+      console.error('Registration error:', err);
+      showToast('Something went wrong while submitting. Please check console and try again.', 'error');
+      const btn = document.getElementById('submit-btn');
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = 'SUBMIT REGISTRATION →';
+      }
+    }
+  };
+
+  // Login form
+  // ==================== LOGIN FORM ====================
+  const lf = document.getElementById('login-form');
+  if (lf) {
+    lf.addEventListener('submit', async e => {
+      e.preventDefault();
+      const uid   = lf.uid.value.trim();
+      const pass  = lf.pass.value;
+      const btn   = lf.querySelector('[type=submit]');
+      btn.disabled = true;
+      btn.textContent = 'Logging in...';
+      try {
+        const res  = await fetch('http://localhost:5000/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ registrationId: uid, password: pass })
+        });
+        const data = await res.json();
+        if (!data.success) {
+          showToast(data.message || 'Login failed.', 'error');
+          return;
+        }
+        localStorage.setItem('registrationId', data.team.registration_id);
+        showToast('✅ Login successful! Redirecting...', 'success');
+        setTimeout(() => {
+          window.location.href = 'dashboard/dashboard.html';
+        }, 900);
+      } catch(err) {
+        showToast('Server not responding. Make sure backend is running.', 'error');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'LOGIN TO PORTAL →';
+      }
+    });
+  }
+
+  // ==================== REG SUCCESS MODAL ====================
+  function showRegSuccessModal(regId, password) {
+    const overlay = document.createElement('div');
+    overlay.id = 'regSuccessOverlay';
+    overlay.style.cssText = 'position:fixed;inset:0;z-index:999999;background:rgba(5,7,20,0.97);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:center;padding:20px;';
+    overlay.innerHTML = `
+      <div style="background:linear-gradient(135deg,#0d1117,#111827);border:1px solid rgba(0,245,255,0.35);border-radius:24px;padding:40px 32px;max-width:460px;width:100%;text-align:center;box-shadow:0 0 80px rgba(0,245,255,0.15);">
+        <div style="font-size:52px;margin-bottom:10px;">🎉</div>
+        <div style="font-family:'Orbitron',sans-serif;font-size:1.25rem;font-weight:800;color:#00F5FF;margin-bottom:14px;">Registration Successful!</div>
+
+        <div style="background:rgba(0,245,255,0.05);border:1px solid rgba(0,245,255,0.2);border-radius:12px;padding:14px 18px;margin-bottom:20px;font-size:13px;color:#c8d8f0;line-height:1.7;text-align:left;">
+          <strong style="color:#00F5FF;">🎊 Thanks for Registering in Prayukti Tech Fest 2026!</strong><br/><br/>
+          Please <strong>Login</strong> with your credentials below to <strong>confirm your participation</strong>. Do login with your credentials to access your participant dashboard.
+        </div>
+
+        <div style="background:rgba(0,0,0,0.5);border:1px solid rgba(0,245,255,0.2);border-radius:14px;padding:20px 18px;margin-bottom:18px;text-align:left;">
+          <div style="margin-bottom:14px;">
+            <div style="font-size:10px;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;">📋 REGISTRATION ID</div>
+            <div style="font-family:'Orbitron',sans-serif;color:#fff;font-size:1.1rem;font-weight:700;background:rgba(0,245,255,0.07);padding:12px 16px;border-radius:8px;border:1px solid rgba(0,245,255,0.2);letter-spacing:1px;">${regId}</div>
+          </div>
+          <div>
+            <div style="font-size:10px;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;">🔑 PASSWORD</div>
+            <div style="font-family:monospace;color:#14F195;font-size:1.2rem;font-weight:700;letter-spacing:3px;background:rgba(20,241,149,0.07);padding:12px 16px;border-radius:8px;border:1px solid rgba(20,241,149,0.2);">${password}</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(255,80,80,0.08);border:1px solid rgba(255,80,80,0.2);border-radius:10px;padding:10px 14px;margin-bottom:22px;font-size:11px;color:#ff8080;">
+          ⚠️ Screenshot or note these credentials now — your password <strong>cannot be recovered</strong> once you close this window.
+        </div>
+
+        <button id="proceedLoginBtn"
+          style="width:100%;background:linear-gradient(135deg,#00F5FF,#7B2FFF);color:#000;font-weight:800;font-size:0.95rem;padding:15px;border:none;border-radius:12px;cursor:pointer;font-family:'Orbitron',sans-serif;letter-spacing:1px;transition:opacity .2s;">
+          ✅ OK — GO TO WELCOME →
+        </button>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+
+    document.getElementById('proceedLoginBtn').addEventListener('click', () => {
+      window.location.replace('welcome.html');
+    });
+  }
+
+  // Expose for optional manual use / debugging from console
+  window.showRegSuccessModal = showRegSuccessModal;
+});
+
+// ==================== TICKER ====================
+function initTicker() {
+  const items = [
+    'Registrations Will Open Soon!', 
+    'Prize Pool: ₹5 Lakhs+', 'October 28–30, 2026 · GEHU Bhimtal',
+    '2000+ Participants Expected', '30+ Events Across Categories',
+    'Early Bird Ends Sept 30, 2026'
+  ];
+  const doubled = [...items, ...items];
+  document.getElementById('ticker-inner').innerHTML = doubled.map(i => `<span class="tick-item">${i}</span>`).join('');
+}
+
+// ==================== TAB ====================
+function switchTab(btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// ==================== REVEAL ====================
+function triggerReveal() {
+  setTimeout(() => {
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.93) el.classList.add('visible');
+    });
+  }, 50);
+}
+
+// ==================== SCROLL ====================
+window.addEventListener('scroll', () => {
+  const total = document.body.scrollHeight - window.innerHeight;
+  document.getElementById('scroll-prog').style.width = (total > 0 ? (window.scrollY / total) * 100 : 0) + '%';
+  document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 50);
+  triggerReveal();
+}, { passive: true });
+
+// ==================== CLICK BURST ====================
+window.addEventListener('click', e => {
+  const colors = ['#00f5ff', '#7b2fff', '#ff006e'];
+  for (let i = 0; i < 8; i++) {
+    const el = document.createElement('div');
+    el.className = 'burst';
+    const angle = (Math.PI * 2 / 8) * i;
+    const dist = 25 + Math.random() * 35;
+    el.style.cssText = `left:${e.clientX}px;top:${e.clientY}px;background:${colors[i % 3]};--tx:${Math.cos(angle) * dist}px;--ty:${Math.sin(angle) * dist}px`;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 600);
+  }
+});
+
+// ==================== INIT ====================
+renderEvents();
+renderResults();
+renderSponsors();
+renderGallery();
+renderTeam();
+startCountdown();
+initTicker();
+setTimeout(triggerReveal, 200);
+</script>
+
+<!-- CANVAS BACKGROUND -->
+<script>
+(function () {
+  const cv = document.getElementById('bg-canvas'), ctx = cv.getContext('2d');
+  let W, H, pts = [], mouse = { x: -2000, y: -2000 };
+  function resize() { W = cv.width = window.innerWidth; H = cv.height = window.innerHeight; }
+  function Pt() {
+    this.x = Math.random() * W; this.y = Math.random() * H;
+    this.vx = (Math.random() - .5) * .4; this.vy = (Math.random() - .5) * .4;
+    this.r = Math.random() * 1.8 + .7; this.alpha = Math.random() * .45 + .25;
+    this.col = Math.random() > .7 ? [123, 47, 255] : [0, 245, 255];
+    this.ph = Math.random() * Math.PI * 2; this.ps = Math.random() * .018 + .008;
+  }
+  Pt.prototype.update = function () {
+    this.ph += this.ps;
+    const dx = this.x - mouse.x, dy = this.y - mouse.y, d = Math.sqrt(dx * dx + dy * dy);
+    if (d < 160) { const f = (160 - d) / 160 * .7; this.vx += dx / d * f; this.vy += dy / d * f; }
+    this.vx *= .98; this.vy *= .98;
+    const s = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+    if (s > 2) { this.vx = this.vx / s * 2; this.vy = this.vy / s * 2; }
+    this.x += this.vx; this.y += this.vy;
+    if (this.x < 0) this.x = W; if (this.x > W) this.x = 0;
+    if (this.y < 0) this.y = H; if (this.y > H) this.y = 0;
+  };
+  Pt.prototype.draw = function () {
+    const a = this.alpha * (0.7 + 0.3 * Math.sin(this.ph));
+    const [r, g, b] = this.col;
+    ctx.beginPath(); ctx.arc(this.x, this.y, this.r * (1 + .2 * Math.sin(this.ph)), 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${r},${g},${b},${a})`; ctx.fill();
+    const gr = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.r * 3);
+    gr.addColorStop(0, `rgba(${r},${g},${b},${a * .35})`); gr.addColorStop(1, `rgba(${r},${g},${b},0)`);
+    ctx.beginPath(); ctx.arc(this.x, this.y, this.r * 3, 0, Math.PI * 2); ctx.fillStyle = gr; ctx.fill();
+  };
+  function drawLines() {
+    for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) {
+      const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y, d = Math.sqrt(dx * dx + dy * dy);
+      if (d < 120) {
+        const a = (1 - d / 120) * .22;
+        const mx = (pts[i].x + pts[j].x) / 2, my = (pts[i].y + pts[j].y) / 2;
+        const md = Math.sqrt((mx - mouse.x) ** 2 + (my - mouse.y) ** 2);
+        const boost = md < 180 ? (1 - md / 180) * .7 : 0;
+        const [r, g, b] = boost > 0 ? [255, 0, 110] : [0, 245, 255];
+        ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y);
+        ctx.strokeStyle = `rgba(${r},${g},${b},${a + boost * .4})`; ctx.lineWidth = boost > 0 ? .8 : .4; ctx.stroke();
+      }
+    }
+  }
+  const hexes = Array.from({ length: 7 }, () => ({
+    x: Math.random() * 1400, y: Math.random() * 900,
+    r: Math.random() * 45 + 18, rot: Math.random() * Math.PI * 2,
+    rs: (Math.random() - .5) * .003, a: Math.random() * .055 + .015,
+    vx: (Math.random() - .5) * .18, vy: (Math.random() - .5) * .18
+  }));
+  function drawHex(h) {
+    ctx.beginPath();
+    for (let i = 0; i < 6; i++) { const a = h.rot + i * Math.PI / 3; const x = h.x + h.r * Math.cos(a), y = h.y + h.r * Math.sin(a); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
+    ctx.closePath(); ctx.strokeStyle = `rgba(0,245,255,${h.a})`; ctx.lineWidth = .5; ctx.stroke();
+  }
+  function updHex(h) {
+    h.rot += h.rs; h.x += h.vx; h.y += h.vy;
+    if (h.x < -100) h.x = W + 100; if (h.x > W + 100) h.x = -100;
+    if (h.y < -100) h.y = H + 100; if (h.y > H + 100) h.y = -100;
+  }
+  function drawGrid() {
+    ctx.strokeStyle = 'rgba(0,245,255,0.02)'; ctx.lineWidth = .5;
+    for (let x = 0; x < W; x += 65) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+    for (let y = 0; y < H; y += 65) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+  }
+  function init() { pts = Array.from({ length: 80 }, () => new Pt()); }
+  function animate() {
+    ctx.clearRect(0, 0, W, H); drawGrid();
+    hexes.forEach(h => { updHex(h); drawHex(h); });
+    drawLines(); pts.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animate);
+  }
+  window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+  window.addEventListener('touchmove', e => { mouse.x = e.touches[0].clientX; mouse.y = e.touches[0].clientY; }, { passive: true });
+  window.addEventListener('resize', () => { resize(); init(); });
+  resize(); init(); animate();
+})();
+</script>
+</body>
+</html>
