@@ -237,7 +237,19 @@ section.active{display:block}
   to{opacity:1;transform:translateY(0) scale(1);}
 }
 .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:24px}
-
+.board-heading{
+  font-family:var(--orb);
+  font-size:15px;
+  font-weight:900;
+  color:var(--c1);
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin:44px 0 20px;
+  padding-bottom:10px;
+  border-bottom:1px solid rgba(0,245,255,0.15);
+  text-shadow:0 0 15px rgba(0,245,255,0.25);
+}
+.board-heading:first-of-type{margin-top:0}
 .team-card{
   position:relative;
   border-radius:4px;
@@ -996,7 +1008,7 @@ section.active{display:block}
 <!-- TEAM -->
 <section id="sec-team">
   <div class="sec-hd reveal"><div class="sec-tag">THE PEOPLE</div><h2 class="sec-title">MEET THE <span>TEAM</span></h2><p class="sec-sub">The dedicated student organizers and faculty who bring Prayukti to life</p></div>
-  <div class="team-grid" id="team-grid"></div>
+<div id="team-container"></div>
 </section>
 
 <!-- REGISTER -->
@@ -1410,11 +1422,16 @@ const GALLERY=[
 ];
 
 const TEAM=[
-  {name:'Srishti Rautela',role:'Convenor',dept:'CSE Department',color:'#00f5ff',init:'SR',photo:'assets/team/my.jpeg',bio:'Convenor of Prayukti TechFest 2026, driven by a passion for technology, innovation, and collaborative leadership. Committed to building opportunities that inspire creativity, learning, and excellence.'},
+  {name:'Srishti Rautela',role:'Convenor',dept:'CSE Department',board:'Core Committee',color:'#00f5ff',init:'SR',photo:'assets/team/my.jpeg',bio:'Convenor of Prayukti TechFest 2026, driven by a passion for technology, innovation, and collaborative leadership. Committed to building opportunities that inspire creativity, learning, and excellence.'},
 
+  // Documentation and Content Board
+  {name:'Member Name',role:'Head, Documentation & Content',dept:'CSE Department',board:'Documentation and Content Board',color:'#7b2fff',init:'MN',photo:'assets/team/member1.jpeg',bio:'Short bio here.'},
+  {name:'Member Name 2',role:'Content Writer',dept:'IT Department',board:'Documentation and Content Board',color:'#7b2fff',init:'M2',photo:'assets/team/member2.jpeg',bio:'Short bio here.'},
 
+  // Networking and Social Media Board
+  {name:'Member Name 3',role:'Head, Social Media',dept:'CSE Department',board:'Networking and Social Media Board',color:'#ff006e',init:'M3',photo:'assets/team/member3.jpeg',bio:'Short bio here.'},
+  {name:'Member Name 4',role:'Social Media Coordinator',dept:'ECE Department',board:'Networking and Social Media Board',color:'#ff006e',init:'M4',photo:'assets/team/member4.jpeg',bio:'Short bio here.'},
 ];
-
 // ==================== STATE ====================
 let currentFilter='all', cdPrev={}, currentStep=1, teamSize=2;
 
