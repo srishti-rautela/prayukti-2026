@@ -12,7 +12,7 @@ document.getElementById("password").value;
 
 const response=await fetch(
 
-"https://prayukti-backend.onrender.com/api/admin/login",
+"http://localhost:5000/api/admin/login",
 
 {
 

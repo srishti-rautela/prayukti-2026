@@ -462,6 +462,457 @@ section.active{display:block}
   .glitch{font-size:clamp(24px,10vw,42px)}
   .glitch span{font-size:clamp(12px,4.5vw,20px);letter-spacing:1.5px}
 }
+/* ===== PRAYUKTI PASS CARDS ===== */
+
+.pass-section{
+  width:100%;
+  margin:0 auto 55px;
+  padding:0 0 10px;
+}
+
+.pass-heading{
+  text-align:center;
+  margin-bottom:28px;
+}
+
+.pass-heading .pass-tag{
+  font-family:var(--orb);
+  font-size:9px;
+  letter-spacing:3px;
+  color:var(--c1);
+  opacity:.8;
+  margin-bottom:8px;
+}
+
+.pass-heading h3{
+  font-family:var(--orb);
+  font-size:clamp(20px,3vw,30px);
+  font-weight:900;
+  color:#fff;
+  letter-spacing:2px;
+}
+
+.pass-heading h3 span{
+  color:var(--c1);
+}
+
+/* Cards container */
+.pass-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* Individual pass */
+.pass-card{
+  position:relative;
+  min-height:250px;
+  padding:30px 24px 25px;
+  border-radius:18px;
+  overflow:hidden;
+  text-align:center;
+  background:rgba(255,255,255,.025);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  transition:
+    transform .4s ease,
+    box-shadow .4s ease,
+    border-color .4s ease;
+  isolation:isolate;
+}
+
+/* Animated glow */
+.pass-card::before{
+  content:'';
+  position:absolute;
+  inset:-2px;
+  border-radius:20px;
+  z-index:-2;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    var(--pass-color),
+    transparent,
+    var(--pass-color),
+    transparent
+  );
+  background-size:300% 300%;
+  animation:passBorder 4s linear infinite;
+  opacity:.8;
+}
+
+.pass-card::after{
+  content:'';
+  position:absolute;
+  inset:2px;
+  border-radius:16px;
+  background:linear-gradient(
+    145deg,
+    rgba(10,10,30,.96),
+    rgba(10,10,35,.75)
+  );
+  z-index:-1;
+}
+
+@keyframes passBorder{
+  0%{
+    background-position:0% 50%;
+  }
+  50%{
+    background-position:100% 50%;
+  }
+  100%{
+    background-position:0% 50%;
+  }
+}
+
+/* Floating glow */
+.pass-glow{
+  position:absolute;
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  background:var(--pass-color);
+  filter:blur(70px);
+  opacity:.13;
+  top:-50px;
+  right:-30px;
+  animation:passGlow 3s ease-in-out infinite alternate;
+  pointer-events:none;
+}
+
+@keyframes passGlow{
+  from{
+    transform:scale(.8);
+    opacity:.08;
+  }
+  to{
+    transform:scale(1.25);
+    opacity:.2;
+  }
+}
+
+/* Hover */
+.pass-card:hover{
+  transform:translateY(-10px) scale(1.02);
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.45),
+    0 0 35px var(--pass-shadow);
+}
+
+/* Pass icon */
+.pass-icon{
+  width:65px;
+  height:65px;
+  margin:0 auto 15px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--pass-color);
+  box-shadow:
+    0 0 20px var(--pass-shadow),
+    inset 0 0 15px var(--pass-shadow);
+  animation:iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat{
+  0%,100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(-6px);
+  }
+}
+
+/* Pass name */
+.pass-name{
+  font-family:var(--orb);
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:2px;
+  color:var(--pass-color);
+  text-shadow:0 0 18px var(--pass-shadow);
+  margin-bottom:10px;
+}
+
+/* Description */
+.pass-desc{
+  min-height:42px;
+  font-family:var(--raj);
+  font-size:14px;
+  font-weight:600;
+  line-height:1.5;
+  color:rgba(220,220,255,.72);
+  margin-bottom:18px;
+}
+
+/* Price */
+.pass-price{
+  font-family:var(--orb);
+  font-size:28px;
+  font-weight:900;
+  color:#fff;
+  text-shadow:0 0 15px var(--pass-shadow);
+}
+
+.pass-price span{
+  font-family:var(--raj);
+  font-size:12px;
+  color:rgba(200,200,255,.45);
+  margin-left:3px;
+}
+
+/* Small shine animation */
+.pass-shine{
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:50%;
+  height:100%;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.08),
+    transparent
+  );
+  transform:skewX(-20deg);
+  animation:passShine 5s ease-in-out infinite;
+  pointer-events:none;
+}
+
+@keyframes passShine{
+  0%,60%{
+    left:-100%;
+  }
+  100%{
+    left:150%;
+  }
+}
+
+/* GOLD */
+.pass-gold{
+  --pass-color:#ffd700;
+  --pass-shadow:rgba(255,215,0,.45);
+}
+
+/* SILVER */
+.pass-silver{
+  --pass-color:#d9e2ec;
+  --pass-shadow:rgba(210,225,240,.4);
+}
+
+/* BRONZE */
+.pass-bronze{
+  --pass-color:#cd7f32;
+  --pass-shadow:rgba(205,127,50,.45);
+}
+/* BATTLE OF THE BANDS */
+.pass-bands{
+  --pass-color:#ff006e;
+  --pass-shadow:rgba(255,0,110,.5);
+}
+
+.pass-bands .pass-icon{
+  font-size:28px;
+}
+/* Mobile */
+@media(max-width:768px){
+  .pass-grid{
+    grid-template-columns:1fr;
+    max-width:430px;
+  }
+
+  .pass-card{
+    min-height:230px;
+  }
+
+  .pass-section{
+    margin-bottom:45px;
+  }
+}
+@media(min-width:769px) and (max-width:1050px){
+  .pass-grid{
+    grid-template-columns:repeat(2,1fr);
+    max-width:750px;
+  }
+}
+/* ===== PASS SELECTION ===== */
+
+.pass-selection-box{
+  margin:0 0 24px;
+  padding:20px;
+  border:1px solid rgba(0,245,255,.12);
+  border-radius:16px;
+  background:rgba(0,245,255,.025);
+}
+
+.pass-selection-title{
+  font-family:var(--orb);
+  color:var(--c1);
+  font-size:11px;
+  letter-spacing:2px;
+  margin-bottom:6px;
+}
+
+.pass-selection-sub{
+  font-size:11px;
+  color:rgba(180,180,255,.5);
+  line-height:1.6;
+  margin-bottom:16px;
+}
+
+.pass-radio-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.pass-radio-option{
+  position:relative;
+  cursor:pointer;
+}
+
+.pass-radio-option input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+
+.pass-radio-content{
+  min-height:76px;
+  padding:13px 14px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;
+  background:rgba(255,255,255,.025);
+  display:flex;
+  align-items:center;
+  gap:12px;
+  transition:.3s ease;
+}
+
+.pass-radio-icon{
+  width:40px;
+  height:40px;
+  flex-shrink:0;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  background:rgba(255,255,255,.04);
+}
+
+.pass-radio-content span:nth-child(2){
+  flex:1;
+}
+
+.pass-radio-content strong{
+  display:block;
+  font-family:var(--raj);
+  color:#fff;
+  font-size:14px;
+  margin-bottom:3px;
+}
+
+.pass-radio-content small{
+  display:block;
+  font-size:10px;
+  color:rgba(180,180,255,.45);
+}
+
+.pass-radio-content b{
+  font-family:var(--orb);
+  font-size:14px;
+  color:#fff;
+  white-space:nowrap;
+}
+
+/* Hover */
+.pass-radio-option:hover .pass-radio-content{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,.05);
+}
+
+/* Selected */
+.pass-radio-option input:checked + .pass-radio-content{
+  transform:translateY(-3px);
+  background:rgba(0,245,255,.07);
+  border-color:var(--c1);
+  box-shadow:
+    0 0 20px rgba(0,245,255,.12),
+    inset 0 0 20px rgba(0,245,255,.03);
+}
+
+/* Individual colors */
+
+.pass-radio-option.golden input:checked + .pass-radio-content{
+  border-color:#ffd700;
+  box-shadow:0 0 25px rgba(255,215,0,.15);
+}
+
+.pass-radio-option.golden input:checked + .pass-radio-content strong,
+.pass-radio-option.golden input:checked + .pass-radio-content b{
+  color:#ffd700;
+}
+
+.pass-radio-option.silver input:checked + .pass-radio-content{
+  border-color:#d9e2ec;
+  box-shadow:0 0 25px rgba(210,225,240,.12);
+}
+
+.pass-radio-option.silver input:checked + .pass-radio-content strong,
+.pass-radio-option.silver input:checked + .pass-radio-content b{
+  color:#d9e2ec;
+}
+
+.pass-radio-option.bronze input:checked + .pass-radio-content{
+  border-color:#cd7f32;
+  box-shadow:0 0 25px rgba(205,127,50,.15);
+}
+
+.pass-radio-option.bronze input:checked + .pass-radio-content strong,
+.pass-radio-option.bronze input:checked + .pass-radio-content b{
+  color:#cd7f32;
+}
+
+.pass-radio-option.bands input:checked + .pass-radio-content{
+  border-color:#ff006e;
+  box-shadow:0 0 25px rgba(255,0,110,.15);
+}
+
+.pass-radio-option.bands input:checked + .pass-radio-content strong,
+.pass-radio-option.bands input:checked + .pass-radio-content b{
+  color:#ff006e;
+}
+
+.selected-payment{
+  margin-top:14px;
+  padding:12px;
+  border-radius:9px;
+  background:rgba(0,255,157,.04);
+  border:1px solid rgba(0,255,157,.12);
+  text-align:center;
+  color:rgba(200,200,255,.55);
+  font-size:11px;
+}
+
+.selected-payment strong{
+  color:var(--c4);
+  font-family:var(--orb);
+  font-size:17px;
+  margin-left:5px;
+}
+
+@media(max-width:768px){
+  .pass-radio-grid{
+    grid-template-columns:1fr;
+  }
+}
 </style>
 <style>
 /* ===== INTRO VIDEO SCREEN ===== */
@@ -945,6 +1396,93 @@ section.active{display:block}
       <div class="stat-card"><div class="stat-n">50+</div><div class="stat-l">Colleges</div></div>
       <div class="stat-card"><div class="stat-n">3</div><div class="stat-l">Days</div></div>
     </div>
+    </div>
+
+  <!-- ===== PRAYUKTI PASSES ===== -->
+  <div class="pass-section">
+
+    <div class="pass-heading reveal">
+      <div class="pass-tag">CHOOSE YOUR ACCESS LEVEL</div>
+      <h3>PRAYUKTI <span>PASSES</span></h3>
+    </div>
+
+    <div class="pass-grid">
+
+      <!-- GOLD PASS -->
+      <div class="pass-card pass-gold reveal rd1">
+        <div class="pass-glow"></div>
+        <div class="pass-shine"></div>
+
+        <div class="pass-icon">👑</div>
+
+        <div class="pass-name">GOLDEN PASS</div>
+
+        <div class="pass-desc">
+          Participate in unlimited events  (except Battle of the Bands)
+          For further details, contact the fest coordinator.
+        </div>
+
+        <div class="pass-price">
+          ₹1600 <span>/ Team</span>
+        </div>
+      </div>
+
+      <!-- SILVER PASS -->
+      <div class="pass-card pass-silver reveal rd2">
+        <div class="pass-glow"></div>
+        <div class="pass-shine"></div>
+
+        <div class="pass-icon">⚡</div>
+
+        <div class="pass-name">SILVER PASS</div>
+
+        <div class="pass-desc">
+          Participate in any 5 events  (except Battle of the Bands)
+          For further details, contact the fest coordinator.
+        </div>
+
+        <div class="pass-price">
+          ₹1100 <span>/ Team</span>
+        </div>
+      </div>
+
+      <!-- BRONZE PASS -->
+      <div class="pass-card pass-bronze reveal rd3">
+        <div class="pass-glow"></div>
+        <div class="pass-shine"></div>
+
+        <div class="pass-icon">🔥</div>
+
+        <div class="pass-name">BRONZE PASS</div>
+
+        <div class="pass-desc">
+          Participate in any 2 events (except Battle of the Bands)
+          For further details, contact the fest coordinator.
+        </div>
+
+        <div class="pass-price">
+          ₹600 <span>/ Team</span>
+        </div>
+      </div>
+      <!-- BATTLE OF THE BANDS -->
+<div class="pass-card pass-bands reveal rd1">
+  <div class="pass-glow"></div>
+  <div class="pass-shine"></div>
+
+  <div class="pass-icon">🎸</div>
+
+  <div class="pass-name">BATTLE OF THE BANDS</div>
+
+  <div class="pass-desc">
+    Team entry for Battle of the Bands
+  </div>
+
+  <div class="pass-price">
+    ₹6000 <span>/ TEAM</span>
+  </div>
+</div>
+    </div>
+
   </div>
 
   <!-- ABOUT PRAYUKTI -->
@@ -1234,7 +1772,104 @@ section.active{display:block}
         <!-- STEP 8: PAYMENT + REVIEW -->
         <div class="form-step" id="step8">
           <h3 class="step-heading">💳 PAYMENT &amp; SUBMIT</h3>
-          <p class="step-sub">Pay to UPI ID: <strong style="color:var(--c1)">8126344234@ibl</strong> — then upload screenshot below.</p>
+          <p class="step-sub">Pay to UPI ID: <strong style="color:var(--c1)">8126344234@ibl</strong> </p>
+          <!-- ===== PASS SELECTION ===== -->
+<div class="pass-selection-box">
+
+  <div class="pass-selection-title">
+    🎟️ SELECT YOUR PASS
+  </div>
+
+  <p class="pass-selection-sub">
+    Select the pass you are paying for. The selected amount will be recorded on your participant pass.
+  </p>
+
+  <div class="pass-radio-grid">
+
+    <label class="pass-radio-option golden">
+      <input
+        type="radio"
+        name="passType"
+        value="Golden Pass"
+        data-amount="1600"
+        required
+      >
+
+      <span class="pass-radio-content">
+        <span class="pass-radio-icon">👑</span>
+        <span>
+          <strong>Golden Pass</strong>
+          <small>Unlimited Events</small>
+        </span>
+        <b>₹1600</b>
+      </span>
+    </label>
+
+
+    <label class="pass-radio-option silver">
+      <input
+        type="radio"
+        name="passType"
+        value="Silver Pass"
+        data-amount="1100"
+      >
+
+      <span class="pass-radio-content">
+        <span class="pass-radio-icon">⚡</span>
+        <span>
+          <strong>Silver Pass</strong>
+          <small>Any 5 Events</small>
+        </span>
+        <b>₹1100</b>
+      </span>
+    </label>
+
+
+    <label class="pass-radio-option bronze">
+      <input
+        type="radio"
+        name="passType"
+        value="Bronze Pass"
+        data-amount="600"
+      >
+
+      <span class="pass-radio-content">
+        <span class="pass-radio-icon">🔥</span>
+        <span>
+          <strong>Bronze Pass</strong>
+          <small>Any 2 Events</small>
+        </span>
+        <b>₹600</b>
+      </span>
+    </label>
+
+
+    <label class="pass-radio-option bands">
+      <input
+        type="radio"
+        name="passType"
+        value="Battle of the Bands"
+        data-amount="6000"
+      >
+
+      <span class="pass-radio-content">
+        <span class="pass-radio-icon">🎸</span>
+        <span>
+          <strong>Battle of the Bands</strong>
+          <small>Per Team</small>
+        </span>
+        <b>₹6000</b>
+      </span>
+    </label>
+
+  </div>
+
+  <div class="selected-payment">
+    Selected Amount:
+    <strong id="selectedPassAmount">₹0</strong>
+  </div>
+
+</div>
           <div style="text-align:center;margin-bottom:20px">
   <img src="assets/paymentqr.jpeg" alt="Payment QR Code" style="max-width:220px;border-radius:12px;border:1px solid rgba(0,245,255,0.2)">
   <p style="font-size:12px;color:var(--c1);margin-top:8px">Scan to pay </p>
@@ -1432,6 +2067,14 @@ const GALLERY=[
 const TEAM=[
   {name:'Srishti Rautela',role:'Convenor',dept:'CSE Department',board:'CONVENOR',color:'#00f5ff',init:'SR',photo:'assets/team/my.jpeg',bio:'Convenor of Prayukti TechFest 2026, driven by a passion for technology, innovation, and collaborative leadership. Committed to building opportunities that inspire creativity, learning, and excellence.'},
 
+    
+  // Event Innovation and Strategy Board
+  {name:'Gaurav Singh Bora',role: "Secretary",dept:' CSE Department',board:'Event Innovation and Strategy Board',color:'#ff006e',init:'M3',photo:'assets/team/gaurav.jpeg',bio:'Secretary of the Event Innovation and Strategy Board, responsible for managing event innovation and strategy efforts.'},
+   {name:'Priyanka',role: "Co-Secretary",dept:' CSE Department',board:'Event Innovation and Strategy Board',color:'#ff006e',init:'M3',photo:'assets/team/priyanka.jpeg',bio:'Co-Secretary of the Event Innovation and Strategy Board, supporting event innovation and strategy efforts.'},
+    {name:'Rakshit Negi',role: "Co-Secretary",dept:' CSE Department',board:'Event Innovation and Strategy Board',color:'#ff006e',init:'M3',photo:'assets/team/rakshit.jpeg',bio:'Co-Secretary of the Event Innovation and Strategy Board, supporting event innovation and strategy efforts.'},
+  {name:'Pushpesh',role: "Member",dept:' CSE Department',board:'Event Innovation and Strategy Board',color:'#ff006e',init:'M3',photo:'assets/team/pushpesh.jpeg',bio:'Member of the Event Innovation and Strategy Board, supporting event innovation and strategy efforts.'},
+ {name:'Archana',role: "Member",dept:' CSE Department',board:'Event Innovation and Strategy Board',color:'#ff006e',init:'M3',photo:'assets/team/archana.jpeg',bio:'Member of the Event Innovation and Strategy Board, supporting event innovation and strategy efforts.'},
+ 
   // Documentation and Content Board
   {name:'Shreya Rawat',role:'Secretary',dept:'CSE Department',board:'Documentation and Content Board',color:'#7b2fff',init:'MN',photo:'assets/team/shreya.jpeg',bio:'Secretary of the Documentation and Content Board, responsible for managing content creation and documentation efforts.'},
   {name:'Pavitra Pal Singh',role:'Co- Secretary',dept:'SOM Department',board:'Documentation and Content Board',color:'#7b2fff',init:'M2',photo:'assets/team/pavitra.jpeg',bio:'Co- Secretary of the Documentation and Content Board, supporting content creation and documentation efforts.'},
@@ -1439,12 +2082,13 @@ const TEAM=[
   {name:'Arshpreet Kaur',role:'Member',dept:'SOM Department',board:'Documentation and Content Board',color:'#7b2fff',init:'M2',photo:'assets/team/arshpreet.jpeg',bio:'Member of the Documentation and Content Board, contributing to content creation and documentation efforts.'},
   // Networking and Social Media Board
   {name:'Yashvardhan',role: "Secretary",dept:' SOM Department',board:'Networking and Social Media Board',color:'#ff006e',init:'M3',photo:'assets/team/yash.jpeg',bio:'Secretary of the Networking and Social Media Board, responsible for managing networking and social media efforts.'},
-  {name:'Harshit Belal',role:'Social Media Coordinator',dept:'CSE Department',board:'Networking and Social Media Board',color:'#ff006e',init:'M4',photo:'assets/team/harshit.jpeg',bio:'Social Media Coordinator of the Networking and Social Media Board, managing social media presence and engagement.'},
+  {name:'Harshit Belal',role:'Co-Secretary',dept:'CSE Department',board:'Networking and Social Media Board',color:'#ff006e',init:'M4',photo:'assets/team/harshit.jpeg',bio:'Co-Secretary of the Networking and Social Media Board, managing social media presence and engagement.'},
+  {name:'Aarav',role:'Co-Secretary',dept:'CSE Department',board:'Networking and Social Media Board',color:'#ff006e',init:'M4',photo:'assets/team/arav.jpeg',bio:'Co-Secretary of the Networking and Social Media Board, managing social media presence and engagement.'},
 
   // Hospitality Board
   {name:'Kamaljeet',role: "Secretary",dept:' SOM Department',board:'Hospitality Board',color:'#ff006e',init:'M3',photo:'assets/team/kamaljeet.jpeg',bio:'Secretary of the Hospitality Board, responsible for managing hospitality arrangements.'},
   {name:'Harjit ',role:'Co-Secretary',dept:'SOM Department',board:'Hospitality Board',color:'#ff006e',init:'M4',photo:'assets/team/harjit.jpeg',bio:'Co-Secretary of the Hospitality Board, supporting hospitality arrangements.'},
-     {name:'Rishabh',role:'Co-Secretary',dept:'SOM Department',board:'Hospitality Board',color:'#ff006e',init:'M4',photo:'assets/team/rishabh.jpeg',bio:'Co-Secretary of the Hospitality Board, supporting hospitality arrangements.'},
+     {name:'Rishabh',role:'Co-Secretary',dept:'SOM Department',board:'Hospitality Board',color:'#ff006e',init:'M4',photo:'assets/team/risab.jpeg',bio:'Co-Secretary of the Hospitality Board, supporting hospitality arrangements.'},
    {name:'Agrima Verma',role:'Member',dept:'SOM Department',board:'Hospitality Board',color:'#ff006e',init:'M4',photo:'assets/team/agrima.jpeg',bio:'Member of the Hospitality Board, supporting hospitality arrangements.'},
 
    
@@ -1453,20 +2097,19 @@ const TEAM=[
   {name:'Pallavi Pandey',role:'Co-Secretary',dept:'SOC Department',board:'Design and Creative Board',color:'#ff006e',init:'M4',photo:'assets/team/pallavi.jpeg',bio:'Co-Secretary of the Design and Creative Board, supporting design and creative efforts.'},
   {name:'Disha Upadhyay',role:'Co-Secretary',dept:'SOC Department',board:'Design and Creative Board',color:'#ff006e',init:'M4',photo:'assets/team/disha.jpeg',bio:'Co-Secretary of the Design and Creative Board, supporting design and creative efforts.'},
    {name:'Nikita',role:'Member',dept:'SOM Department',board:'Design and Creative Board',color:'#ff006e',init:'M4',photo:'assets/team/nikita.jpeg',bio:'Member of the Design and Creative Board, supporting design and creative efforts.'},
-   {name:'Neha',role:'Member',dept:'SOM Department',board:'Design and Creative Board',color:'#ff006e',init:'M4',photo:'assets/team/neha.jpeg',bio:'Member of the Design and Creative Board, supporting design and creative efforts.'},
    
-  // Event Innovation and Strategy Board
-  {name:'Gaurav Singh Bora',role: "Secretary",dept:' CSE Department',board:'Event Innovation and Strategy Board',color:'#ff006e',init:'M3',photo:'assets/team/gaurav.jpeg',bio:'Secretary of the Event Innovation and Strategy Board, responsible for managing event innovation and strategy efforts.'},
-   {name:'Priyanka',role: "Co-Secretary",dept:' CSE Department',board:'Event Innovation and Strategy Board',color:'#ff006e',init:'M3',photo:'assets/team/priyanka.jpeg',bio:'Co-Secretary of the Event Innovation and Strategy Board, supporting event innovation and strategy efforts.'},
-    {name:'Rakshit Negi',role: "Co-Secretary",dept:' CSE Department',board:'Event Innovation and Strategy Board',color:'#ff006e',init:'M3',photo:'assets/team/rakshit.jpeg',bio:'Co-Secretary of the Event Innovation and Strategy Board, supporting event innovation and strategy efforts.'},
-  {name:'Pushpesh',role: "Member",dept:' CSE Department',board:'Event Innovation and Strategy Board',color:'#ff006e',init:'M3',photo:'assets/team/pushpesh.jpeg',bio:'Member of the Event Innovation and Strategy Board, supporting event innovation and strategy efforts.'},
- 
     // Public Relation and Outreach Team 
   {name:'Nidhi Shukla',role: "Secretary",dept:' SOC Department',board:'Public Relation and Outreach Team',color:'#ff006e',init:'M3',photo:'assets/team/nidhi.jpeg',bio:'Secretary of the Public Relation and Outreach Team, responsible for managing public relations and outreach efforts.'},
    {name:'Devansh',role: "Co-Secretary",dept:' SOC Department',board:'Public Relation and Outreach Team',color:'#ff006e',init:'M3',photo:'assets/team/dev.jpeg',bio:'Co-Secretary of the Public Relation and Outreach Team, supporting public relations and outreach efforts.'},
   {name:'Sanchi Bhatia',role: "Co-Secretary",dept:' SOC Department',board:'Public Relation and Outreach Team',color:'#ff006e',init:'M3',photo:'assets/team/sanchi.jpeg',bio:'Co-Secretary of the Public Relation and Outreach Team, supporting public relations and outreach efforts.'},
-  
-   // Transportation Board 
+  {name:'Aditi Bhatt',role: "Member",dept:' SOM Department',board:'Public Relation and Outreach Team',color:'#ff006e',init:'M3',photo:'assets/team/aditi.jpeg',bio:'Member of the Public Relation and Outreach Team, supporting public relations and outreach efforts.'},
+    {name:'Khushi',role: "Member",dept:' SOM Department',board:'Public Relation and Outreach Team',color:'#ff006e',init:'M3',photo:'assets/team/khushi.jpeg',bio:'Member of the Public Relation and Outreach Team, supporting public relations and outreach efforts.'},
+    {name:'Ankit',role: "Member",dept:' SOM Department',board:'Public Relation and Outreach Team',color:'#ff006e',init:'M3',photo:'assets/team/ankit.jpeg',bio:'Member of the Public Relation and Outreach Team, supporting public relations and outreach efforts.'},
+    {name:'Abhay',role: "Member",dept:' SOM Department',board:'Public Relation and Outreach Team',color:'#ff006e',init:'M3',photo:'assets/team/abhay.jpeg',bio:'Member of the Public Relation and Outreach Team, supporting public relations and outreach efforts.'},
+    {name:'Saksham',role: "Member",dept:' SOM Department',board:'Public Relation and Outreach Team',color:'#ff006e',init:'M3',photo:'assets/team/saksham.jpeg',bio:'Member of the Public Relation and Outreach Team, supporting public relations and outreach efforts.'},
+   {name:'Himanshu Lohumi',role: "Member",dept:' SOM Department',board:'Public Relation and Outreach Team',color:'#ff006e',init:'M3',photo:'assets/team/hima.jpeg',bio:'Member of the Public Relation and Outreach Team, supporting public relations and outreach efforts.'},
+   
+  // Transportation Board 
   {name:'Vikas Kumar Jha',role: "Secretary",dept:' CSE Department',board:'Transportation Board',color:'#ff006e',init:'M3',photo:'assets/team/vikas.jpeg',bio:'Secretary of the Transportation Board, responsible for managing transportation arrangements.'},
   
   // Finance Board
@@ -1914,12 +2557,69 @@ function buildSummary() {
     ['Selected Events', evs],
     ['Accommodation', acc],
     ['Transportation', trans],
-    ['Registration Fee', '₹800 per team'],
+    ['Registration Fee', (() => {
+    const selectedPass =
+        document.querySelector('input[name="passType"]:checked');
+
+    if (!selectedPass) return '—';
+
+    const amount = Number(selectedPass.dataset.amount);
+
+    if (selectedPass.value === 'Battle of the Bands') {
+        return `₹${amount.toLocaleString('en-IN')} per team`;
+    }
+
+    return `₹${amount.toLocaleString('en-IN')}`;
+})()],
   ];
   document.getElementById('summary-table').innerHTML = rows.map(([k, v]) =>
     `<tr><td>${k}</td><td style="color:#e0e0ff">${v}</td></tr>`).join('');
 }
+// ==================== PASS FEE UPDATE ====================
+function updateRegistrationFee() {
 
+    const selectedPass =
+        document.querySelector('input[name="passType"]:checked');
+
+    const amountElement =
+        document.getElementById('selectedPassAmount');
+
+    // No pass selected
+    if (!selectedPass) {
+
+        if (amountElement) {
+            amountElement.textContent = '₹0';
+        }
+
+        buildSummary();
+        return;
+    }
+
+    const passName = selectedPass.value;
+    const amount = Number(selectedPass.dataset.amount);
+
+    // Update "Selected Amount"
+    if (amountElement) {
+        amountElement.textContent =
+            `₹${amount.toLocaleString('en-IN')}`;
+    }
+
+    // Update Registration Summary
+    buildSummary();
+}
+
+
+// ==================== PASS RADIO LISTENER ====================
+document.querySelectorAll('input[name="passType"]')
+    .forEach(radio => {
+
+        radio.addEventListener('change', function () {
+
+            updateRegistrationFee();
+
+        });
+
+    });
 // ==================== TOAST ====================
 function showToast(msg, type = 'info') {
   const ex = document.querySelector('.prayukti-toast');
@@ -1939,6 +2639,26 @@ function showToast(msg, type = 'info') {
 document.addEventListener('DOMContentLoaded', () => {
   renderEventCheckboxes();
   updateTeamSize();
+  // ===============================
+// PASS SELECTION
+// ===============================
+
+document.querySelectorAll('input[name="passType"]')
+  .forEach(pass => {
+
+    pass.addEventListener('change', function () {
+
+      const amount =
+        Number(this.dataset.amount);
+
+      document.getElementById(
+        'selectedPassAmount'
+      ).innerText =
+        '₹' + amount.toLocaleString('en-IN');
+
+    });
+
+  });
 
   // Registration form submit
   // reg-form submit is handled by handleRegSubmit() called from button onclick
@@ -2003,36 +2723,98 @@ document.addEventListener('DOMContentLoaded', () => {
         city: _sharedCity
       });
 
-      const selectedEventIds = [...document.querySelectorAll('#event-checkbox-grid input:checked')].map(c => Number(c.value));
+      const selectedEventIds = [
+  ...document.querySelectorAll('#event-checkbox-grid input:checked')
+].map(c => Number(c.value));
 
-      const formData = {
-        teamName: document.getElementById('teamName').value,
-        teamSize: teamSz,
-        leaderName: document.getElementById('m1_name').value,
-        leaderEmail: document.getElementById('m1_email').value,
-        leaderPhone: document.getElementById('m1_phone').value,
-        leaderAadhaar: document.getElementById('m1_aadhaar').value,
-        college: _sharedCollege,
-        course: document.getElementById('m1_course').value,
-        city: _sharedCity,
-        state: document.getElementById('teamState').value,
-        accommodation: document.querySelector('input[name="accommodation"]:checked')?.value === 'yes',
-        transport: document.querySelector('input[name="transportation"]:checked')?.value === 'yes',
-        arrivalDate:   document.querySelector('input[name="transportation"]:checked')?.value === 'yes' ? document.getElementById('arrival_date').value   || null : null,
-        arrivalTime:   document.querySelector('input[name="transportation"]:checked')?.value === 'yes' ? document.getElementById('arrival_time').value   || null : null,
-        departureDate: document.querySelector('input[name="transportation"]:checked')?.value === 'yes' ? document.getElementById('departure_date').value || null : null,
-        departureTime: document.querySelector('input[name="transportation"]:checked')?.value === 'yes' ? document.getElementById('departure_time').value || null : null,
-        emergencyName: document.getElementById('emergency_name').value,
-        emergencyPhone: document.getElementById('emergency_phone').value,
-        txnId: txn,
-        password: document.getElementById('reg_password').value,
-        members,
-        events: selectedEventIds
-      };
 
+// ===============================
+// PASS DETAILS
+// ===============================
+
+const selectedPass =
+  document.querySelector('input[name="passType"]:checked');
+
+if (!selectedPass) {
+  showToast('⚠️ Please select a pass.', 'warn');
+
+  btn.disabled = false;
+  btn.textContent = 'SUBMIT REGISTRATION →';
+
+  return;
+}
+
+const passName = selectedPass.value;
+
+const passAmount =
+  Number(selectedPass.dataset.amount);
+
+console.log("SELECTED PASS:", passName);
+console.log("PASS AMOUNT:", passAmount);
+
+
+// ===============================
+// FORM DATA
+// ===============================
+
+const formData = {
+  teamName: document.getElementById('teamName').value,
+  teamSize: teamSz,
+
+  leaderName: document.getElementById('m1_name').value,
+  leaderEmail: document.getElementById('m1_email').value,
+  leaderPhone: document.getElementById('m1_phone').value,
+  leaderAadhaar: document.getElementById('m1_aadhaar').value,
+
+  college: _sharedCollege,
+  course: document.getElementById('m1_course').value,
+  city: _sharedCity,
+  state: document.getElementById('teamState').value,
+
+  accommodation:
+    document.querySelector(
+      'input[name="accommodation"]:checked'
+    )?.value === 'yes',
+
+  transport:
+    document.querySelector(
+      'input[name="transportation"]:checked'
+    )?.value === 'yes',
+
+  arrivalDate:
+    document.getElementById('arrival_date').value,
+
+  arrivalTime:
+    document.getElementById('arrival_time').value,
+
+  departureDate:
+    document.getElementById('departure_date').value,
+
+  departureTime:
+    document.getElementById('departure_time').value,
+
+  emergencyName:
+    document.getElementById('emergency_name').value,
+
+  emergencyPhone:
+    document.getElementById('emergency_phone').value,
+
+  txnId: txn,
+
+  // PASS
+  passName: passName,
+  passAmount: passAmount,
+
+  password:
+    document.getElementById('reg_password').value,
+
+  members,
+
+  events: selectedEventIds
+};
       let result;
       try {
-        const response = await fetch('https://prayukti-backend.onrender.com/api/register', {
+        const response = await fetch('http://localhost:5000/api/register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
@@ -2119,7 +2901,7 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.disabled = true;
       btn.textContent = 'Logging in...';
       try {
-        const res  = await fetch('https://prayukti-backend.onrender.com/api/login', {
+        const res  = await fetch('http://localhost:5000/api/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ registrationId: uid, password: pass })

@@ -3,7 +3,7 @@
 // Part 1
 // =========================================================
 
-const API = "https://prayukti-backend.onrender.com/api";
+const API = "http://localhost:5000/api";
 
 let participant = null;
 
@@ -226,23 +226,25 @@ function generateQRCode(){
 
         JSON.stringify({
 
-            registration:
+    registration:
+        participant.registration_id,
 
-            participant.registration_id,
+    name:
+        participant.leader_name,
 
-            name:
+    college:
+        participant.college_name,
 
-            participant.leader_name,
+    event:
+        participant.events,
 
-            college:
+    pass:
+        participant.pass_name,
 
-            participant.college_name,
+    amount:
+        participant.pass_amount
 
-            event:
-
-            participant.events
-
-        })
+})
 
     );
 
@@ -547,6 +549,14 @@ async function downloadPass(){
 
     document.getElementById("passBranch").innerText =
         participant.course;
+    // PASS DETAILS
+    document.getElementById("passType").innerText =
+    participant.pass_name || "--";
+
+    document.getElementById("passAmount").innerText =
+    participant.pass_amount
+        ? "₹" + Number(participant.pass_amount).toLocaleString("en-IN")
+        : "₹0";
 
     document.getElementById("passAvatar").innerText =
         avatar.innerText;

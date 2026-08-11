@@ -15,39 +15,66 @@ console.log("==================================");
 
         await connection.beginTransaction();
 
-        const {
+      const {
+    teamName,
+    teamSize,
 
-            teamName,
-            teamSize,
+    leaderName,
+    leaderEmail,
+    leaderPhone,
+    leaderAadhaar,
 
-            leaderName,
-            leaderEmail,
-            leaderPhone,
-            leaderAadhaar,
+    college,
+    course,
+    city,
 
-            college,
-            course,
-            city,
+    accommodation,
+    transport,
 
-            accommodation,
-            transport,
+    arrivalDate,
+    arrivalTime,
 
-            arrivalDate,
-            arrivalTime,
+    departureDate,
+    departureTime,
 
-            departureDate,
-            departureTime,
+    emergencyName,
+    emergencyPhone,
 
-            emergencyName,
-            emergencyPhone,
+    events,
+    members,
 
-            events,
+    password,
 
-            members,
+    // PASS DETAILS
+    passName,
+    passAmount
 
-            password
+} = req.body;
+        // ===========================
+// Optional Accommodation Dates
+// ===========================
+// MySQL DATE/TIME columns cannot store empty strings.
+// Convert empty values to NULL.
 
-        } = req.body;
+const safeArrivalDate =
+    arrivalDate && arrivalDate.trim() !== ''
+        ? arrivalDate
+        : null;
+
+const safeArrivalTime =
+    arrivalTime && arrivalTime.trim() !== ''
+        ? arrivalTime
+        : null;
+
+const safeDepartureDate =
+    departureDate && departureDate.trim() !== ''
+        ? departureDate
+        : null;
+
+const safeDepartureTime =
+    departureTime && departureTime.trim() !== ''
+        ? departureTime
+        : null;
         // ===========================
 // Duplicate Email Check
 // ===========================
@@ -74,6 +101,26 @@ if (emailExists.length > 0) {
 
     });
 
+}
+const PASS_PRICES = {
+  "Golden Pass": 1600,
+  "Silver Pass": 1100,
+  "Bronze Pass": 600,
+  "Battle of the Bands": 6000
+};
+
+if (!passName || !PASS_PRICES[passName]) {
+  return res.status(400).json({
+    success: false,
+    message: "Please select a valid pass."
+  });
+}
+
+if (Number(passAmount) !== PASS_PRICES[passName]) {
+  return res.status(400).json({
+    success: false,
+    message: "Invalid pass amount."
+  });
 }
 
 // ===========================
@@ -128,88 +175,58 @@ if (aadhaarExists.length > 0) {
         // ===========================
         // Save Team
         // ===========================
-
         await connection.query(
-
-`INSERT INTO teams
-(
-registration_id,
-team_name,
-team_size,
-
-leader_name,
-leader_email,
-password,
-leader_phone,
-leader_aadhaar,
-
-college_name,
-course,
-city,
-
-accommodation_required,
-transport_required,
-
-arrival_date,
-arrival_time,
-
-departure_date,
-departure_time,
-
-emergency_contact_name,
-emergency_contact_phone,
-
-status
-
-)
-
-VALUES
-(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
-
-            [
-
-                registrationId,
-
-                teamName,
-
-                teamSize,
-
-                leaderName,
-
-                leaderEmail,
-                hashedPassword,
-
-                leaderPhone,
-
-                leaderAadhaar,
-
-                college,
-
-                course,
-
-                city,
-
-                accommodation,
-
-                transport,
-
-                arrivalDate,
-
-                arrivalTime,
-
-                departureDate,
-
-                departureTime,
-
-                emergencyName,
-
-                emergencyPhone,
-
-                "Approved"
-
-            ]
-
-        );
+    `INSERT INTO teams (
+        registration_id,
+        team_name,
+        team_size,
+        leader_name,
+        leader_email,
+        password,
+        leader_phone,
+        leader_aadhaar,
+        college_name,
+        course,
+        city,
+        accommodation_required,
+        transport_required,
+        arrival_date,
+        arrival_time,
+        departure_date,
+        departure_time,
+        emergency_contact_name,
+        emergency_contact_phone,
+        pass_name,
+        pass_amount,
+        payment_status,
+        status
+    ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+    [
+        registrationId,
+        teamName,
+        teamSize,
+        leaderName,
+        leaderEmail,
+        hashedPassword,
+        leaderPhone,
+        leaderAadhaar,
+        college,
+        course,
+        city,
+        accommodation,
+        transport,
+        safeArrivalDate,
+        safeArrivalTime,
+        safeDepartureDate,
+        safeDepartureTime,
+        emergencyName,
+        emergencyPhone,
+        passName,
+        passAmount,
+        "Paid",
+        "Approved"
+    ]
+);
                 // ===========================
         // Save Team Members
         // ===========================

@@ -306,11 +306,38 @@
             <strong id="passRegId">--</strong>
           </div>
           <div class="pass-grid">
-            <div><span>College</span><strong id="passCollege">--</strong></div>
-            <div><span>Team Size</span><strong id="passTeamSize">--</strong></div>
-            <div><span>City</span><strong id="passCity">--</strong></div>
-            <div><span>Branch</span><strong id="passBranch">--</strong></div>
-          </div>
+
+  <div>
+    <span>College</span>
+    <strong id="passCollege">--</strong>
+  </div>
+
+  <div>
+    <span>Team Size</span>
+    <strong id="passTeamSize">--</strong>
+  </div>
+
+  <div>
+    <span>City</span>
+    <strong id="passCity">--</strong>
+  </div>
+
+  <div>
+    <span>Branch</span>
+    <strong id="passBranch">--</strong>
+  </div>
+
+  <div class="pass-payment-box">
+    <span>PASS</span>
+    <strong id="passType">--</strong>
+  </div>
+
+  <div class="pass-payment-box">
+    <span>AMOUNT PAID</span>
+    <strong id="passAmount">₹0</strong>
+  </div>
+
+</div>
         </div>
         <div class="pass-qr">
           <img id="passQR" alt="QR" />
@@ -380,7 +407,7 @@
 // WHATSAPP GATE LOGIC
 // =========================================================
 
-const WHATSAPP_API = "https://prayukti-backend.onrender.com/api";
+const WHATSAPP_API = "http://localhost:5000/api";
 const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/Dp4Os2aRwPUEsoK0RN0mSF";
 
 const gate = document.getElementById("whatsappGate");
