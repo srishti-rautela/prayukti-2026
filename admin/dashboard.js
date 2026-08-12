@@ -4,7 +4,7 @@
 // Part 1
 // ======================================================
 
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "https://prayukti-backend.onrender.com/api";
 
 // ================= DOM =================
 
