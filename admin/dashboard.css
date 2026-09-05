@@ -4,22 +4,22 @@ PRAYUKTI ADMIN DASHBOARD
 
 :root{
 
---cyan:#00F5FF;
---purple:#7B2FFF;
---green:#0ff092;
---pink:#FF0088;
---yellow:#FFD54F;
+--cyan:#FF4655;
+--purple:#D93644;
+--green:#E8E8E8;
+--pink:#FF4655;
+--yellow:#FFFFFF;
 
---bg:#050816;
---bg2:#0A1326;
+--bg:#08090B;
+--bg2:#0D0F12;
 
---card:rgba(16,22,40,.75);
+--card:rgba(18,20,24,.88);
 
---border:rgba(255,255,255,.08);
+--border:rgba(255,255,255,.10);
 
---text:#EAF2FF;
+--text:#F5F5F5;
 
---muted:#8CA3C8;
+--muted:#9B9B9B;
 
 }
 
@@ -39,9 +39,9 @@ body{
 
 background:
 
-linear-gradient(135deg,#030712,#07111F);
+linear-gradient(135deg,#050506 0%,#0A0B0D 50%,#111316 100%);
 
-color:white;
+color:var(--text);
 
 overflow-x:hidden;
 
@@ -87,11 +87,11 @@ bottom:0;
 
 width:290px;
 
-background:rgba(8,12,24,.88);
+background:rgba(7,8,10,.96);
 
 backdrop-filter:blur(22px);
 
-border-right:1px solid rgba(255,255,255,.08);
+border-right:1px solid rgba(255,70,85,.22);
 
 padding:28px;
 
@@ -199,7 +199,7 @@ font-weight:600;
 
 .sidebar li:hover{
 
-background:rgba(0,245,255,.08);
+background:rgba(255,70,85,.08);
 
 transform:translateX(8px);
 
@@ -207,7 +207,7 @@ border-color:var(--cyan);
 
 box-shadow:
 
-0 0 25px rgba(0,245,255,.18);
+0 0 25px rgba(255,70,85,.18);
 
 }
 
@@ -217,11 +217,13 @@ background:
 
 linear-gradient(90deg,
 
-var(--cyan),
+#FF4655,
 
-var(--purple));
+#B82E3A);
 
 border:none;
+box-shadow:
+0 0 20px rgba(255,70,85,.20);
 
 }
 
@@ -303,7 +305,7 @@ border:1px solid rgba(255,255,255,.06);
 
 box-shadow:
 
-0 0 20px rgba(0,245,255,.12);
+0 0 20px rgba(255,70,85,.12);
 
 }
 
@@ -411,7 +413,7 @@ background:
 
 radial-gradient(circle,
 
-rgba(0,245,255,.20),
+rgba(255,70,85,.16),
 
 transparent);
 
@@ -425,7 +427,7 @@ border-color:var(--cyan);
 
 box-shadow:
 
-0 0 30px rgba(0,245,255,.20);
+0 0 30px rgba(255,70,85,.20);
 
 }
 
@@ -486,7 +488,7 @@ font-weight:700;
 
 color:white;
 
-background:linear-gradient(135deg,var(--cyan),var(--purple));
+background:linear-gradient(135deg,#FF4655,#B82E3A);
 
 transition:.35s;
 
@@ -496,7 +498,7 @@ overflow:hidden;
 
 box-shadow:
 
-0 0 18px rgba(0,245,255,.18);
+0 0 18px rgba(255,70,85,.18);
 
 }
 
@@ -538,7 +540,7 @@ transform:translateY(-6px);
 
 box-shadow:
 
-0 0 30px rgba(0,245,255,.35);
+0 0 30px rgba(255,70,85,.35);
 
 }
 
@@ -644,7 +646,7 @@ transition:.35s;
 
 transform:translateX(8px);
 
-background:rgba(0,245,255,.08);
+background:rgba(255,70,85,.08);
 
 }
 
@@ -702,7 +704,7 @@ border-collapse:collapse;
 
 thead{
 
-background:rgba(0,245,255,.08);
+background:rgba(255,70,85,.08);
 
 }
 
@@ -732,7 +734,7 @@ transition:.3s;
 
 tbody tr:hover{
 
-background:rgba(0,245,255,.06);
+background:rgba(255,70,85,.06);
 
 }
 
@@ -796,9 +798,9 @@ transition:.3s;
 
 .view-btn{
 
-background:#00F5FF;
+background:#FF4655;
 
-color:#000;
+color:white;
 
 }
 
@@ -848,7 +850,7 @@ radial-gradient(
 
 circle,
 
-rgba(0,245,255,.08),
+rgba(255,70,85,.08),
 
 transparent 70%
 
@@ -882,7 +884,7 @@ radial-gradient(
 
 circle,
 
-rgba(123,47,255,.08),
+rgba(255,70,85,.05),
 
 transparent 70%
 
@@ -908,7 +910,7 @@ width:10px;
 
 ::-webkit-scrollbar-track{
 
-background:#07111F;
+background:#08090B;
 
 }
 
@@ -920,9 +922,9 @@ linear-gradient(
 
 180deg,
 
-#00F5FF,
+#FF4655,
 
-#7B2FFF
+#8F2631
 
 );
 
@@ -938,9 +940,9 @@ linear-gradient(
 
 180deg,
 
-#14F195,
+#FF6B55,
 
-#00F5FF
+#FF4655
 
 );
 
@@ -1179,7 +1181,7 @@ width:700px;
 
 max-width:95%;
 
-background:#101628;
+background:#111316;
 
 border-radius:24px;
 
@@ -1189,7 +1191,7 @@ padding:30px;
 
 animation:modalOpen .35s ease;
 
-box-shadow:0 0 40px rgba(0,245,255,.2);
+box-shadow:0 0 40px rgba(255,70,85,.20);
 
 }
 

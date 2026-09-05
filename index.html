@@ -10,10 +10,10 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --c1:#26c0c5;--c2:#7b2fff;--c3:#ff006e;--c4:#00ff9d;--c5:#ffb800;
-  --bg:#030310;--bg2:#07071a;--bg3:#0d0d28;
-  --card:rgba(255,255,255,0.025);--card-b:rgba(0,245,255,0.1);
-  --text:#e0e0ff;--muted:rgba(180,180,255,0.5);
+  --c1:#ff4655;--c2:#ff4655;--c3:#ff6b75;--c4:#ffffff;--c5:#b8b8b8;
+  --bg:#08090b;--bg2:#0d0f12;--bg3:#15181c;
+  --card:rgba(255,255,255,0.035);--card-b:rgba(255,70,85,0.22);
+  --text:#f5f5f5;--muted:rgba(220,220,220,0.6);
   --orb:'Orbitron',sans-serif;--raj:'Rajdhani',sans-serif;--int:'Inter',sans-serif;
 }
 html{scroll-behavior:smooth}
@@ -32,9 +32,9 @@ nav.scrolled{background:rgba(3,3,16,0.98);box-shadow:0 4px 30px rgba(0,245,255,0
 .nav-inner{max-width:1280px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:62px;gap:12px}
 .logo{font-family:var(--orb);font-size:15px;font-weight:900;color:var(--c1);letter-spacing:2px;cursor:pointer;text-shadow:0 0 20px rgba(0,245,255,0.4);flex-shrink:0;transition:all 0.2s}
 .logo span{color:var(--c2)}
-.logo:hover{text-shadow:0 0 30px rgba(0,245,255,0.7)}
+.logo:hover{text-shadow:0 0 30px rgba(255,70,85,0.22)}
 .nav-links{display:flex;gap:2px;flex:1;justify-content:center}
-.nav-btn{background:none;border:none;color:rgba(200,200,255,0.6);font-family:var(--raj);font-size:13px;font-weight:600;cursor:pointer;padding:6px 12px;border-radius:6px;transition:all 0.2s;letter-spacing:0.5px;position:relative}
+.nav-btn{background:none;border:none;color:rgba(255,70,85,0.7);font-family:var(--raj);font-size:13px;font-weight:600;cursor:pointer;padding:6px 12px;border-radius:6px;transition:all 0.2s;letter-spacing:0.5px;position:relative}
 .nav-btn::after{content:'';position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:0;height:1px;background:var(--c1);transition:width 0.3s}
 .nav-btn:hover,.nav-btn.active{color:var(--c1)}
 .nav-btn:hover::after,.nav-btn.active::after{width:60%}
