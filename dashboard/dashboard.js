@@ -928,7 +928,7 @@ document.title=
 // EVENT DATE
 // -------------------------------
 
-const EVENT_DATE = new Date("2026-10-21T09:00:00");
+const EVENT_DATE = new Date("2026-10-14T09:00:00");
 
 // -------------------------------
 // COUNTDOWN CARD
