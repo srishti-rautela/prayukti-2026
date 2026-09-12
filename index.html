@@ -915,7 +915,8 @@ section.active{display:block}
 }
 </style>
 <style>
-/* ===== INTRO VIDEO SCREEN ===== */
+/* ===== RESPONSIVE INTRO VIDEO ===== */
+
 #intro-screen {
   position: fixed;
   inset: 0;
@@ -925,7 +926,7 @@ section.active{display:block}
   background: #030310;
   z-index: 99999;
 }
-#intro-screen.hidden{opacity:0;visibility:hidden;pointer-events:none;}
+
 #intro-video {
   position: absolute;
   inset: 0;
@@ -933,8 +934,21 @@ section.active{display:block}
   height: 100%;
   object-fit: cover;
   object-position: center center;
-  z-index: 0;
   display: block;
+}
+
+/* Mobile: show the complete video, centered */
+@media (max-width: 768px) {
+  #intro-video {
+    object-fit: contain;
+    object-position: center center;
+  }
+}
+
+#intro-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 /* Overlay scanlines on video */
 #intro-screen::after{
