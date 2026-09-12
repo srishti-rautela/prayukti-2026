@@ -921,20 +921,21 @@ section.active{display:block}
   position: fixed;
   inset: 0;
   width: 100%;
-  height: 100%;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   background: #030310;
   z-index: 99999;
 }
 
 #intro-video {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center center;
   display: block;
+  object-fit: contain;
+  object-position: center center;
 }
 
 /* Mobile: show the complete video, centered */
