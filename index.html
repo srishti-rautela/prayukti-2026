@@ -916,15 +916,33 @@ section.active{display:block}
 </style>
 <style>
 /* ===== INTRO VIDEO SCREEN ===== */
-#intro-screen{
-  position:fixed;inset:0;z-index:99999;background:#030310;
-  display:flex;align-items:center;justify-content:center;overflow:hidden;
-  transition:opacity 0.8s ease, visibility 0.8s ease;
+#intro-screen {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #030310;
+  z-index: 99999;
+}
+@media (max-width: 768px) {
+  #intro-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
 }
 #intro-screen.hidden{opacity:0;visibility:hidden;pointer-events:none;}
-#intro-video{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  z-index:0;
+#intro-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  z-index: 0;
+  display: block;
 }
 /* Overlay scanlines on video */
 #intro-screen::after{
@@ -1261,10 +1279,17 @@ section.active{display:block}
 </script>
 
   <!-- Place your video file named "intro.mp4" in the same folder as index.html -->
- <video id="intro-video" autoplay playsinline preload="auto" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:0;"
-         onerror="document.getElementById('intro-fallback').style.display='block';this.style.display='none'">
-    <source src="assets/Prayukti Techfest2026.mp4" type="video/mp4">
-  </video>
+<video
+  id="intro-video"
+  autoplay
+  muted
+  playsinline
+  preload="auto"
+  onerror="document.getElementById('intro-fallback').style.display='block';this.style.display='none'">
+
+  <source src="assets/Prayukti Techfest2026.mp4" type="video/mp4">
+
+</video>
 
   <!-- Shown if no video file found -->
   <div id="intro-fallback" style="display:none">
