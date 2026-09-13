@@ -1401,10 +1401,33 @@ section.active{display:block}
     </div>
     <div class="nav-actions">
       <button class="btn-hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Menu">☰</button>
-      <button class="btn-notif" onclick="goTo('notifications')" title="Notifications">🔔<span class="notif-dot"></span></button>
-      <button class="btn-login" onclick="window.location.href='welcome.html'">LOGIN</button>
-      <button class="btn-reg" onclick="goTo('register')">REGISTER NOW</button>
-    </div>
+      <div class="nav-actions">
+  <button
+    class="btn-hamburger"
+    id="hamburgerBtn"
+    onclick="toggleMobileMenu()"
+    aria-label="Menu"
+  >
+    ☰
+  </button>
+
+  <button
+    class="btn-notif"
+    onclick="goTo('notifications')"
+    title="Notifications"
+  >
+    🔔<span class="notif-dot"></span>
+  </button>
+
+  <a
+    class="btn-reg"
+    href="https://forms.gle/rbEZJ42PeudEa7i68"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    REGISTER NOW ↗
+  </a>
+</div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-nav-btn" onclick="goTo('home');closeMobileMenu()">Home</button>
@@ -1413,9 +1436,24 @@ section.active{display:block}
     <button class="mobile-nav-btn" onclick="goTo('sponsors');closeMobileMenu()">Sponsors</button>
     <button class="mobile-nav-btn" onclick="goTo('gallery');closeMobileMenu()">Gallery</button>
     <button class="mobile-nav-btn" onclick="goTo('team');closeMobileMenu()">Team</button>
-    <button class="mobile-nav-btn" onclick="goTo('notifications');closeMobileMenu()">🔔 Notifications</button>
-    <button class="mobile-nav-btn" onclick="window.location.href='welcome.html'">Login</button>
-  </div>
+   <div class="mobile-menu" id="mobileMenu">
+  <button
+    class="mobile-nav-btn"
+    onclick="goTo('notifications'); closeMobileMenu()"
+  >
+    🔔 Notifications
+  </button>
+
+  <a
+    class="mobile-nav-btn"
+    href="https://forms.gle/rbEZJ42PeudEa7i68"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    REGISTER NOW ↗
+  </a>
+</div>
+</div>
 </nav>
 
 <!-- HOME -->
@@ -1435,7 +1473,14 @@ section.active{display:block}
       <div class="cd-box"><div class="cd-n" id="cd-s">--</div><div class="cd-l">SECS</div></div>
     </div>
     <div class="hero-btns">
-      <button class="cta-primary" onclick="goTo('register')">REGISTER NOW →</button>
+      <a
+  class="cta-primary"
+  href="https://forms.gle/rbEZJ42PeudEa7i68"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  REGISTER NOW →
+</a>
       <button class="cta-sec" onclick="goTo('events')">EXPLORE EVENTS</button>
     </div>
     <div class="stats-row">
