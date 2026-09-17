@@ -361,6 +361,26 @@ section.active{display:block}
 .m-body li{margin-bottom:5px}
 .prize-row{display:flex;gap:10px;margin:14px 0;flex-wrap:wrap}
 .prize-box{flex:1;min-width:90px;background:rgba(0,255,157,0.04);border:1px solid rgba(0,255,157,0.15);border-radius:10px;padding:14px;text-align:center}
+/* PRIZE MONEY NOTE */
+.prize-note {
+  margin: 12px 0 18px;
+  padding: 10px 14px;
+  background: rgba(255, 184, 0, 0.08);
+  border: 1px solid rgba(255, 184, 0, 0.35);
+  border-left: 3px solid #ffb800;
+  border-radius: 8px;
+  color: #ffd76a;
+  font-family: var(--raj);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.prize-note strong {
+  color: #fff;
+  font-weight: 900;
+}
 .prize-place{font-size:10px;color:rgba(180,180,255,0.4);margin-bottom:6px}
 .prize-amt{font-family:var(--orb);font-size:17px;font-weight:900;color:var(--c4)}
 .modal-reg-btn{width:100%;margin-top:20px;background:linear-gradient(135deg,var(--c2),var(--c3));border:none;color:#fff;font-family:var(--orb);font-size:12px;font-weight:700;padding:14px;border-radius:10px;cursor:pointer;letter-spacing:1px;transition:all 0.3s}
@@ -2266,9 +2286,12 @@ const TEAM=[
   // Event Innovation and Strategy Board
   {name:'Gaurav Singh Bora',role: "Secretary",dept:' CSE Department',board:'Event Innovation and Strategy Board',color:'#ff006e',init:'M3',photo:'assets/team/gaurav.jpeg',bio:'Secretary of the Event Innovation and Strategy Board, responsible for managing event innovation and strategy efforts.'},
   {name:'Archana',role: "Co-Secretary",dept:' CSE Department',board:'Event Innovation and Strategy Board',color:'#ff006e',init:'M3',photo:'assets/team/archana.jpeg',bio:'Co-Secretary of the Event Innovation and Strategy Board, supporting event innovation and strategy efforts.'},
-  
-  {name:'Pushpesh',role: "Member",dept:' CSE Department',board:'Event Innovation and Strategy Board',color:'#ff006e',init:'M3',photo:'assets/team/pushpesh.jpeg',bio:'Member of the Event Innovation and Strategy Board, supporting event innovation and strategy efforts.'},
  {name:'Kavya Joshi',role: "Member",dept:' CSE Department',board:'Event Innovation and Strategy Board',color:'#ff006e',init:'M3',photo:'assets/team/KavyaJoshi.jpeg',bio:'Member of the Event Innovation and Strategy Board, supporting event innovation and strategy efforts.'},
+{name:'Priyanshu Joshi',role: "Member",dept:' SOM Department',board:'Event Innovation and Strategy Board',color:'#ff006e',init:'M3',photo:'assets/team/priyanshu.jpeg',bio:'Member of the Event Innovation and Strategy Board, supporting event innovation and strategy efforts.'},
+{name:'Anuya Chinchore',role: "Member",board:'Event Innovation and Strategy Board',color:'#ff006e',init:'M3',photo:'assets/team/anuya.jpeg',bio:'Member of the Event Innovation and Strategy Board, supporting event innovation and strategy efforts.'},
+{name:'Vaibhav',role: "Member",board:'Event Innovation and Strategy Board',color:'#ff006e',init:'M3',photo:'assets/team/vaibhav.jpeg',bio:'Member of the Event Innovation and Strategy Board, supporting event innovation and strategy efforts.'},
+{name:'Bharat Bisht',role: "Member",board:'Event Innovation and Strategy Board',color:'#ff006e',init:'M3',photo:'assets/team/bharat.jpeg',bio:'Member of the Event Innovation and Strategy Board, supporting event innovation and strategy efforts.'},
+{name:'Priyanshu Bhatt',role: "Member",dept:' SOM Department',board:'Event Innovation and Strategy Board',color:'#ff006e',init:'M3',photo:'assets/team/pb.jpeg',bio:'Member of the Event Innovation and Strategy Board, supporting event innovation and strategy efforts.'},
 
  
   // Documentation and Content Board
@@ -2277,6 +2300,8 @@ const TEAM=[
   {name:'Shreya Rawat',role:'Co-Secretary',dept:'CSE Department',board:'Documentation and Content Board',color:'#7b2fff',init:'MN',photo:'assets/team/shreya.jpeg',bio:'Co-Secretary of the Documentation and Content Board, supporting content creation and documentation efforts .'},
   {name:'Arshpreet Kaur',role:'Co- Secretary',dept:'SOM Department',board:'Documentation and Content Board',color:'#7b2fff',init:'M2',photo:'assets/team/arshpreet.jpeg',bio:'Co- Secretary of the Documentation and Content Board, contributing to content creation and documentation efforts.'},
    {name:'Rishita Gaula',role:'Member',dept:'CSE Department',board:'Documentation and Content Board',color:'#7b2fff',init:'M2',photo:'assets/team/rishita.jpeg',bio:'Member of the Documentation and Content Board, contributing to content creation and documentation efforts.'},
+   {name:'Chetna Sati',role:'Member',dept:'SOC Department',board:'Documentation and Content Board',color:'#7b2fff',init:'M2',photo:'assets/team/chetna.jpeg',bio:'Member of the Documentation and Content Board, contributing to content creation and documentation efforts.'},
+  {name:'Anushka Saxena',role:'Member',dept:'SOC Department',board:'Documentation and Content Board',color:'#7b2fff',init:'M2',photo:'assets/team/anushka.jpeg',bio:'Member of the Documentation and Content Board, contributing to content creation and documentation efforts.'},
   
   // Networking and Social Media Board
 
@@ -2284,15 +2309,16 @@ const TEAM=[
   {name:'Harshit Belal',role:'Co-Secretary',dept:'CSE Department',board:'Networking and Social Media Board',color:'#ff006e',init:'M4',photo:'assets/team/harshit.jpeg',bio:'Co-Secretary of the Networking and Social Media Board, managing social media presence and engagement.'},
   {name:'Harshit Kandpal',role:'Co-Secretary',dept:'CSE Department',board:'Networking and Social Media Board',color:'#ff006e',init:'M4',photo:'assets/team/harshitkandpal.jpeg',bio:'Co-Secretary of the Networking and Social Media Board, managing social media presence and engagement.'},
   {name:'Samriddhi',role:'Member',dept:'CSE Department',board:'Networking and Social Media Board',color:'#ff006e',init:'M4',photo:'assets/team/samriddhi.jpeg',bio:'Member of the Networking and Social Media Board, supporting social media efforts.'},
-  {name:'Siddhant Khatri',role:'Member',dept:'CSE Department',board:'Networking and Social Media Board',color:'#ff006e',init:'M4',photo:'assets/team/SiddhantKhatri.jpeg',bio:'Member of the Networking and Social Media Board, supporting social media efforts.'},
+  {name:'Siddhant Khatri',role:'Member',dept:'SOC Department',board:'Networking and Social Media Board',color:'#ff006e',init:'M4',photo:'assets/team/SiddhantKhatri.jpeg',bio:'Member of the Networking and Social Media Board, supporting social media efforts.'},
 
 
 
   // Hospitality Board
   {name:'Kamaljeet',role: "Secretary",dept:' SOM Department',board:'Hospitality Board',color:'#ff006e',init:'M3',photo:'assets/team/kamaljeet.jpeg',bio:'Secretary of the Hospitality Board, responsible for managing hospitality arrangements.'},
   {name:'Harjit ',role:'Co-Secretary',dept:'SOM Department',board:'Hospitality Board',color:'#ff006e',init:'M4',photo:'assets/team/harjit.jpeg',bio:'Co-Secretary of the Hospitality Board, supporting hospitality arrangements.'},
-     {name:'Rishabh',role:'Co-Secretary',dept:'SOM Department',board:'Hospitality Board',color:'#ff006e',init:'M4',photo:'assets/team/risab.jpeg',bio:'Co-Secretary of the Hospitality Board, supporting hospitality arrangements.'},
-   {name:'Agrima Verma',role:'Member',dept:'SOM Department',board:'Hospitality Board',color:'#ff006e',init:'M4',photo:'assets/team/agrima.jpeg',bio:'Member of the Hospitality Board, supporting hospitality arrangements.'},
+   {name:'Himesh Tewari ',role:'Co-Secretary',dept:'CSE Department',board:'Hospitality Board',color:'#ff006e',init:'M4',photo:'assets/team/himesh.jpeg',bio:'Co-Secretary of the Hospitality Board, supporting hospitality arrangements.'},
+   
+  {name:'Agrima Verma',role:'Member',dept:'SOM Department',board:'Hospitality Board',color:'#ff006e',init:'M4',photo:'assets/team/agrima.jpeg',bio:'Member of the Hospitality Board, supporting hospitality arrangements.'},
 
    
   // Design and Creative Board
@@ -2312,16 +2338,21 @@ const TEAM=[
     {name:'Saksham',role: "Member",dept:' SOM Department',board:'Public Relation and Outreach Team',color:'#ff006e',init:'M3',photo:'assets/team/saksham.jpeg',bio:'Member of the Public Relation and Outreach Team, supporting public relations and outreach efforts.'},
    
   // Transportation Board 
-  {name:'Vikas Kumar Jha',role: "Secretary",dept:' CSE Department',board:'Transportation Board',color:'#ff006e',init:'M3',photo:'assets/team/vikas.jpeg',bio:'Secretary of the Transportation Board, responsible for managing transportation arrangements.'},
+  {name:'Sakshi Singh',role: "Member",board:'Transportation Board',color:'#ff006e',init:'M3',photo:'assets/team/sakshi.jpeg',bio:'Member of the Transportation Board, supporting transportation arrangements.'},
+    {name:'Arpita Singh',role: "Member",board:'Transportation Board',color:'#ff006e',init:'M3',photo:'assets/team/arpita.jpeg',bio:'Member of the Transportation Board, supporting transportation arrangements.'}, 
   
   // Finance Board
-  {name:'Ankita Bhatt',role: "Secretary",dept:' Pharma Department',board:'Finance Board',color:'#ff006e',init:'M3',photo:'assets/team/ankita.jpeg',bio:'Secretary of the Finance Board, responsible for managing financial arrangements.'},
-  {name:'Prakhar Lohani',role: "Co-Secretary",dept:' SOC Department',board:'Finance Board',color:'#ff006e',init:'M3',photo:'assets/team/prakhar.jpeg',bio:'Co-Secretary of the Finance Board, supporting financial arrangements.'},
-  {name:'Pranay Gaira',role: "Co-Secretary",dept:' CSE Department',board:'Finance Board',color:'#ff006e',init:'M3',photo:'assets/team/pranay.jpeg',bio:'Co-Secretary of the Finance Board, supporting financial arrangements.'},
+  {name:'Prakhar Lohani',board:'Finance Board',color:'#ff006e',init:'M3',photo:'assets/team/prakhar.jpeg',bio:' supporting financial arrangements.'},
+  {name:'Pranay Gaira',dept:' CSE Department',board:'Finance Board',color:'#ff006e',init:'M3',photo:'assets/team/pranay.jpeg',bio:' supporting financial arrangements.'},
   
   
   // Sponsorship and Marketing Board
   {name:'Rohit Kumar',role: "Secretary",dept:' CSE Department',board:'Sponsorship and Marketing Board',color:'#ff006e',init:'M3',photo:'assets/team/rohit.jpeg',bio:'Secretary of the Sponsorship and Marketing Board, responsible for managing sponsorship and marketing efforts.'},
+   
+  // Department Coordinators
+  {name:'Kartavya Pandey',role: "CSE Department Coordinator",dept:' CSE Department',board:'Department Coordinators',color:'#ff006e',init:'M3',photo:'assets/team/kartavya.jpeg',bio:'Coordinator for the CSE Department, facilitating coordination and communication within the department.'},
+  {name:'Tanishka Upadhyay',role: "Pharmacy Department Coordinator",dept:' Pharmacy Department',board:'Department Coordinators',color:'#ff006e',init:'M3',photo:'assets/team/tanishka.jpeg',bio:'Coordinator for the Pharmacy Department, facilitating coordination and communication within the department.'},
+  
 ];
 
 // ==================== STATE ====================
@@ -2500,7 +2531,13 @@ function openEvent(id) {
                 </div>
               `).join('')}
             </div>
+            <div class="prize-note">
+  ⚠️ <strong>IMPORTANT:</strong> The prize money displayed is
+  <strong>UP TO</strong> the mentioned amount. The final prize amount
+  may vary based on the number of participating teams/registrations.
+</div>
           `
+          
       }
 
       <h4>Rules &amp; Format</h4>
