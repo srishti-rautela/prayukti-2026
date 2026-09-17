@@ -845,7 +845,25 @@ section.active{display:block}
     0 20px 50px rgba(0, 0, 0, 0.45),
     0 0 35px rgba(0, 229, 168, 0.65);
 }
+/* ===== GRAMANCH PASS ===== */
+.pass-gramanch {
+  --pass-color: #ffb347;
+  --pass-shadow: rgba(255, 179, 71, 0.5);
+}
 
+.pass-gramanch .pass-icon {
+  font-size: 30px;
+}
+
+.pass-gramanch .pass-name {
+  color: #ffb347;
+}
+
+.pass-gramanch:hover {
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.45),
+    0 0 35px rgba(255,179,71,.65);
+}
 
 /* ===== DEBATE ===== */
 .pass-debate {
@@ -1041,8 +1059,8 @@ section.active{display:block}
   margin-top: 18px;
   padding: 12px 24px;
   border-radius: 8px;
-  background: #00e5ff;
-  color: #000;
+  background: #f14242;
+  color: #ffffff;
   font-weight: 700;
   text-decoration: none;
   text-align: center;
@@ -1445,7 +1463,40 @@ section.active{display:block}
         REGISTER NOW ↗
       </a>
     </div>
+   <!-- GRAMANCH PASS -->
+<div class="pass-card pass-gramanch reveal rd3">
 
+  <div class="pass-glow"></div>
+  <div class="pass-shine"></div>
+
+  <div class="pass-icon">🎤</div>
+
+  <div class="pass-name">GRAMANCH PASS</div>
+
+  <div class="pass-desc">
+    Step onto the stage and showcase your talent through
+    solo or group singing and dance performances.
+    <p>For further details, contact the fest coordinator.</p>
+  </div>
+
+  <div class="pass-price">
+    ₹200 <span>/ Solo</span>
+  </div>
+
+  <div class="pass-price" style="margin-top:6px;">
+    ₹150 <span>/ Group</span>
+  </div>
+
+  <a
+    href="https://forms.gle/Boqn1ur1G6wPFYDp9"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="register-btn"
+  >
+    REGISTER NOW ↗
+  </a>
+
+</div>
 
     <!-- BATTLE ERA PASS -->
     <div class="pass-card pass-battle-era reveal rd2">
@@ -2110,7 +2161,47 @@ const EVENTS=[
     date: 'Oct 2026',
     venue: 'GEHU Bhimtal Campus'
   }
-},  
+},
+{
+  id: 23,
+  icon: '🎤',
+  cat: 'CULTURAL',
+  title: 'GraManch',
+  formLink: 'https://forms.gle/6a44AeKf9uj7i7Qs6',
+  desc: 'A vibrant cultural showcase celebrating music and dance at the student and college level, featuring solo singing, group singing, solo dance, and group dance in Indian and Western styles.',
+  tags: ['Singing', 'Dance', 'Solo & Group', 'Indian & Western'],
+  prize: '₹20,000',
+  type: 'cultural',
+  revealed: true,
+  brochure: 'assets/brochures/GraManch.pdf',
+  video: 'assets/gallery/gramanch.mp4',
+
+  detail: {
+    rules: [
+      'Open to students and college-level participants',
+      'Categories include Solo Singing, Group Singing, Solo Dance, and Group Dance',
+      'Dance performances may be presented in Indian or Western styles',
+      'Participants must register in the appropriate solo or group category',
+      'Solo registration fee: ₹200',
+      'Group registration fee: ₹150 per participant',
+      'Participants must report at the venue before their allotted performance time',
+      'Performances should follow the time limits and instructions provided by the organizers',
+      'The decision of the judges will be final'
+    ],
+
+    prizes: [
+      {
+        p: '🏆 Prize Pool',
+        a: 'Upto ₹20,000'
+      }
+    ],
+
+    contact: 'Sourav Pawar — +91 9389729756  and Saransh Pant — +91 9536919207',
+    date: '22–24 Oct 2026',
+    venue: 'Graphic Era Hill University, Bhimtal Campus'
+  }
+},
+
 ];
 
 const RESULTS=[
